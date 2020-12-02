@@ -1,6 +1,6 @@
 package me.jeremy.aoc
 
-class Day1: Day<List<Int>, Int> {
+class Day1: Day<Int, Int> {
 
     override fun runPartOne(): Int {
         val numbers = getInput()
