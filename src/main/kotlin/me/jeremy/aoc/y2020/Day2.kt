@@ -1,6 +1,9 @@
-package me.jeremy.aoc
+package me.jeremy.aoc.y2020
 
-class Day2: Day<Triple<Pair<Int, Int>, Char, String>, Int> {
+import me.jeremy.aoc.AOCUtils
+import me.jeremy.aoc.Day
+
+class Day2: Day<List<Triple<Pair<Int, Int>, Char, String>>, Int> {
     override fun runPartOne(): Int =
         getInput().count {
             it.third.count {
@@ -16,7 +19,7 @@ class Day2: Day<Triple<Pair<Int, Int>, Char, String>, Int> {
         }
 
     override fun getInput(): List<Triple<Pair<Int, Int>, Char, String>> =
-        AOCUtils.getDayInput(2).map {
+        AOCUtils.getDayInput(2020, 2).map {
             val split = it.split(" ")
             val minMax = split[0].split("-").map { that -> that.toInt() }
             Triple(Pair(minMax[0], minMax[1]), split[1][0], split[2])

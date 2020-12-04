@@ -1,6 +1,9 @@
-package me.jeremy.aoc
+package me.jeremy.aoc.y2020
 
-class Day3: Day<List<Char>, Long> {
+import me.jeremy.aoc.AOCUtils
+import me.jeremy.aoc.Day
+
+class Day3: Day<List<List<Char>>, Long> {
     override fun runPartOne(): Long =
         getTreesNumber(getInput(), 3, 1)
 
@@ -14,7 +17,7 @@ class Day3: Day<List<Char>, Long> {
     }
 
     override fun getInput(): List<List<Char>> =
-        AOCUtils.getDayInput(3).map { it.toList() }
+        AOCUtils.getDayInput(2020, 3).map { it.toList() }
 
     private fun getTreesNumber(slopes: List<List<Char>>, right: Int, down: Int): Long =
         slopes.mapIndexed { index, list ->

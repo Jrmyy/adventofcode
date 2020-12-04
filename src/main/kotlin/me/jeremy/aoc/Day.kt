@@ -6,6 +6,6 @@ interface Day<IptT, ResT> {
 
     fun runPartTwo(): ResT
 
-    fun getInput(): List<IptT>
+    fun getInput(): IptT
 
 }

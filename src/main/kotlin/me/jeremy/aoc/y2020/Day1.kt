@@ -1,6 +1,9 @@
-package me.jeremy.aoc
+package me.jeremy.aoc.y2020
 
-class Day1: Day<Int, Int> {
+import me.jeremy.aoc.AOCUtils
+import me.jeremy.aoc.Day
+
+class Day1: Day<List<Int>, Int> {
 
     override fun runPartOne(): Int {
         val numbers = getInput()
@@ -39,7 +42,7 @@ class Day1: Day<Int, Int> {
         return triple.first * triple.second * triple.third
     }
 
-    override fun getInput(): List<Int> = AOCUtils.getDayInput(1).map { it.toInt() }
+    override fun getInput(): List<Int> = AOCUtils.getDayInput(2020, 1).map { it.toInt() }
 
 }
 
