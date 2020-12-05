@@ -8,11 +8,11 @@ class Day7: IntCodeProgram(), Day<List<Long>, Long> {
     override fun runPartOne(): Long {
         val codes = getInput().toMutableList()
         return permutations((0 .. 4).toList().map { it.toLong() }).map {
-            val first = runIntCodeProgram(codes, listOf(it[0], 0)).second[0]
-            val second = runIntCodeProgram(codes, listOf(it[1], first)).second[0]
-            val third = runIntCodeProgram(codes, listOf(it[2], second)).second[0]
-            val fourth = runIntCodeProgram(codes, listOf(it[3], third)).second[0]
-            Pair(it, runIntCodeProgram(codes, listOf(it[4], fourth)).second[0])
+            val first = runIntCodeProgram(codes, listOf(it[0], 0)).outputs[0]
+            val second = runIntCodeProgram(codes, listOf(it[1], first)).outputs[0]
+            val third = runIntCodeProgram(codes, listOf(it[2], second)).outputs[0]
+            val fourth = runIntCodeProgram(codes, listOf(it[3], third)).outputs[0]
+            Pair(it, runIntCodeProgram(codes, listOf(it[4], fourth)).outputs[0])
         }
             .maxByOrNull { it.second }
             ?.second
@@ -26,18 +26,26 @@ class Day7: IntCodeProgram(), Day<List<Long>, Long> {
             val inputs = it.map { that ->
                 mutableListOf(that)
             }
-            val softwares = it.map { Triple(codes.toMutableList(), 0, 0) }.toMutableList()
+            val softwares = it.map {
+                IntCodeProgramResult(
+                    codes.toMutableList(),
+                    0,
+                    0,
+                    0,
+                    mutableListOf()
+                )
+            }.toMutableList()
             inputs[0].add(0)
             while (outputs.isNotEmpty()) {
                 for (i in 0 until 5) {
                     val res = runIntCodeProgram(
-                        softwares[i].first,
+                        softwares[i].codes,
                         inputs[i],
-                        initialCurrentIdx = softwares[i].second,
-                        initialCurrentIptIdx = softwares[i].third
+                        initialCurrentIdx = softwares[i].currentIdx,
+                        initialCurrentIptIdx = softwares[i].currentIptIdx
                     )
-                    outputs = res.second
-                    softwares[i] = res.first
+                    outputs = res.outputs
+                    softwares[i] = res
                     inputs[(i + 1) % 5].addAll(outputs)
                     if (outputs.isEmpty()) {
                         break

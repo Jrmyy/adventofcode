@@ -23,7 +23,7 @@ class Day2: IntCodeProgram(), Day<List<Long>, Int> {
         val codes = getInput().toMutableList()
         codes[1] = noun.toLong()
         codes[2] = verb.toLong()
-        return runIntCodeProgram(codes, hasOptMode = false).second[0].toInt()
+        return runIntCodeProgram(codes, hasOptMode = false).outputs[0].toInt()
     }
 
 }

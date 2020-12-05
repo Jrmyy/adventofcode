@@ -1,5 +1,13 @@
 package me.jeremy.aoc.y2019
 
+data class IntCodeProgramResult(
+    val codes: MutableList<Long>,
+    val currentIdx: Int,
+    val currentIptIdx: Int,
+    val relativeBase: Int,
+    val outputs: List<Long>
+)
+
 open class IntCodeProgram {
 
     fun runIntCodeProgram(
@@ -7,12 +15,15 @@ open class IntCodeProgram {
         inputs: List<Long> = listOf(),
         hasOptMode: Boolean = true,
         initialCurrentIdx: Int = 0,
-        initialCurrentIptIdx: Int = 0
-    ): Pair<Triple<MutableList<Long>, Int, Int>, List<Long>> {
+        initialCurrentIptIdx: Int = 0,
+        initialRelativeBase: Int = 0,
+        maxOutputSize: Int? = null,
+        defaultIfNotEnoughInput: Long? = null
+    ): IntCodeProgramResult {
         var currentIdx = initialCurrentIdx
         var currentIptIdx = initialCurrentIptIdx
         val outputs = mutableListOf<Long>()
-        var relativeBase = 0
+        var relativeBase = initialRelativeBase
         while (true) {
             val code = codes[currentIdx].toInt()
             if (code == 99) {
@@ -31,17 +42,20 @@ open class IntCodeProgram {
             when (opCode) {
                 3 -> {
                     // Meaning we need instructions from next amplifier so we return and wait
-                    if (currentIptIdx == inputs.size) {
+                    if (currentIptIdx == inputs.size && defaultIfNotEnoughInput == null) {
                         break
                     }
                     val iptIdxInCode = getOptElement(codes, currentIdx + 1, relativeBase, firstMode)
-                    codes[iptIdxInCode] = inputs[currentIptIdx]
+                    codes[iptIdxInCode] = inputs.getOrNull(currentIptIdx) ?: defaultIfNotEnoughInput!!
                     currentIptIdx += 1
                     currentIdx += 2
                 }
                 4 -> {
                     outputs.add(first)
                     currentIdx += 2
+                    if (maxOutputSize != null && outputs.size == maxOutputSize) {
+                        break
+                    }
                 }
                 9 -> {
                     relativeBase += first.toInt()
@@ -93,7 +107,13 @@ open class IntCodeProgram {
                 }
             }
         }
-        return Pair(Triple(codes.toMutableList(), currentIdx, currentIptIdx), outputs)
+        return IntCodeProgramResult(
+            codes.toMutableList(),
+            currentIdx,
+            currentIptIdx,
+            relativeBase,
+            outputs
+        )
     }
 
     private fun getOptElement(codes: MutableList<Long>, currentIdx: Int, relativeBase: Int, mode: Char): Int =

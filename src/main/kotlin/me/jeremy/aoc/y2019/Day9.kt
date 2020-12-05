@@ -5,10 +5,10 @@ import me.jeremy.aoc.Day
 
 class Day9: IntCodeProgram(), Day<List<Long>, Long> {
     override fun runPartOne(): Long =
-        runIntCodeProgram(getInput().toMutableList(), listOf(1)).second[0]
+        runIntCodeProgram(getInput().toMutableList(), listOf(1)).outputs[0]
 
     override fun runPartTwo(): Long =
-        runIntCodeProgram(getInput().toMutableList(), listOf(2)).second[0]
+        runIntCodeProgram(getInput().toMutableList(), listOf(2)).outputs[0]
 
     override fun getInput(): List<Long> = AOCUtils.getDayInput(2019, 9)[0].split(",").map { it.toLong() }
 
