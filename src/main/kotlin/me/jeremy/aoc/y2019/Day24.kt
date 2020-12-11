@@ -12,7 +12,7 @@ class Map(private val coordinates: List<MutableList<Char>>) {
             Pair(x, y - 1),
             Pair(x, y + 1)
         ).filter {
-            it.first in state.indices && it.second in state[0].indices
+            it.second in state.indices && it.first in state[0].indices
         }.count {
             state[it.second][it.first] == '#'
         }
