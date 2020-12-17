@@ -35,9 +35,8 @@ class Day13: Day<Pair<Int, List<String>>, Long> {
             }
         }
         val bis = indexedBuses.map { it.second }
-        var res = 1L
-        indexedBuses.forEach {
-            res *= it.first.toLong()
+        val res = indexedBuses.fold(1L) { acc, pair ->
+            acc * pair.first.toLong()
         }
         val nis = indexedBuses.map {
             res / it.first
@@ -53,9 +52,8 @@ class Day13: Day<Pair<Int, List<String>>, Long> {
                 }
             }.firstOrNull()!!
         }
-        var sum = 0L
-        bis.forEachIndexed { index, _->
-            sum += bis[index] * nis[index] * xis[index]
+        val sum = bis.indices.fold(0L) { acc, i ->
+            acc + bis[i] * nis[i] * xis[i]
         }
         return sum % res
     }
