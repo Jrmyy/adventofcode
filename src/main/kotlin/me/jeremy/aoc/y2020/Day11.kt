@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Map(private val coordinates: List<MutableList<Char>>) {
+class Plane(private val coordinates: List<MutableList<Char>>) {
 
     private fun getSeatsCountInAdjacentPositions(x: Int, y: Int, state: List<MutableList<Char>>): Int =
         listOf(
@@ -48,9 +48,9 @@ class Map(private val coordinates: List<MutableList<Char>>) {
             }
         }.count { it == '#' }
 
-    fun copy() = Map(coordinates.map { it.toMutableList() }.toList())
+    fun copy() = Plane(coordinates.map { it.toMutableList() }.toList())
 
-    fun updateMap(wideSearch: Boolean, seatsCountToSwitchToEmpty: Int) {
+    fun updatePlane(wideSearch: Boolean, seatsCountToSwitchToEmpty: Int) {
         val initialState = copy()
         coordinates.forEachIndexed {
                 y: Int, mutableList: MutableList<Char> ->
@@ -73,7 +73,7 @@ class Map(private val coordinates: List<MutableList<Char>>) {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is Map) return false
+        if (other !is Plane) return false
         return this.coordinates == other.coordinates
     }
 
@@ -82,26 +82,26 @@ class Map(private val coordinates: List<MutableList<Char>>) {
     }
 }
 
-class Day11: Day<Map, Int> {
+class Day11: Day<Plane, Int> {
     override fun runPartOne(): Int = doRun()
 
     override fun runPartTwo(): Int = doRun(true, 5)
 
-    override fun getInput(): Map = Map(
+    override fun getInput(): Plane = Plane(
         AOCUtils.getDayInput(2020, 11).map { it.toList().toMutableList() }
     )
 
     private fun doRun(wideSearch: Boolean = false, seatsCountToSwitchToEmpty: Int = 4): Int {
         val map = getInput()
-        var lastMap = map.copy()
+        var lastPlane = map.copy()
         var hasDone = false
         while (!hasDone) {
-            val beforeMap = map.copy()
-            map.updateMap(wideSearch, seatsCountToSwitchToEmpty)
-            lastMap = map.copy()
-            hasDone = lastMap == beforeMap
+            val beforePlane = map.copy()
+            map.updatePlane(wideSearch, seatsCountToSwitchToEmpty)
+            lastPlane = map.copy()
+            hasDone = lastPlane == beforePlane
         }
-        return lastMap.getOccupiedSeatsCount()
+        return lastPlane.getOccupiedSeatsCount()
     }
 }
 

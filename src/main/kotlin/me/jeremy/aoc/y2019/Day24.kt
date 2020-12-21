@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2019
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Map(private val coordinates: List<MutableList<Char>>) {
+class Eris(private val coordinates: List<MutableList<Char>>) {
 
     private fun getAdjacentBugsCount(x: Int, y: Int, state: List<MutableList<Char>>): Int =
         listOf(
@@ -17,7 +17,7 @@ class Map(private val coordinates: List<MutableList<Char>>) {
             state[it.second][it.first] == '#'
         }
 
-    fun copy() = Map(coordinates.map { it.toMutableList() }.toList())
+    fun copy() = Eris(coordinates.map { it.toMutableList() }.toList())
 
     fun calculateBiodiversityRating(): Int {
         var currentMultiplier = 1
@@ -32,7 +32,7 @@ class Map(private val coordinates: List<MutableList<Char>>) {
         }.sum()
     }
 
-    fun updateMap() {
+    fun updateEris() {
         val initialState = copy()
         coordinates.forEachIndexed {
                 y: Int, mutableList: MutableList<Char> ->
@@ -49,7 +49,7 @@ class Map(private val coordinates: List<MutableList<Char>>) {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is Map) return false
+        if (other !is Eris) return false
         return this.coordinates == other.coordinates
     }
 
@@ -58,13 +58,13 @@ class Map(private val coordinates: List<MutableList<Char>>) {
     }
 }
 
-class Day24: Day<Map, Int> {
+class Day24: Day<Eris, Int> {
     override fun runPartOne(): Int {
         val map = getInput()
         val layers = mutableListOf(map.copy())
         var hasDone = false
         while (!hasDone) {
-            map.updateMap()
+            map.updateEris()
             layers.add(map.copy())
             hasDone = layers.groupingBy { it }.eachCount().filterValues { it == 2 }.isNotEmpty()
         }
@@ -76,7 +76,7 @@ class Day24: Day<Map, Int> {
         TODO("Not yet implemented")
     }
 
-    override fun getInput(): Map = Map(
+    override fun getInput(): Eris = Eris(
         AOCUtils.getDayInput(2019, 24).map { it.toList().toMutableList() }
     )
 }
