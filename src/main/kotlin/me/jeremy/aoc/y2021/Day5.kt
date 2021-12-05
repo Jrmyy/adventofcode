@@ -38,9 +38,9 @@ class Day5 : Day<List<Day5.VentLine>, Int> {
                     }
                 } else {
                     val delta = max(pair.from.y, pair.to.y) - min(pair.from.y, pair.to.y)
+                    val xDirection = if (pair.from.x < pair.to.x) 1 else -1
+                    val yDirection = if (pair.from.y < pair.to.y) 1 else -1
                     (0..delta).map { d ->
-                        val xDirection = if (pair.from.x < pair.to.x) 1 else -1
-                        val yDirection = if (pair.from.y < pair.to.y) 1 else -1
                         Coordinates(pair.from.x + d * xDirection, pair.from.y + d * yDirection)
                     }
                 }).forEach { c -> acc[c] = acc[c]?.plus(1) ?: 1 }
