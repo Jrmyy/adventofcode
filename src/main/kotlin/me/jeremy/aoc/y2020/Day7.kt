@@ -13,7 +13,7 @@ data class Bag(
     val description: String
 )
 
-class Day7 : Day<List<BagRule>, Int>{
+class Day7 : Day<List<BagRule>, Int> {
     override fun runPartOne(): Int {
         val rules = getInput()
         val toCheckCanContain = rules

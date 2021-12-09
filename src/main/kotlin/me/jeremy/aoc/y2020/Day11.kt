@@ -16,7 +16,7 @@ class Plane(private val coordinates: List<MutableList<Char>>) {
             Pair(x, y - 1),
             Pair(x, y + 1)
         ).filter {
-           it.second in state.indices && it.first in state[0].indices
+            it.second in state.indices && it.first in state[0].indices
         }.count { state[it.second][it.first] == '#' }
 
     private fun getSeatsCountInAdjacentDirections(x: Int, y: Int, state: List<MutableList<Char>>): Int =
@@ -52,10 +52,9 @@ class Plane(private val coordinates: List<MutableList<Char>>) {
 
     fun updatePlane(wideSearch: Boolean, seatsCountToSwitchToEmpty: Int) {
         val initialState = copy()
-        coordinates.forEachIndexed {
-                y: Int, mutableList: MutableList<Char> ->
+        coordinates.forEachIndexed { y: Int, mutableList: MutableList<Char> ->
             mutableList.forEachIndexed { x, c ->
-                val count = if(wideSearch) {
+                val count = if (wideSearch) {
                     getSeatsCountInAdjacentDirections(x, y, initialState.coordinates)
                 } else {
                     getSeatsCountInAdjacentPositions(x, y, initialState.coordinates)
@@ -82,7 +81,7 @@ class Plane(private val coordinates: List<MutableList<Char>>) {
     }
 }
 
-class Day11: Day<Plane, Int> {
+class Day11 : Day<Plane, Int> {
     override fun runPartOne(): Int = doRun()
 
     override fun runPartTwo(): Int = doRun(true, 5)

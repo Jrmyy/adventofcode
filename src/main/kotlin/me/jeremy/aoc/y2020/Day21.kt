@@ -8,7 +8,7 @@ data class Food(
     val allergens: List<String> = listOf()
 )
 
-class Day21: Day<List<Food>, Int> {
+class Day21 : Day<List<Food>, Int> {
     override fun runPartOne(): Int {
         val foods = getInput()
         val allergenIngredientMapping = getAllergenIngredientMapping(foods)

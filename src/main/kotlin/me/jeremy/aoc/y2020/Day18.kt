@@ -2,7 +2,6 @@ package me.jeremy.aoc.y2020
 
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
-import java.lang.NumberFormatException
 
 data class OperationPart(
     val value: Pair<Long?, Operation?>,
@@ -39,7 +38,7 @@ data class Operation(
 
     fun adultCalculation(): Long {
         val additions = parts
-            .mapIndexed { index, operationPart ->  Pair(index, operationPart)}
+            .mapIndexed { index, operationPart -> Pair(index, operationPart) }
             .filter { it.second.leftOperator == "+" }
         val additionResults = mutableListOf<Pair<Int, Long>>()
         additions.forEach {
@@ -51,7 +50,7 @@ data class Operation(
             additionResults.add(Pair(it.first, prev + it.second.adultCalculation()))
         }
         additionResults.forEachIndexed { index, it ->
-            parts.removeAt(it.first - index )
+            parts.removeAt(it.first - index)
             val prev = parts.removeAt(it.first - index - 1)
             parts.add(it.first - index - 1, OperationPart(Pair(it.second, null), prev.leftOperator))
         }
@@ -63,7 +62,7 @@ data class Operation(
     }
 }
 
-class Day18: Day<List<Operation>, Long> {
+class Day18 : Day<List<Operation>, Long> {
     override fun runPartOne(): Long {
         val operations = getInput()
         return operations.sumOf { it.childCalculation() }

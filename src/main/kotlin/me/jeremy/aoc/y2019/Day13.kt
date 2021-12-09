@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2019
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day13: IntCodeProgram(), Day<List<Long>, Int> {
+class Day13 : IntCodeProgram(), Day<List<Long>, Int> {
     override fun runPartOne(): Int =
         runIntCodeProgram(
             getInput().toMutableList(),

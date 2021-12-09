@@ -11,7 +11,7 @@ data class Claim(
     val h: Int
 )
 
-class Day3: Day<List<Claim>, Int> {
+class Day3 : Day<List<Claim>, Int> {
     override fun runPartOne(): Int =
         computeFabric().flatten().count { it.size >= 2 }
 
@@ -45,7 +45,7 @@ class Day3: Day<List<Claim>, Int> {
     }
 
     private fun computeFabric(): List<List<List<Int>>> {
-        val fabric = (1 .. 1000).map {
+        val fabric = (1..1000).map {
             (1..1000).map {
                 mutableListOf<Int>()
             }

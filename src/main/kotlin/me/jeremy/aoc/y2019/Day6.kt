@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2019
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day6: Day<List<Pair<String, String>>, Int> {
+class Day6 : Day<List<Pair<String, String>>, Int> {
     override fun runPartOne(): Int = getAllPaths().sumBy { it.split("/").size - 1 }
 
     override fun runPartTwo(): Int {

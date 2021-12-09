@@ -3,15 +3,15 @@ package me.jeremy.aoc.y2019
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day16: Day<List<Int>, String> {
+class Day16 : Day<List<Int>, String> {
     override fun runPartOne(): String {
         val basePattern = listOf(0, 1, 0, -1)
         var currentRun = 1
         var currentFigures = getInput().toList()
         while (currentRun <= 100) {
-            val runRes = (1 .. currentFigures.size).map { step ->
+            val runRes = (1..currentFigures.size).map { step ->
                 val currentPattern = basePattern.flatMap {
-                    (1 .. step).map { _ -> it }
+                    (1..step).map { _ -> it }
                 }
                 var currentIdx = 1
                 currentFigures.map {

@@ -69,7 +69,7 @@ open class IntCodeProgram {
                             codes[third]
                         } catch (e: IndexOutOfBoundsException) {
                             val diff = third - codes.size
-                            codes.addAll((0 .. diff).map { 0L })
+                            codes.addAll((0..diff).map { 0L })
                         }
                         when (opCode) {
                             1 -> {

@@ -2,7 +2,7 @@ package me.jeremy.aoc.y2020
 
 import me.jeremy.aoc.Day
 
-class Day25: Day<Pair<Long, Long>, Long> {
+class Day25 : Day<Pair<Long, Long>, Long> {
     override fun runPartOne(): Long {
         val (cardPk, doorPk) = getInput()
         var cardSecretLoop = 0
@@ -14,7 +14,7 @@ class Day25: Day<Pair<Long, Long>, Long> {
         }
         var encryptionKey = 1L
         repeat(cardSecretLoop) {
-            encryptionKey =  transform(encryptionKey, doorPk)
+            encryptionKey = transform(encryptionKey, doorPk)
         }
         return encryptionKey
     }

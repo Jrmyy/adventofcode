@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2021
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day1: Day<List<Int>, Int> {
+class Day1 : Day<List<Int>, Int> {
 
     override fun runPartOne(): Int = checkIfIncreased(2)
 

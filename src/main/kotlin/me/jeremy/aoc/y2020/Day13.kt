@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day13: Day<Pair<Int, List<String>>, Long> {
+class Day13 : Day<Pair<Int, List<String>>, Long> {
     override fun runPartOne(): Long {
         val (departTimestamp, buses) = getInput()
         val minBus = buses.mapNotNull {
@@ -15,11 +15,13 @@ class Day13: Day<Pair<Int, List<String>>, Long> {
         }.map {
             val busesRound = departTimestamp / it
             val res = busesRound * it - departTimestamp
-            Pair(it, if (res < 0) {
-                res + it
-            } else {
-                res
-            })
+            Pair(
+                it, if (res < 0) {
+                    res + it
+                } else {
+                    res
+                }
+            )
         }.minByOrNull { it.second } ?: throw RuntimeException("No bus")
         return (minBus.first * minBus.second).toLong()
     }

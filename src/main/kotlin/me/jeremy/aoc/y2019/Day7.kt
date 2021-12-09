@@ -4,10 +4,10 @@ import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 import java.util.Collections.swap
 
-class Day7: IntCodeProgram(), Day<List<Long>, Long> {
+class Day7 : IntCodeProgram(), Day<List<Long>, Long> {
     override fun runPartOne(): Long {
         val codes = getInput().toMutableList()
-        return permutations((0 .. 4).toList().map { it.toLong() }).map {
+        return permutations((0..4).toList().map { it.toLong() }).map {
             val first = runIntCodeProgram(codes, listOf(it[0], 0)).outputs[0]
             val second = runIntCodeProgram(codes, listOf(it[1], first)).outputs[0]
             val third = runIntCodeProgram(codes, listOf(it[2], second)).outputs[0]
@@ -21,7 +21,7 @@ class Day7: IntCodeProgram(), Day<List<Long>, Long> {
 
     override fun runPartTwo(): Long {
         val codes = getInput().toMutableList()
-        return permutations((5 .. 9).toList().map { it.toLong() }).map {
+        return permutations((5..9).toList().map { it.toLong() }).map {
             var outputs = listOf(-1L)
             val inputs = it.map { that ->
                 mutableListOf(that)
@@ -53,7 +53,7 @@ class Day7: IntCodeProgram(), Day<List<Long>, Long> {
                 }
             }
             inputs[0].last()
-        }.maxOrNull()?: throw RuntimeException(":(")
+        }.maxOrNull() ?: throw RuntimeException(":(")
     }
 
     private fun permutations(list: List<Long>): List<List<Long>> {

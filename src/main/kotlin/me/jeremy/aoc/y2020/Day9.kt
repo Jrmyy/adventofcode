@@ -3,15 +3,15 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day9: Day<List<Long>, Long> {
+class Day9 : Day<List<Long>, Long> {
     override fun runPartOne(): Long {
         val figures = getInput()
         val figuresToTest = figures.subList(25, figures.size)
         figuresToTest.mapIndexed { index, it ->
-            val toCheck = figures.subList(index,  index + 25)
+            val toCheck = figures.subList(index, index + 25)
             val res = toCheck.mapIndexed { toCheckIdx, _ ->
                 isSumOfTwo(it, toCheck, toCheckIdx)
-            }.any{ it }
+            }.any { it }
             if (!res) {
                 return it
             }
@@ -47,7 +47,7 @@ class Day9: Day<List<Long>, Long> {
         }
         val middle = figures[idxForCut]
         return figures.subList(0, idxForCut).contains(fig - middle) ||
-                figures.subList(idxForCut, figures.size).contains(fig - middle)
+            figures.subList(idxForCut, figures.size).contains(fig - middle)
     }
 
     override fun getInput(): List<Long> = AOCUtils.getDayInput(2020, 9).map { it.toLong() }

@@ -21,11 +21,11 @@ data class RawPassport(
         }
         val res = regex.find(hgt) ?: return false
         val isIn = hgt.endsWith("in")
-        val idx = if(isIn) 3 else 2
+        val idx = if (isIn) 3 else 2
         val group = res.groups[idx] ?: return false
         val height = group.value.toIntOrNull() ?: return false
         return (isIn && height in 59 until 77) ||
-                (!isIn && height in 150 until 194)
+            (!isIn && height in 150 until 194)
     }
 
 
@@ -34,15 +34,15 @@ data class RawPassport(
 
     fun isReallyValid(): Boolean =
         byr?.toIntOrNull() in 1920 until 2003 &&
-        iyr?.toIntOrNull() in 2010 until 2021 &&
-        eyr?.toIntOrNull() in 2020 until 2031 &&
-        hcl != null && Regex("^#[0-9a-f]{6}$").matches(hcl) &&
-        listOf("amb", "blu", "brn", "gry", "grn", "hzl", "oth").contains(ecl) &&
-        isHeightMatching() &&
-        pid != null && Regex("^[0-9]{9}$").matches(pid)
+            iyr?.toIntOrNull() in 2010 until 2021 &&
+            eyr?.toIntOrNull() in 2020 until 2031 &&
+            hcl != null && Regex("^#[0-9a-f]{6}$").matches(hcl) &&
+            listOf("amb", "blu", "brn", "gry", "grn", "hzl", "oth").contains(ecl) &&
+            isHeightMatching() &&
+            pid != null && Regex("^[0-9]{9}$").matches(pid)
 }
 
-class Day4: Day<List<RawPassport>, Int> {
+class Day4 : Day<List<RawPassport>, Int> {
     override fun runPartOne(): Int =
         getInput().count {
             it.isValidAtFirst()
@@ -58,12 +58,12 @@ class Day4: Day<List<RawPassport>, Int> {
         val currentPassport = mutableListOf<String>()
         val passports = mutableListOf<RawPassport>()
         for (line in lines) {
-           if (line == "") {
-               passports.add(getPassport(currentPassport))
-               currentPassport.clear()
-           } else {
-               currentPassport.add(line)
-           }
+            if (line == "") {
+                passports.add(getPassport(currentPassport))
+                currentPassport.clear()
+            } else {
+                currentPassport.add(line)
+            }
         }
         if (currentPassport.size > 0) {
             passports.add(getPassport(currentPassport))

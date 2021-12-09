@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day22: Day<Pair<MutableList<Int>, MutableList<Int>>, Int> {
+class Day22 : Day<Pair<MutableList<Int>, MutableList<Int>>, Int> {
     override fun runPartOne(): Int {
         val (first, second) = getInput()
         return score(combat(first, second))

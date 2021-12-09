@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2018
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day5: Day<MutableList<Char>, Int> {
+class Day5 : Day<MutableList<Char>, Int> {
     override fun runPartOne(): Int = getReducedReactionSize(getInput())
 
     override fun runPartTwo(): Int {

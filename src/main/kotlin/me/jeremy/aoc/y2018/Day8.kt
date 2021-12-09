@@ -24,7 +24,7 @@ data class NavigationSystemNode(
         }
 }
 
-class Day8: Day<NavigationSystemNode, Int> {
+class Day8 : Day<NavigationSystemNode, Int> {
     override fun runPartOne(): Int = getInput().sumAllMetadata()
 
     override fun runPartTwo(): Int = getInput().sumIndexedMetadata()

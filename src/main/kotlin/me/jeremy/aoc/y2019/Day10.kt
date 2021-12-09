@@ -5,7 +5,7 @@ import me.jeremy.aoc.Day
 import java.math.BigInteger
 import kotlin.math.*
 
-class Day10: Day<List<Triple<Int, Int, Char>>, Int> {
+class Day10 : Day<List<Triple<Int, Int, Char>>, Int> {
 
     override fun runPartOne(): Int {
         val space = getInput()
@@ -24,14 +24,16 @@ class Day10: Day<List<Triple<Int, Int, Char>>, Int> {
         val (coord, seenable) = maxAst
         val seenableWithAngles = seenable.map {
             Pair(it, getAngle(coord, it))
-        }.fold(mutableMapOf<Double, MutableList<Pair<Int, Int>>>(), {acc, pair ->
+        }.fold(mutableMapOf<Double, MutableList<Pair<Int, Int>>>(), { acc, pair ->
             val content = acc.getOrDefault(pair.second, mutableListOf())
             content.add(pair.first)
             acc[pair.second] = content
             acc
-        }).mapValues { it.value.sortedBy { that ->
-            sqrt((that.first - coord.first).toDouble().pow(2) + (that.second - coord.second).toDouble().pow(2))
-        } }.toList().sortedBy { it.first }.map { Pair(it.first, it.second.toMutableList()) }
+        }).mapValues {
+            it.value.sortedBy { that ->
+                sqrt((that.first - coord.first).toDouble().pow(2) + (that.second - coord.second).toDouble().pow(2))
+            }
+        }.toList().sortedBy { it.first }.map { Pair(it.first, it.second.toMutableList()) }
         var j = 0
         for (i in 0 until 199) {
             seenableWithAngles[j].second.removeAt(0)

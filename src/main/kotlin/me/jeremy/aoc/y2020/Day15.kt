@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day15: Day<List<Int>, Int> {
+class Day15 : Day<List<Int>, Int> {
     override fun runPartOne(): Int = run(2020)
 
     override fun runPartTwo(): Int = run(30000000)

@@ -23,9 +23,9 @@ class Infinite3DMap(private val coordinates: MutableList<MutableList<MutableList
             }
         ).flatten().filter {
             it.third in state.indices
-                    && it.second in state[0].indices
-                    && it.first in state[0][0].indices
-                    && it != Triple(x, y, z)
+                && it.second in state[0].indices
+                && it.first in state[0][0].indices
+                && it != Triple(x, y, z)
         }.count {
             state[it.third][it.second][it.first] == '#'
         }
@@ -41,8 +41,9 @@ class Infinite3DMap(private val coordinates: MutableList<MutableList<MutableList
         val emptyCoordinates = coordinates[0][0].indices.map {
             '.'
         }.toMutableList()
-        coordinates.add(0, coordinates[0].indices.map {
-            emptyCoordinates.toMutableList()
+        coordinates.add(
+            0, coordinates[0].indices.map {
+                emptyCoordinates.toMutableList()
             }.toMutableList()
         )
         coordinates.add(
@@ -94,7 +95,7 @@ class Infinite4DMap(private val coordinates: MutableList<MutableList<MutableList
         state: MutableList<MutableList<MutableList<MutableList<Char>>>>
     ): Int =
         listOf(
-            listOf(w -1, w, w + 1).flatMap {
+            listOf(w - 1, w, w + 1).flatMap {
                 listOf(z - 1, z, z + 1).flatMap { zi ->
                     listOf(
                         listOf(x - 1, y, zi, it),
@@ -111,10 +112,10 @@ class Infinite4DMap(private val coordinates: MutableList<MutableList<MutableList
             }
         ).flatten().filter {
             it[3] in state.indices &&
-                    it[2] in state[0].indices &&
-                    it[1] in state[0][0].indices &&
-                    it[0] in state[0][0][0].indices &&
-                    it != listOf(x, y, z, w)
+                it[2] in state[0].indices &&
+                it[1] in state[0][0].indices &&
+                it[0] in state[0][0][0].indices &&
+                it != listOf(x, y, z, w)
         }.count {
             state[it[3]][it[2]][it[1]][it[0]] == '#'
         }
@@ -124,8 +125,8 @@ class Infinite4DMap(private val coordinates: MutableList<MutableList<MutableList
     fun copy() = Infinite4DMap(
         coordinates.map {
             it.map { that ->
-                that.map {
-                    other -> other.toMutableList()
+                that.map { other ->
+                    other.toMutableList()
                 }.toMutableList()
             }.toMutableList()
         }.toMutableList()
@@ -178,7 +179,7 @@ class Infinite4DMap(private val coordinates: MutableList<MutableList<MutableList
     fun updateMap() {
         pushLimits()
         val initialState = copy()
-        coordinates.forEachIndexed { w: Int, hypercube : MutableList<MutableList<MutableList<Char>>> ->
+        coordinates.forEachIndexed { w: Int, hypercube: MutableList<MutableList<MutableList<Char>>> ->
             hypercube.forEachIndexed { z: Int, layer: MutableList<MutableList<Char>> ->
                 layer.forEachIndexed { y: Int, mutableList: MutableList<Char> ->
                     mutableList.forEachIndexed { x: Int, c: Char ->
@@ -195,7 +196,7 @@ class Infinite4DMap(private val coordinates: MutableList<MutableList<MutableList
     }
 }
 
-class Day17: Day<MutableList<MutableList<MutableList<Char>>>, Int> {
+class Day17 : Day<MutableList<MutableList<MutableList<Char>>>, Int> {
     override fun runPartOne(): Int {
         val map = Infinite3DMap(getInput().toMutableList())
         (1..6).forEach { _ ->

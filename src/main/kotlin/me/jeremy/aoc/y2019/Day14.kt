@@ -14,7 +14,7 @@ data class Reaction(
     val output: ChemicalElement
 )
 
-class Day14: Day<List<Reaction>, Long> {
+class Day14 : Day<List<Reaction>, Long> {
     override fun runPartOne(): Long = doRun(1)
 
     override fun runPartTwo(): Long {

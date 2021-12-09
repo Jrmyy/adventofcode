@@ -10,7 +10,7 @@ data class Instruction(
     val distance: Int
 )
 
-class Day3: Day<List<List<Instruction>>, Int> {
+class Day3 : Day<List<List<Instruction>>, Int> {
     override fun runPartOne(): Int {
         val wirePaths = getPaths()
         return wirePaths.second
@@ -57,10 +57,10 @@ class Day3: Day<List<List<Instruction>>, Int> {
 
     private fun doMove(pos: Pair<Int, Int>, instruction: Instruction): List<Pair<Int, Int>> =
         when (instruction.direction) {
-            'R' -> (1 .. instruction.distance).map { Pair(pos.first + it, pos.second) }
-            'L' -> (1 .. instruction.distance).map { Pair(pos.first - it, pos.second) }
-            'U' -> (1 .. instruction.distance).map { Pair(pos.first, pos.second - it) }
-            'D' -> (1 .. instruction.distance).map { Pair(pos.first, pos.second + it) }
+            'R' -> (1..instruction.distance).map { Pair(pos.first + it, pos.second) }
+            'L' -> (1..instruction.distance).map { Pair(pos.first - it, pos.second) }
+            'U' -> (1..instruction.distance).map { Pair(pos.first, pos.second - it) }
+            'D' -> (1..instruction.distance).map { Pair(pos.first, pos.second + it) }
             else -> throw RuntimeException("Wrong direction : ${instruction.direction}")
         }
 }

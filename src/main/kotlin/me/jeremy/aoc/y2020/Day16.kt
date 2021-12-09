@@ -14,13 +14,13 @@ data class TicketRule(
     val ranges: List<Pair<Int, Int>>
 )
 
-class Day16: Day<TicketsSystem, Long> {
+class Day16 : Day<TicketsSystem, Long> {
     override fun runPartOne(): Long {
         val system = getInput()
         val ranges = system.rules.flatMap { it.ranges }
         return system.otherTickets.flatMap {
-            it.filter {
-                    that -> ranges.all { r -> that < r.first || that > r.second }
+            it.filter { that ->
+                ranges.all { r -> that < r.first || that > r.second }
             }
         }.sum().toLong()
     }

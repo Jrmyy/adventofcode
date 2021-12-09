@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2018
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day7: Day<Map<String, List<String>>, Int> {
+class Day7 : Day<Map<String, List<String>>, Int> {
     override fun runPartOne(): Int {
         val taskAndDependencies = getInput()
         val tasksCount = taskAndDependencies.size
@@ -69,7 +69,7 @@ class Day7: Day<Map<String, List<String>>, Int> {
                 .find(it)!!.groupValues
                 .drop(1)
             Pair(parent, child)
-        }.fold(mutableMapOf<String, MutableList<String>>()) {acc, pair ->
+        }.fold(mutableMapOf<String, MutableList<String>>()) { acc, pair ->
             acc.putIfAbsent(pair.second, mutableListOf())
             acc[pair.second] = (acc[pair.second]!! + listOf(pair.first)).toMutableList()
             acc

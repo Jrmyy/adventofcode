@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2019
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day17: IntCodeProgram(), Day<List<Long>, Int> {
+class Day17 : IntCodeProgram(), Day<List<Long>, Int> {
 
     override fun runPartOne(): Int {
         val codes = getInput().toMutableList()
@@ -70,7 +70,7 @@ class Day17: IntCodeProgram(), Day<List<Long>, Int> {
         var direction = Pair(0, -1)
         var nxy: Pair<Int, Int>
         val path = mutableListOf(Pair("L", 0))
-        while(true) {
+        while (true) {
             nxy = Pair(
                 currentRobotPosition.first + direction.first, currentRobotPosition.second + direction.second
             )

@@ -4,7 +4,7 @@ import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 import kotlin.math.max
 
-class Day1: Day<List<Int>, Int> {
+class Day1 : Day<List<Int>, Int> {
     override fun runPartOne(): Int =
         getInput().sumBy {
             Math.floorDiv(it, 3) - 2

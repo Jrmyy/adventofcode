@@ -4,7 +4,7 @@ import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 import kotlin.math.abs
 
-class Day6: Day<List<Pair<Int, Int>>, Int> {
+class Day6 : Day<List<Pair<Int, Int>>, Int> {
     override fun runPartOne(): Int {
         val coordinates = getInput()
         val minX = coordinates.minOf { it.first }
@@ -14,8 +14,8 @@ class Day6: Day<List<Pair<Int, Int>>, Int> {
         val scaledCoordinates = coordinates.map {
             Pair(it.first - minX + 1, it.second - minY + 1)
         }
-        val map: MutableList<MutableList<Int>> = (minY - 1 .. maxY + 1).map {
-            (minX - 1 .. maxX + 1).map {
+        val map: MutableList<MutableList<Int>> = (minY - 1..maxY + 1).map {
+            (minX - 1..maxX + 1).map {
                 -1
             }.toMutableList()
         }.toMutableList()
@@ -59,12 +59,12 @@ class Day6: Day<List<Pair<Int, Int>>, Int> {
         }
         // We assume that with the number of coordinates, we only need to give a space of 100 from any coordinates
         val map: MutableList<MutableList<Int>> = (
-            minY - epicenterDistance / 10 - 1 .. maxY + epicenterDistance / 10 + 1
-        ).map {
-            (minX - epicenterDistance / 10 - 1 .. maxX + epicenterDistance / 10 + 1).map {
-                -1
+            minY - epicenterDistance / 10 - 1..maxY + epicenterDistance / 10 + 1
+            ).map {
+                (minX - epicenterDistance / 10 - 1..maxX + epicenterDistance / 10 + 1).map {
+                    -1
+                }.toMutableList()
             }.toMutableList()
-        }.toMutableList()
         coordinates.forEachIndexed { idx, it ->
             map[it.second - minY + 1][it.first - minX + 1] = idx
         }

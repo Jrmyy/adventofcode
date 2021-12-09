@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2021
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day2: Day<List<Pair<String, Int>>, Int> {
+class Day2 : Day<List<Pair<String, Int>>, Int> {
     override fun runPartOne(): Int =
         getInput().fold(Pair(0, 0)) { acc, pair ->
             when (pair.first) {
@@ -17,7 +17,7 @@ class Day2: Day<List<Pair<String, Int>>, Int> {
         getInput().fold(Triple(0, 0, 0)) { acc, pair ->
             when (pair.first) {
                 "forward" -> Triple(acc.first + pair.second, acc.second + pair.second * acc.third, acc.third)
-                "up" ->  Triple(acc.first, acc.second, acc.third - pair.second)
+                "up" -> Triple(acc.first, acc.second, acc.third - pair.second)
                 else -> Triple(acc.first, acc.second, acc.third + pair.second)
             }
         }.let { it.first * it.second }

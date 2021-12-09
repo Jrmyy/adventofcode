@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2021
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day3: Day<List<List<Int>>, Int> {
+class Day3 : Day<List<List<Int>>, Int> {
 
     override fun runPartOne(): Int {
         val inputs = getInput()
@@ -53,7 +53,7 @@ class Day3: Day<List<List<Int>>, Int> {
     }
 
     override fun getInput(): List<List<Int>> = AOCUtils.getDayInput(2021, 3).map {
-        it.toList().map{ i -> i.toString().toInt() }
+        it.toList().map { i -> i.toString().toInt() }
     }
 }
 

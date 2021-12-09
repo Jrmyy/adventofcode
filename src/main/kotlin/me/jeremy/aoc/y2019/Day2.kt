@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2019
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day2: IntCodeProgram(), Day<List<Long>, Int> {
+class Day2 : IntCodeProgram(), Day<List<Long>, Int> {
     override fun runPartOne(): Int = doSim(12, 2)
 
     override fun runPartTwo(): Int {

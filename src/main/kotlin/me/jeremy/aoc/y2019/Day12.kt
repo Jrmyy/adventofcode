@@ -12,10 +12,10 @@ data class Moon(
     fun calculateEnergy(): Int = position.map { abs(it) }.sum() * velocity.map { abs(it) }.sum()
 }
 
-class Day12: Day<List<Moon>, BigInteger> {
+class Day12 : Day<List<Moon>, BigInteger> {
     override fun runPartOne(): BigInteger {
         val moons = getInput()
-        for (i in 1 .. 1000) {
+        for (i in 1..1000) {
             runStep(moons)
         }
         return moons.sumBy { it.calculateEnergy() }.toBigInteger()
@@ -28,11 +28,11 @@ class Day12: Day<List<Moon>, BigInteger> {
         val leastCommonMultiplier = mutableMapOf<Int, BigInteger>()
         while (leastCommonMultiplier.size < 3) {
             runStep(currentMoons)
-            for (j in 0 .. 2) {
+            for (j in 0..2) {
                 if (
                     currentMoons.map { it.position[j] } == moons.map { it.position[j] } &&
-                            currentMoons.count { it.velocity[j] == 0 } == 4 &&
-                            !leastCommonMultiplier.containsKey(j)
+                    currentMoons.count { it.velocity[j] == 0 } == 4 &&
+                    !leastCommonMultiplier.containsKey(j)
                 ) {
                     leastCommonMultiplier[j] = i.toBigInteger()
                 }
@@ -50,7 +50,7 @@ class Day12: Day<List<Moon>, BigInteger> {
         val res = Regex("<x=((-|)\\d+), y=((-|)\\d+), z=((-|)\\d+)>").find(it)
         val groups = res!!.groups
         Moon(
-            mutableListOf(groups[1]!!.value.toInt() , groups[3]!!.value.toInt() ,groups[5]!!.value.toInt()),
+            mutableListOf(groups[1]!!.value.toInt(), groups[3]!!.value.toInt(), groups[5]!!.value.toInt()),
             mutableListOf(0, 0, 0)
         )
     }
@@ -59,7 +59,7 @@ class Day12: Day<List<Moon>, BigInteger> {
         moons.forEachIndexed { moonIdx, moon ->
             moons.forEachIndexed { otherIdx, other ->
                 if (otherIdx > moonIdx) {
-                    for (i in 0 .. 2) {
+                    for (i in 0..2) {
                         if (moon.position[i] > other.position[i]) {
                             other.velocity[i] += 1
                             moon.velocity[i] -= 1
@@ -72,7 +72,7 @@ class Day12: Day<List<Moon>, BigInteger> {
             }
         }
         moons.forEach {
-            for (i in 0 .. 2) {
+            for (i in 0..2) {
                 it.position[i] += it.velocity[i]
             }
         }

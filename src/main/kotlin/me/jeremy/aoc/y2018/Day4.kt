@@ -92,8 +92,8 @@ class Day4 : Day<List<GuardEvent>, Int> {
                 asleepTimestamp = it.timestamp
             } else if (it.eventType == GuardEventType.WAKE_UP) {
                 minutesAsleepPerGuard[it.id] = (minutesAsleepPerGuard.getOrDefault(it.id, mutableListOf()) + (
-                        asleepTimestamp!!.minute until it.timestamp.minute
-                        )).toMutableList()
+                    asleepTimestamp!!.minute until it.timestamp.minute
+                    )).toMutableList()
             }
         }
         return minutesAsleepPerGuard

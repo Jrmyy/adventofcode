@@ -2,7 +2,6 @@ package me.jeremy.aoc.y2020
 
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
-import kotlin.collections.Map
 
 
 data class Rule(
@@ -11,14 +10,18 @@ data class Rule(
 ) {
 
     fun generateRegex(reference: Map<Int, String>): String =
-        "(${alternatives.second!!.joinToString("|") {
-            "(${it.joinToString("") { 
-                    i -> reference[i] ?: error("Missing regex $i")
-            }})"
-        }})"
+        "(${
+            alternatives.second!!.joinToString("|") {
+                "(${
+                    it.joinToString("") { i ->
+                        reference[i] ?: error("Missing regex $i")
+                    }
+                })"
+            }
+        })"
 }
 
-class Day19: Day<Pair<List<Rule>, List<String>>, Int> {
+class Day19 : Day<Pair<List<Rule>, List<String>>, Int> {
     override fun runPartOne(): Int {
         val (rules, expressions) = getInput()
         val acceptedExpressions = computeAcceptedExpressions(rules)
@@ -92,9 +95,9 @@ class Day19: Day<Pair<List<Rule>, List<String>>, Int> {
         while (acceptedExpressions.size != rules.size - containsLoop.size) {
             val evaluableRules = rules.filter {
                 it.alternatives.second != null &&
-                        it.alternatives.second!!.flatten().toSet().subtract(acceptedExpressions.keys).isEmpty()
-                        && it.idx !in acceptedExpressions.keys
-                        && !it.alternatives.second!!.flatten().contains(it.idx)
+                    it.alternatives.second!!.flatten().toSet().subtract(acceptedExpressions.keys).isEmpty()
+                    && it.idx !in acceptedExpressions.keys
+                    && !it.alternatives.second!!.flatten().contains(it.idx)
             }
             if (evaluableRules.isEmpty()) {
                 break

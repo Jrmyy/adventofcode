@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day10: Day<List<Int>, Long> {
+class Day10 : Day<List<Int>, Long> {
     override fun runPartOne(): Long {
         var oneDifferences = 0
         var threeDifferences = 0
@@ -28,7 +28,7 @@ class Day10: Day<List<Int>, Long> {
     override fun runPartTwo(): Long {
         val adapters = getInput().sorted()
         val possibilitiesFromStart = adapters.map {
-            Pair(it, adapters.filter { that -> that <= it + 3 && that > it})
+            Pair(it, adapters.filter { that -> that <= it + 3 && that > it })
         }.reversed()
         val cache = mutableMapOf(possibilitiesFromStart[0].first to 1L)
         possibilitiesFromStart.drop(1).forEach {

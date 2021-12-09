@@ -3,16 +3,18 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day8: Day<List<Pair<String, Int>>, Int> {
+class Day8 : Day<List<Pair<String, Int>>, Int> {
     override fun runPartOne(): Int = run(getInput()).first
 
     override fun runPartTwo(): Int {
         val instructions = getInput()
-        val idxToChange = instructions.mapIndexed {idx, it -> if (it.first == "acc") {
-            null
-        } else {
-            Pair(idx, it)
-        }}.filterNotNull()
+        val idxToChange = instructions.mapIndexed { idx, it ->
+            if (it.first == "acc") {
+                null
+            } else {
+                Pair(idx, it)
+            }
+        }.filterNotNull()
         return idxToChange.mapNotNull {
             val newInstructions = instructions.toMutableList()
             newInstructions[it.first] = Pair(

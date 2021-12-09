@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day6: Day<List<List<List<Char>>>, Int> {
+class Day6 : Day<List<List<List<Char>>>, Int> {
     override fun runPartOne(): Int =
         getInput()
             .sumBy {

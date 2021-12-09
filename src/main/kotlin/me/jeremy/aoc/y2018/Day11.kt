@@ -2,7 +2,7 @@ package me.jeremy.aoc.y2018
 
 import me.jeremy.aoc.Day
 
-class Day11: Day<Int, String> {
+class Day11 : Day<Int, String> {
     override fun runPartOne(): String {
         val fuelGrid = getFuelGrid()
         return (0 until 298).flatMap { y ->
@@ -10,8 +10,8 @@ class Day11: Day<Int, String> {
                 Pair(
                     listOf(x + 1, y + 1),
                     fuelGrid[y].subList(x, x + 3).sum() +
-                    fuelGrid[y + 1].subList(x, x + 3).sum() +
-                    fuelGrid[y + 2].subList(x, x + 3).sum()
+                        fuelGrid[y + 1].subList(x, x + 3).sum() +
+                        fuelGrid[y + 2].subList(x, x + 3).sum()
                 )
             }
         }.maxByOrNull { it.second }!!.first.joinToString(",")

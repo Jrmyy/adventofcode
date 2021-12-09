@@ -3,16 +3,18 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day1: Day<List<Int>, Int> {
+class Day1 : Day<List<Int>, Int> {
 
     override fun runPartOne(): Int {
         val numbers = getInput()
         val pair = numbers.flatMapIndexed { idxIt, it ->
-            numbers.mapIndexed { idxThat, that -> if (idxIt < idxThat) {
-                Pair(it, that)
-            } else {
-                null
-            }}
+            numbers.mapIndexed { idxThat, that ->
+                if (idxIt < idxThat) {
+                    Pair(it, that)
+                } else {
+                    null
+                }
+            }
         }
             .filterNotNull()
             .firstOrNull { it.first + it.second == 2020 }

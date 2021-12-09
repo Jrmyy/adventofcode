@@ -40,7 +40,7 @@ data class Tile(val idx: Long, val pixels: List<List<Char>>) {
                 list.mapIndexed { col, c ->
                     val withinSeaMonster = seaMonsterPositions.firstOrNull {
                         row >= it.first && row <= it.first + pattern.size - 1 &&
-                                col >= it.second && col <= it.second + pattern[0].size - 1
+                            col >= it.second && col <= it.second + pattern[0].size - 1
                     }
                     val isSeaMonster = if (withinSeaMonster != null) {
                         pattern[row - withinSeaMonster.first][col - withinSeaMonster.second] == '#'
@@ -190,8 +190,8 @@ class Day20 : Day<List<Tile>, Long> {
                                 .filter { it.first == 'R' && it.second.idx !in image.flatten().map { t -> t.idx } }
                                 .map { it.second }
                         val topPossibilities = (
-                                allPossibilities[lastRow[c]] ?: error("Missing possibilities for last row")
-                                ).filter { it.first == 'D' && it.second.idx !in image.flatten().map { t -> t.idx } }
+                            allPossibilities[lastRow[c]] ?: error("Missing possibilities for last row")
+                            ).filter { it.first == 'D' && it.second.idx !in image.flatten().map { t -> t.idx } }
                             .map { it.second }
                         val matchingBoth = leftPossibilities.toSet().intersect(topPossibilities.toSet())
                         if (matchingBoth.size != 1) {

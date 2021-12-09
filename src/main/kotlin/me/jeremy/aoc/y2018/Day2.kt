@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2018
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day2: Day<List<String>, Int> {
+class Day2 : Day<List<String>, Int> {
     override fun runPartOne(): Int =
         getInput()
             .map {

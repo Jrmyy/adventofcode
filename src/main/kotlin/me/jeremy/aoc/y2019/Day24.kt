@@ -34,8 +34,7 @@ class Eris(private val coordinates: List<MutableList<Char>>) {
 
     fun updateEris() {
         val initialState = copy()
-        coordinates.forEachIndexed {
-                y: Int, mutableList: MutableList<Char> ->
+        coordinates.forEachIndexed { y: Int, mutableList: MutableList<Char> ->
             mutableList.forEachIndexed { x, c ->
                 val count = getAdjacentBugsCount(x, y, initialState.coordinates)
                 if (c == '#' && count != 1) {
@@ -58,7 +57,7 @@ class Eris(private val coordinates: List<MutableList<Char>>) {
     }
 }
 
-class Day24: Day<Eris, Int> {
+class Day24 : Day<Eris, Int> {
     override fun runPartOne(): Int {
         val map = getInput()
         val layers = mutableListOf(map.copy())

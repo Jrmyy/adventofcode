@@ -11,7 +11,7 @@ fun <T> ArrayDeque<T>.rotate(num: Int) {
     }
 }
 
-class Day9: Day<Pair<Int, Int>, Long> {
+class Day9 : Day<Pair<Int, Int>, Long> {
     override fun runPartOne(): Long {
         val (playersCount, lastMarblePoints) = getInput()
         return runGame(playersCount, lastMarblePoints)
@@ -31,8 +31,8 @@ class Day9: Day<Pair<Int, Int>, Long> {
 
     private fun runGame(playersCount: Int, lastMarblePoints: Int): Long {
         val marbles = ArrayDeque(listOf(0))
-        val playersScore = (1 .. playersCount).map { 0L }.toMutableList()
-        (1 .. lastMarblePoints).forEach {
+        val playersScore = (1..playersCount).map { 0L }.toMutableList()
+        (1..lastMarblePoints).forEach {
             if (it % 23 == 0) {
                 marbles.rotate(-7)
                 playersScore[it % playersCount] += (it + marbles.removeLast()).toLong()

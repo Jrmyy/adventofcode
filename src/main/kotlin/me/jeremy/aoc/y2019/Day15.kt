@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2019
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day15: IntCodeProgram(), Day<List<Long>, Int> {
+class Day15 : IntCodeProgram(), Day<List<Long>, Int> {
 
     override fun runPartOne(): Int =
         getDistancesFromOxygenTank()[Pair(0, 0)] ?: throw Exception("Should have come back to the beginning")
@@ -16,7 +16,7 @@ class Day15: IntCodeProgram(), Day<List<Long>, Int> {
         .map { it.toLong() }
 
     private fun getDistancesFromOxygenTank(): Map<Pair<Int, Int>, Int> {
-        val locations = mutableMapOf<Pair<Int,Int>, Long>()
+        val locations = mutableMapOf<Pair<Int, Int>, Long>()
         val findTankBfs = mutableListOf(Triple(0, 0, getInput().toMutableList()))
         val directions = mapOf(
             1L to Pair(0, 1),

@@ -4,7 +4,7 @@ import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 import kotlin.math.pow
 
-class Day14: Day<List<Pair<List<Char>, List<Pair<Long, Long>>>>, Long> {
+class Day14 : Day<List<Pair<List<Char>, List<Pair<Long, Long>>>>, Long> {
     override fun runPartOne(): Long {
         val operations = getInput()
         val currentResults = mutableMapOf<Long, Long>()
@@ -53,10 +53,12 @@ class Day14: Day<List<Pair<List<Char>, List<Pair<Long, Long>>>>, Long> {
                 currentMask = line.replace("mask = ", "").toList()
             } else {
                 val groups = memRegex.find(line)!!.groups
-                currentInstructions.add(Pair(
-                    groups[1]!!.value.toLong(),
-                    groups[2]!!.value.toLong()
-                ))
+                currentInstructions.add(
+                    Pair(
+                        groups[1]!!.value.toLong(),
+                        groups[2]!!.value.toLong()
+                    )
+                )
             }
         }
         if (currentMask.isNotEmpty()) {
@@ -70,7 +72,7 @@ class Day14: Day<List<Pair<List<Char>, List<Pair<Long, Long>>>>, Long> {
     private fun passValueThroughMaskPartTwo(value: Long, mask: List<Char>): List<List<Char>> {
         val converted = convertToBits(value).reversed()
         val throughMask = mask.reversed().mapIndexed { index, c ->
-            when(c) {
+            when (c) {
                 '1' -> '1'
                 '0' -> if (index < converted.size) {
                     converted[index]
@@ -115,7 +117,7 @@ class Day14: Day<List<Pair<List<Char>, List<Pair<Long, Long>>>>, Long> {
     private fun passValueThroughMaskPartOne(value: Long, mask: List<Char>): List<Char> {
         val converted = convertToBits(value).reversed()
         return mask.reversed().mapIndexed { index, c ->
-            when(c) {
+            when (c) {
                 '1' -> '1'
                 '0' -> '0'
                 else -> {

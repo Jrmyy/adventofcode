@@ -4,7 +4,7 @@ import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 import kotlin.math.abs
 
-class Day12: Day<List<Pair<Char, Int>>, Int> {
+class Day12 : Day<List<Pair<Char, Int>>, Int> {
     override fun runPartOne(): Int {
         var currentDirection = 'E'
         var currentPosition = Pair(0, 0)
@@ -49,7 +49,7 @@ class Day12: Day<List<Pair<Char, Int>>, Int> {
     }
 
     private fun getNextPosition(currentPosition: Pair<Int, Int>, direction: Char, amount: Int): Pair<Int, Int>? =
-        when(direction) {
+        when (direction) {
             'N' -> Pair(currentPosition.first, currentPosition.second - amount)
             'S' -> Pair(currentPosition.first, currentPosition.second + amount)
             'W' -> Pair(currentPosition.first - amount, currentPosition.second)

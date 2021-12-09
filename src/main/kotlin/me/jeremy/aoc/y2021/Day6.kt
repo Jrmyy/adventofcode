@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2021
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day6: Day<List<Int>, Long> {
+class Day6 : Day<List<Int>, Long> {
 
     override fun runPartOne(): Long = countReproductedLanternfish(80)
 
@@ -14,7 +14,7 @@ class Day6: Day<List<Int>, Long> {
 
     private fun countReproductedLanternfish(nbIteration: Int): Long {
         val lanternfish = getInput().toMutableList()
-        val reproductionTable = (1 .. nbIteration).map {
+        val reproductionTable = (1..nbIteration).map {
             if (it <= nbIteration - FIRST_REPRODUCTION_PERIOD) {
                 1 + (nbIteration - (it + 9)) / REPRODUCTION_PERIOD
             } else {

@@ -1,9 +1,9 @@
 package me.jeremy.aoc.y2020
 
 import me.jeremy.aoc.Day
-import java.util.TreeSet
+import java.util.*
 
-class Day23: Day<List<Int>, String> {
+class Day23 : Day<List<Int>, String> {
 
     data class Node(val data: Int) : Comparable<Node> {
         lateinit var next: Node
@@ -23,8 +23,8 @@ class Day23: Day<List<Int>, String> {
     }
 
     override fun runPartTwo(): String {
-        val (initialHead, cups) = buildTreeSet(getInput() + (10 .. 1_000_000).toList())
-        val nodeOne = runGame(cups, initialHead,10_000_000).floor(Node(1))!!
+        val (initialHead, cups) = buildTreeSet(getInput() + (10..1_000_000).toList())
+        val nodeOne = runGame(cups, initialHead, 10_000_000).floor(Node(1))!!
         return ((nodeOne.next.data).toLong() * (nodeOne.next.next.data).toLong()).toString()
     }
 

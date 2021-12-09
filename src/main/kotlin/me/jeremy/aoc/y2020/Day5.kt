@@ -14,10 +14,10 @@ data class Seat(
     fun getSeatId(): Int = (MAX_COL + 1) * row + col
 }
 
-class Day5: Day<List<List<Char>>, Int> {
+class Day5 : Day<List<List<Char>>, Int> {
     override fun runPartOne(): Int =
         getInput()
-            .map{ getSeat(it).getSeatId() }
+            .map { getSeat(it).getSeatId() }
             .maxOrNull() ?: throw RuntimeException("(")
 
     override fun runPartTwo(): Int {
@@ -29,7 +29,7 @@ class Day5: Day<List<List<Char>>, Int> {
         val firstPlainRow = plainRows.minOf { it.key }
         val lastPlainRow = plainRows.maxOf { it.key }
         val allPlaces = (firstPlainRow + 1 until lastPlainRow - 1).flatMap {
-            (0 .. MAX_COL).map { that ->
+            (0..MAX_COL).map { that ->
                 Seat(it, that).getSeatId()
             }
         }

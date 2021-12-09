@@ -3,13 +3,13 @@ package me.jeremy.aoc.y2019
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day8: Day<List<List<Int>>, Int> {
+class Day8 : Day<List<List<Int>>, Int> {
     override fun runPartOne(): Int {
         val minLine = (
-                getInput()
-                    .minByOrNull { it.count { that -> that == 0 } }
-                    ?: throw RuntimeException("")
-                )
+            getInput()
+                .minByOrNull { it.count { that -> that == 0 } }
+                ?: throw RuntimeException("")
+            )
         return minLine.count { it == 1 } * minLine.count { it == 2 }
     }
 

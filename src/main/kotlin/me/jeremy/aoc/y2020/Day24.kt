@@ -5,7 +5,7 @@ import me.jeremy.aoc.Day
 import kotlin.math.ceil
 import kotlin.math.floor
 
-class Day24: Day<List<String>, Int> {
+class Day24 : Day<List<String>, Int> {
 
     override fun runPartOne(): Int = createInitialTiles().count { it.value }
 
@@ -17,8 +17,8 @@ class Day24: Day<List<String>, Int> {
             val minY = floor(copy.minOf { it.key.second } - 1).toInt()
             val maxX = ceil(copy.maxOf { it.key.first } + 1).toInt()
             val maxY = ceil(copy.maxOf { it.key.second } + 1).toInt()
-            (minY .. maxY).forEach { y ->
-                (minX .. maxX).forEach { x ->
+            (minY..maxY).forEach { y ->
+                (minX..maxX).forEach { x ->
                     updateTile(tiles, copy, x.toDouble(), y.toDouble())
                     updateTile(tiles, copy, x + 0.5, y.toDouble())
                     updateTile(tiles, copy, x.toDouble(), y + 0.5)
@@ -45,7 +45,7 @@ class Day24: Day<List<String>, Int> {
                 }
                 val direction = instructionInProgress.subSequence(0, toRemove)
                 instructionInProgress = instructionInProgress.drop(toRemove)
-                currentPosition = when(direction) {
+                currentPosition = when (direction) {
                     "e" -> Pair(currentPosition.first + 1, currentPosition.second)
                     "w" -> Pair(currentPosition.first - 1, currentPosition.second)
                     "sw" -> Pair(currentPosition.first - 0.5, currentPosition.second + 0.5)
@@ -76,7 +76,7 @@ class Day24: Day<List<String>, Int> {
         )
         val current = copy.getOrDefault(Pair(x, y), false)
         val blackCount = neighbours.count { it }
-        if (current && (blackCount == 0 || blackCount > 2) ) {
+        if (current && (blackCount == 0 || blackCount > 2)) {
             tiles[Pair(x, y)] = false
         } else if (!current && blackCount == 2) {
             tiles[Pair(x, y)] = true

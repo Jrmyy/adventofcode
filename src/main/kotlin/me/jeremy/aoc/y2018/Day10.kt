@@ -3,16 +3,18 @@ package me.jeremy.aoc.y2018
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day10: Day<List<Pair<Pair<Int, Int>, Pair<Int, Int>>>, Int> {
+class Day10 : Day<List<Pair<Pair<Int, Int>, Pair<Int, Int>>>, Int> {
     override fun runPartOne(): Int {
         val stars = getInput()
         val minSecond = getSecondForMinBoundaries(stars)
-        val translatedStars = stars.map { Pair(
-            it.first.first + minSecond * it.second.first,
-            it.first.second + minSecond * it.second.second,
-        ) }
-        val space = (translatedStars.minOf { it.second } .. translatedStars.maxOf { it.second }).map { y ->
-            (translatedStars.minOf { it.first } .. translatedStars.maxOf { it.first }).map { x ->
+        val translatedStars = stars.map {
+            Pair(
+                it.first.first + minSecond * it.second.first,
+                it.first.second + minSecond * it.second.second,
+            )
+        }
+        val space = (translatedStars.minOf { it.second }..translatedStars.maxOf { it.second }).map { y ->
+            (translatedStars.minOf { it.first }..translatedStars.maxOf { it.first }).map { x ->
                 if (translatedStars.firstOrNull { p -> p == Pair(x, y) } != null) '#' else ' '
             }
         }
@@ -32,7 +34,7 @@ class Day10: Day<List<Pair<Pair<Int, Int>, Pair<Int, Int>>>, Int> {
         }
 
     private fun getSecondForMinBoundaries(stars: List<Pair<Pair<Int, Int>, Pair<Int, Int>>>): Int =
-        ((0 .. 20000).map { n ->
+        ((0..20000).map { n ->
             val minX = stars.minOf { it.first.first + n * it.second.first }
             val minY = stars.minOf { it.first.second + n * it.second.second }
             val maxX = stars.maxOf { it.first.first + n * it.second.first }

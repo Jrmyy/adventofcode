@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2018
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day12: Day<Pair<List<Char>, List<Pair<List<Char>, Char>>>, Long> {
+class Day12 : Day<Pair<List<Char>, List<Pair<List<Char>, Char>>>, Long> {
     override fun runPartOne(): Long = run(20).second
     override fun runPartTwo(): Long {
         val (diffs, count) = run(2000)
@@ -31,12 +31,12 @@ class Day12: Day<Pair<List<Char>, List<Pair<List<Char>, Char>>>, Long> {
             val maxOf = mapState.maxOf { it.key }
             repeat(4) { x ->
                 mapState[maxOf + (x + 1)] = '.'
-                mapState[- (x + 1).toLong() - (4 * n)] = '.'
+                mapState[-(x + 1).toLong() - (4 * n)] = '.'
             }
             val newMaxOf = mapState.maxOf { it.key }
             val minOf = mapState.minOf { it.key }
             val copy = hashMapOf(*(mapState.toList().toTypedArray()))
-            (minOf + 2 .. newMaxOf - 2).forEach { idx ->
+            (minOf + 2..newMaxOf - 2).forEach { idx ->
                 val sub = listOf(
                     copy[idx - 2]!!,
                     copy[idx - 1]!!,

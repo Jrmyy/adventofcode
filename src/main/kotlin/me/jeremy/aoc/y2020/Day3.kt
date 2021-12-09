@@ -3,17 +3,17 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day3: Day<List<List<Char>>, Long> {
+class Day3 : Day<List<List<Char>>, Long> {
     override fun runPartOne(): Long =
         getTreesNumber(getInput(), 3, 1)
 
     override fun runPartTwo(): Long {
         val slopes = getInput()
         return getTreesNumber(slopes, 1, 1) *
-                getTreesNumber(slopes, 3, 1) *
-                getTreesNumber(slopes, 5, 1) *
-                getTreesNumber(slopes, 7, 1) *
-                getTreesNumber(slopes, 1, 2)
+            getTreesNumber(slopes, 3, 1) *
+            getTreesNumber(slopes, 5, 1) *
+            getTreesNumber(slopes, 7, 1) *
+            getTreesNumber(slopes, 1, 2)
     }
 
     override fun getInput(): List<List<Char>> =

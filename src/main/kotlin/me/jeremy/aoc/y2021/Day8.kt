@@ -1,9 +1,7 @@
 package me.jeremy.aoc.y2021
 
-import com.sun.org.apache.xalan.internal.lib.ExsltDatetime.time
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
-import java.util.*
 
 class Day8 : Day<List<Pair<List<String>, List<String>>>, Int> {
 

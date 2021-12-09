@@ -3,13 +3,13 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day2: Day<List<Triple<Pair<Int, Int>, Char, String>>, Int> {
+class Day2 : Day<List<Triple<Pair<Int, Int>, Char, String>>, Int> {
     override fun runPartOne(): Int =
         getInput().count {
-            it.third.count {
-                that -> that == it.second
+            it.third.count { that ->
+                that == it.second
             } in it.first.first until it.first.second + 1
-    }
+        }
 
     override fun runPartTwo(): Int =
         getInput().count {
