@@ -42,7 +42,7 @@ class Day11 : Day<List<List<Int>>, Int> {
                     stepFlashes++
                     flashed.add(Pair(x, y))
                     octopuses[y][x] = 0
-                    getAdjacentPositions(octopuses, y, x).forEach { aXY ->
+                    AOCUtils.getAdjacentPositions(octopuses, y, x, true).forEach { aXY ->
                         val (ax, ay) = aXY
                         if (octopuses[ay][ax] <= 9 && !flashed.contains(Pair(ax, ay))) {
                             octopuses[ay][ax] = octopuses[ay][ax] + 1
@@ -59,7 +59,7 @@ class Day11 : Day<List<List<Int>>, Int> {
             octopuses[ty][tx] = 0
             stepFlashes++
             flashed.add(Pair(tx, ty))
-            getAdjacentPositions(octopuses, ty, tx).map { aXY ->
+            AOCUtils.getAdjacentPositions(octopuses, ty, tx, true).map { aXY ->
                 val (ax, ay) = aXY
                 if (octopuses[ay][ax] <= 9 && !flashed.contains(Pair(ax, ay))) {
                     octopuses[ay][ax] = octopuses[ay][ax] + 1
@@ -71,42 +71,6 @@ class Day11 : Day<List<List<Int>>, Int> {
         }
         return Pair(stepFlashes, flashed.size)
     }
-
-    private fun getAdjacentPositions(l: List<List<Int>>, y: Int, x: Int): List<Pair<Int, Int>> =
-        if (y == 0) {
-            val adjacentForSure = mutableListOf(Pair(x, 1))
-            if (x > 0) {
-                adjacentForSure.addAll(listOf(Pair(x - 1, 0), Pair(x - 1, 1)))
-            }
-            if (x != l.size - 1) {
-                adjacentForSure.addAll(listOf(Pair(x + 1, 0), Pair(x + 1, 1)))
-            }
-            adjacentForSure
-        } else if (y == l.first().size - 1) {
-            val adjacentForSure = mutableListOf(Pair(x, y - 1))
-            if (x > 0) {
-                adjacentForSure.addAll(listOf(Pair(x - 1, y), Pair(x - 1, y - 1)))
-            }
-            if (x != l.size - 1) {
-                adjacentForSure.addAll(listOf(Pair(x + 1, y), Pair(x + 1, y - 1)))
-            }
-            adjacentForSure
-        } else if (x == 0) {
-            listOf(Pair(0, y - 1), Pair(0, y + 1), Pair(1, y), Pair(1, y - 1), Pair(1, y + 1))
-        } else if (x == l.size - 1) {
-            listOf(Pair(x, y - 1), Pair(x, y + 1), Pair(x - 1, y), Pair(x - 1, y - 1), Pair(x - 1, y + 1))
-        } else {
-            listOf(
-                Pair(x - 1, y - 1),
-                Pair(x, y - 1),
-                Pair(x + 1, y - 1),
-                Pair(x - 1, y),
-                Pair(x + 1, y),
-                Pair(x - 1, y + 1),
-                Pair(x, y + 1),
-                Pair(x + 1, y + 1)
-            )
-        }
 }
 
 fun main() {

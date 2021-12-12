@@ -5,20 +5,6 @@ import me.jeremy.aoc.Day
 
 class Plane(private val coordinates: List<MutableList<Char>>) {
 
-    private fun getSeatsCountInAdjacentPositions(x: Int, y: Int, state: List<MutableList<Char>>): Int =
-        listOf(
-            Pair(x - 1, y),
-            Pair(x - 1, y - 1),
-            Pair(x - 1, y + 1),
-            Pair(x + 1, y),
-            Pair(x + 1, y - 1),
-            Pair(x + 1, y + 1),
-            Pair(x, y - 1),
-            Pair(x, y + 1)
-        ).filter {
-            it.second in state.indices && it.first in state[0].indices
-        }.count { state[it.second][it.first] == '#' }
-
     private fun getSeatsCountInAdjacentDirections(x: Int, y: Int, state: List<MutableList<Char>>): Int =
         listOf(
             Pair(-1, -1),
@@ -57,7 +43,9 @@ class Plane(private val coordinates: List<MutableList<Char>>) {
                 val count = if (wideSearch) {
                     getSeatsCountInAdjacentDirections(x, y, initialState.coordinates)
                 } else {
-                    getSeatsCountInAdjacentPositions(x, y, initialState.coordinates)
+                    AOCUtils.getAdjacentPositions(initialState.coordinates, y, x, true).count {
+                        initialState.coordinates[it.second][it.first] == '#'
+                    }
                 }
                 if (c == '#' && count >= seatsCountToSwitchToEmpty) {
                     coordinates[y][x] = 'L'

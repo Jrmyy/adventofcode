@@ -5,18 +5,6 @@ import me.jeremy.aoc.Day
 
 class Eris(private val coordinates: List<MutableList<Char>>) {
 
-    private fun getAdjacentBugsCount(x: Int, y: Int, state: List<MutableList<Char>>): Int =
-        listOf(
-            Pair(x - 1, y),
-            Pair(x + 1, y),
-            Pair(x, y - 1),
-            Pair(x, y + 1)
-        ).filter {
-            it.second in state.indices && it.first in state[0].indices
-        }.count {
-            state[it.second][it.first] == '#'
-        }
-
     fun copy() = Eris(coordinates.map { it.toMutableList() }.toList())
 
     fun calculateBiodiversityRating(): Int {
@@ -36,7 +24,9 @@ class Eris(private val coordinates: List<MutableList<Char>>) {
         val initialState = copy()
         coordinates.forEachIndexed { y: Int, mutableList: MutableList<Char> ->
             mutableList.forEachIndexed { x, c ->
-                val count = getAdjacentBugsCount(x, y, initialState.coordinates)
+                val count = AOCUtils.getAdjacentPositions(initialState.coordinates, y, x, false).count {
+                    initialState.coordinates[it.second][it.first] == '#'
+                }
                 if (c == '#' && count != 1) {
                     coordinates[y][x] = '.'
                 } else if (c == '.' && count in (1..2)) {

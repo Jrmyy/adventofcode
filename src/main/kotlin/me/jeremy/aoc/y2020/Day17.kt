@@ -32,11 +32,11 @@ class Infinite3DMap(private val coordinates: MutableList<MutableList<MutableList
 
     fun countTotalCubes() = coordinates.flatten().flatten().count { it == '#' }
 
-    fun copy() = Infinite3DMap(
+    private fun copy() = Infinite3DMap(
         coordinates.map { it.map { that -> that.toMutableList() }.toMutableList() }.toMutableList()
     )
 
-    fun pushLimits() {
+    private fun pushLimits() {
         // Add z
         val emptyCoordinates = coordinates[0][0].indices.map {
             '.'
@@ -122,7 +122,7 @@ class Infinite4DMap(private val coordinates: MutableList<MutableList<MutableList
 
     fun countTotalCubes() = coordinates.flatten().flatten().flatten().count { it == '#' }
 
-    fun copy() = Infinite4DMap(
+    private fun copy() = Infinite4DMap(
         coordinates.map {
             it.map { that ->
                 that.map { other ->
@@ -132,7 +132,7 @@ class Infinite4DMap(private val coordinates: MutableList<MutableList<MutableList
         }.toMutableList()
     )
 
-    fun pushLimits() {
+    private fun pushLimits() {
         // Add w
         val emptyLine = coordinates[0][0][0].indices.map {
             '.'
