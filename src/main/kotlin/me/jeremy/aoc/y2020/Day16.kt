@@ -3,18 +3,19 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-data class TicketsSystem(
-    val rules: List<TicketRule>,
-    val userTicket: List<Int>,
-    val otherTickets: List<List<Int>>
-)
+class Day16 : Day<Day16.TicketsSystem, Long> {
 
-data class TicketRule(
-    val field: String,
-    val ranges: List<Pair<Int, Int>>
-)
+    data class TicketsSystem(
+        val rules: List<TicketRule>,
+        val userTicket: List<Int>,
+        val otherTickets: List<List<Int>>
+    )
 
-class Day16 : Day<TicketsSystem, Long> {
+    data class TicketRule(
+        val field: String,
+        val ranges: List<Pair<Int, Int>>
+    )
+
     override fun runPartOne(): Long {
         val system = getInput()
         val ranges = system.rules.flatMap { it.ranges }

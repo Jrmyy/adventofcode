@@ -3,17 +3,18 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-data class BagRule(
-    val container: Bag,
-    val contained: List<Bag>
-)
+class Day7 : Day<List<Day7.BagRule>, Int> {
 
-data class Bag(
-    val amount: Int,
-    val description: String
-)
+    data class BagRule(
+        val container: Bag,
+        val contained: List<Bag>
+    )
 
-class Day7 : Day<List<BagRule>, Int> {
+    data class Bag(
+        val amount: Int,
+        val description: String
+    )
+
     override fun runPartOne(): Int {
         val rules = getInput()
         val toCheckCanContain = rules

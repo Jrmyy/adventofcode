@@ -3,12 +3,13 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-data class Food(
-    val ingredients: List<String>,
-    val allergens: List<String> = listOf()
-)
+class Day21 : Day<List<Day21.Food>, Int> {
 
-class Day21 : Day<List<Food>, Int> {
+    data class Food(
+        val ingredients: List<String>,
+        val allergens: List<String> = listOf()
+    )
+
     override fun runPartOne(): Int {
         val foods = getInput()
         val allergenIngredientMapping = getAllergenIngredientMapping(foods)

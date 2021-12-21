@@ -4,17 +4,18 @@ import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 import kotlin.math.ceil
 
-data class ChemicalElement(
-    val amount: Long,
-    val name: String
-)
+class Day14 : Day<List<Day14.Reaction>, Long> {
 
-data class Reaction(
-    val inputs: List<ChemicalElement>,
-    val output: ChemicalElement
-)
+    data class ChemicalElement(
+        val amount: Long,
+        val name: String
+    )
 
-class Day14 : Day<List<Reaction>, Long> {
+    data class Reaction(
+        val inputs: List<ChemicalElement>,
+        val output: ChemicalElement
+    )
+
     override fun runPartOne(): Long = doRun(1)
 
     override fun runPartTwo(): Long {

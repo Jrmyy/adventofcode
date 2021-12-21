@@ -5,12 +5,13 @@ import me.jeremy.aoc.Day
 import kotlin.math.abs
 import kotlin.math.max
 
-data class Instruction(
-    val direction: Char,
-    val distance: Int
-)
+class Day3 : Day<List<List<Day3.Instruction>>, Int> {
 
-class Day3 : Day<List<List<Instruction>>, Int> {
+    data class Instruction(
+        val direction: Char,
+        val distance: Int
+    )
+
     override fun runPartOne(): Int {
         val wirePaths = getPaths()
         return wirePaths.second

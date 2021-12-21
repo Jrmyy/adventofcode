@@ -4,17 +4,15 @@ import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 import kotlin.math.ceil
 
-const val MAX_ROW = 127
-const val MAX_COL = 7
-
-data class Seat(
-    val row: Int,
-    val col: Int
-) {
-    fun getSeatId(): Int = (MAX_COL + 1) * row + col
-}
-
 class Day5 : Day<List<List<Char>>, Int> {
+
+    data class Seat(
+        val row: Int,
+        val col: Int
+    ) {
+        fun getSeatId(): Int = (MAX_COL + 1) * row + col
+    }
+
     override fun runPartOne(): Int =
         getInput()
             .map { getSeat(it).getSeatId() }
@@ -75,6 +73,11 @@ class Day5 : Day<List<List<Char>>, Int> {
     }
 
     override fun getInput(): List<List<Char>> = AOCUtils.getDayInput(2020, 5).map { it.toList() }
+
+    companion object {
+        const val MAX_ROW = 127
+        const val MAX_COL = 7
+    }
 }
 
 fun main() {

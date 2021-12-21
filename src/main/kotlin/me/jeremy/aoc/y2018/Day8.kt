@@ -3,28 +3,30 @@ package me.jeremy.aoc.y2018
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-data class NavigationSystemNode(
-    val metadata: List<Int>,
-    val children: List<NavigationSystemNode>
-) {
-    fun sumAllMetadata(): Int =
-        metadata.sum() + children.sumBy { it.sumAllMetadata() }
+class Day8 : Day<Day8.NavigationSystemNode, Int> {
 
-    fun sumIndexedMetadata(): Int =
-        if (children.isEmpty()) {
-            metadata.sum()
-        } else {
-            metadata.sumBy {
-                if (children.size >= it) {
-                    children[it - 1].sumIndexedMetadata()
-                } else {
-                    0
+    data class NavigationSystemNode(
+        val metadata: List<Int>,
+        val children: List<NavigationSystemNode>
+    ) {
+        fun sumAllMetadata(): Int =
+            metadata.sum() + children.sumBy { it.sumAllMetadata() }
+
+        fun sumIndexedMetadata(): Int =
+            if (children.isEmpty()) {
+                metadata.sum()
+            } else {
+                metadata.sumBy {
+                    if (children.size >= it) {
+                        children[it - 1].sumIndexedMetadata()
+                    } else {
+                        0
+                    }
                 }
             }
-        }
-}
+    }
 
-class Day8 : Day<NavigationSystemNode, Int> {
+
     override fun runPartOne(): Int = getInput().sumAllMetadata()
 
     override fun runPartTwo(): Int = getInput().sumIndexedMetadata()

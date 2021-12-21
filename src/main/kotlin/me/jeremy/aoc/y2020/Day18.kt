@@ -3,66 +3,67 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-data class OperationPart(
-    val value: Pair<Long?, Operation?>,
-    val leftOperator: String? = null
-) {
-    fun childCalculation(): Long =
-        if (value.first != null) {
-            value.first!!
-        } else {
-            value.second!!.childCalculation()
-        }
+class Day18 : Day<List<Day18.Operation>, Long> {
 
-    fun adultCalculation(): Long =
-        if (value.first != null) {
-            value.first!!
-        } else {
-            value.second!!.adultCalculation()
-        }
-}
-
-data class Operation(
-    val parts: MutableList<OperationPart> = mutableListOf()
-) {
-    fun childCalculation(): Long {
-        var value = parts[0].childCalculation()
-        parts.drop(1).forEach {
-            when (it.leftOperator) {
-                "+" -> value += it.childCalculation()
-                "*" -> value *= it.childCalculation()
-            }
-        }
-        return value
-    }
-
-    fun adultCalculation(): Long {
-        val additions = parts
-            .mapIndexed { index, operationPart -> Pair(index, operationPart) }
-            .filter { it.second.leftOperator == "+" }
-        val additionResults = mutableListOf<Pair<Int, Long>>()
-        additions.forEach {
-            val prev = if ((it.first - 1) in additionResults.map { that -> that.first }) {
-                additionResults.first { that -> that.first == it.first - 1 }.second
+    data class OperationPart(
+        val value: Pair<Long?, Operation?>,
+        val leftOperator: String? = null
+    ) {
+        fun childCalculation(): Long =
+            if (value.first != null) {
+                value.first!!
             } else {
-                parts[it.first - 1].adultCalculation()
+                value.second!!.childCalculation()
             }
-            additionResults.add(Pair(it.first, prev + it.second.adultCalculation()))
-        }
-        additionResults.forEachIndexed { index, it ->
-            parts.removeAt(it.first - index)
-            val prev = parts.removeAt(it.first - index - 1)
-            parts.add(it.first - index - 1, OperationPart(Pair(it.second, null), prev.leftOperator))
-        }
-        var value = parts[0].adultCalculation()
-        parts.drop(1).forEach {
-            value *= it.adultCalculation()
-        }
-        return value
-    }
-}
 
-class Day18 : Day<List<Operation>, Long> {
+        fun adultCalculation(): Long =
+            if (value.first != null) {
+                value.first!!
+            } else {
+                value.second!!.adultCalculation()
+            }
+    }
+
+    data class Operation(
+        val parts: MutableList<OperationPart> = mutableListOf()
+    ) {
+        fun childCalculation(): Long {
+            var value = parts[0].childCalculation()
+            parts.drop(1).forEach {
+                when (it.leftOperator) {
+                    "+" -> value += it.childCalculation()
+                    "*" -> value *= it.childCalculation()
+                }
+            }
+            return value
+        }
+
+        fun adultCalculation(): Long {
+            val additions = parts
+                .mapIndexed { index, operationPart -> Pair(index, operationPart) }
+                .filter { it.second.leftOperator == "+" }
+            val additionResults = mutableListOf<Pair<Int, Long>>()
+            additions.forEach {
+                val prev = if ((it.first - 1) in additionResults.map { that -> that.first }) {
+                    additionResults.first { that -> that.first == it.first - 1 }.second
+                } else {
+                    parts[it.first - 1].adultCalculation()
+                }
+                additionResults.add(Pair(it.first, prev + it.second.adultCalculation()))
+            }
+            additionResults.forEachIndexed { index, it ->
+                parts.removeAt(it.first - index)
+                val prev = parts.removeAt(it.first - index - 1)
+                parts.add(it.first - index - 1, OperationPart(Pair(it.second, null), prev.leftOperator))
+            }
+            var value = parts[0].adultCalculation()
+            parts.drop(1).forEach {
+                value *= it.adultCalculation()
+            }
+            return value
+        }
+    }
+
     override fun runPartOne(): Long {
         val operations = getInput()
         return operations.sumOf { it.childCalculation() }

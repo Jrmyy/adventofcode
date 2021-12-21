@@ -5,19 +5,20 @@ import me.jeremy.aoc.Day
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-enum class GuardEventType {
-    SHIFT_BEGIN,
-    FALL_ASLEEP,
-    WAKE_UP,
-}
+class Day4 : Day<List<Day4.GuardEvent>, Int> {
 
-data class GuardEvent(
-    val timestamp: LocalDateTime,
-    val id: Int,
-    val eventType: GuardEventType
-)
+    enum class GuardEventType {
+        SHIFT_BEGIN,
+        FALL_ASLEEP,
+        WAKE_UP,
+    }
 
-class Day4 : Day<List<GuardEvent>, Int> {
+    data class GuardEvent(
+        val timestamp: LocalDateTime,
+        val id: Int,
+        val eventType: GuardEventType
+    )
+
     override fun runPartOne(): Int {
         val minutesAsleepPerGuard = computeMinutesAsleepPerGuard()
         return (minutesAsleepPerGuard.maxByOrNull {

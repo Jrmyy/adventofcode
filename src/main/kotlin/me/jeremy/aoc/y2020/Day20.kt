@@ -4,127 +4,121 @@ import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 import kotlin.math.sqrt
 
-val pattern = listOf(
-    "                  # ".toList(),
-    "#    ##    ##    ###".toList(),
-    " #  #  #  #  #  #   ".toList()
-)
-val flattenPattern = pattern.flatten()
+class Day20 : Day<List<Day20.Tile>, Long> {
 
-data class Tile(val idx: Long, val pixels: List<List<Char>>) {
+    data class Tile(val idx: Long, val pixels: List<List<Char>>) {
 
-    fun getWaterRoughness(): Long {
-        val seaMonsterPositions = (0 until pixels.size - pattern.size).flatMap { r ->
-            (0 until pixels.size - pattern[0].size).map { c ->
-                val sub = pixels.subList(r, r + pattern.size).map { row ->
-                    row.subList(c, c + pattern[0].size)
-                }
-                val matchingChars = sub.flatten().filterIndexed { idx, char ->
-                    if (flattenPattern[idx] == ' ') {
-                        true
+        fun getWaterRoughness(): Long {
+            val seaMonsterPositions = (0 until pixels.size - PATTERN.size).flatMap { r ->
+                (0 until pixels.size - PATTERN[0].size).map { c ->
+                    val sub = pixels.subList(r, r + PATTERN.size).map { row ->
+                        row.subList(c, c + PATTERN[0].size)
+                    }
+                    val matchingChars = sub.flatten().filterIndexed { idx, char ->
+                        if (FLATTEN_PATTERN[idx] == ' ') {
+                            true
+                        } else {
+                            char == '#'
+                        }
+                    }
+                    if (matchingChars.size == sub.flatten().size) {
+                        Pair(r, c)
                     } else {
-                        char == '#'
+                        null
                     }
                 }
-                if (matchingChars.size == sub.flatten().size) {
-                    Pair(r, c)
-                } else {
+            }.filterNotNull()
+            return if (seaMonsterPositions.isEmpty()) {
+                0L
+            } else {
+                pixels.flatMapIndexed { row, list ->
+                    list.mapIndexed { col, c ->
+                        val withinSeaMonster = seaMonsterPositions.firstOrNull {
+                            row >= it.first && row <= it.first + PATTERN.size - 1 &&
+                                col >= it.second && col <= it.second + PATTERN[0].size - 1
+                        }
+                        val isSeaMonster = if (withinSeaMonster != null) {
+                            PATTERN[row - withinSeaMonster.first][col - withinSeaMonster.second] == '#'
+                        } else {
+                            false
+                        }
+                        if (c == '#' && !isSeaMonster) {
+                            1
+                        } else {
+                            0
+                        }
+                    }
+                }.sum().toLong()
+            }
+        }
+
+        fun computeAllTransformations(): List<Tile> =
+            listOf(
+                this,
+                flip('V'),
+                flip('H'),
+                rotate(90),
+                rotate(90).flip('V'),
+                rotate(90).flip('H'),
+                rotate(180),
+                rotate(180).flip('V'),
+                rotate(180).flip('H'),
+                rotate(270),
+                rotate(270).flip('V'),
+                rotate(270).flip('H'),
+            )
+
+        fun findAdjacentTiles(others: List<Tile>): List<Pair<Char, Tile>> =
+            others.flatMap {
+                it.computeAllTransformations().toList()
+            }.mapNotNull {
+                val commonBorder = getCommonBorder(it)
+                if (commonBorder == null) {
                     null
+                } else {
+                    Pair(commonBorder, it)
                 }
             }
-        }.filterNotNull()
-        return if (seaMonsterPositions.isEmpty()) {
-            0L
-        } else {
-            pixels.flatMapIndexed { row, list ->
-                list.mapIndexed { col, c ->
-                    val withinSeaMonster = seaMonsterPositions.firstOrNull {
-                        row >= it.first && row <= it.first + pattern.size - 1 &&
-                            col >= it.second && col <= it.second + pattern[0].size - 1
-                    }
-                    val isSeaMonster = if (withinSeaMonster != null) {
-                        pattern[row - withinSeaMonster.first][col - withinSeaMonster.second] == '#'
-                    } else {
-                        false
-                    }
-                    if (c == '#' && !isSeaMonster) {
-                        1
-                    } else {
-                        0
-                    }
+
+        // Rotate by deg and return the corresponding tile
+        private fun rotate(deg: Int): Tile =
+            when (deg) {
+                90 -> {
+                    Tile(idx, pixels.indices.map {
+                        pixels.map { l -> l[it] }.reversed().toList()
+                    }.toList())
                 }
-            }.sum().toLong()
-        }
+                180 -> {
+                    Tile(idx, pixels.toList().reversed().map {
+                        it.toList().reversed()
+                    }.toList())
+                }
+                270 -> {
+                    Tile(idx, pixels[0].indices.map {
+                        pixels.map { l -> l[pixels[0].size - 1 - it] }.toList()
+                    }.toList())
+                }
+                else -> error("Wrong deg")
+            }
+
+        // Flip horizontally or vertically and return the corresponding tile
+        private fun flip(direction: Char): Tile =
+            when (direction) {
+                'V' -> Tile(idx, pixels.map { it.reversed().toList() }.toList())
+                'H' -> Tile(idx, pixels.reversed().map { it.toList() }.toList())
+                else -> error("Wrong direction")
+            }
+
+        private fun getCommonBorder(other: Tile): Char? =
+            when {
+                pixels.last() == other.pixels.first() -> 'D'
+                pixels.first() == other.pixels.last() -> 'U'
+                pixels.map { it.first() } == other.pixels.map { it.last() } -> 'L'
+                pixels.map { it.last() } == other.pixels.map { it.first() } -> 'R'
+                else -> null
+            }
     }
 
-    fun computeAllTransformations(): List<Tile> =
-        listOf(
-            this,
-            flip('V'),
-            flip('H'),
-            rotate(90),
-            rotate(90).flip('V'),
-            rotate(90).flip('H'),
-            rotate(180),
-            rotate(180).flip('V'),
-            rotate(180).flip('H'),
-            rotate(270),
-            rotate(270).flip('V'),
-            rotate(270).flip('H'),
-        )
-
-    fun findAdjacentTiles(others: List<Tile>): List<Pair<Char, Tile>> =
-        others.flatMap {
-            it.computeAllTransformations().toList()
-        }.mapNotNull {
-            val commonBorder = getCommonBorder(it)
-            if (commonBorder == null) {
-                null
-            } else {
-                Pair(commonBorder, it)
-            }
-        }
-
-    // Rotate by deg and return the corresponding tile
-    private fun rotate(deg: Int): Tile =
-        when (deg) {
-            90 -> {
-                Tile(idx, pixels.indices.map {
-                    pixels.map { l -> l[it] }.reversed().toList()
-                }.toList())
-            }
-            180 -> {
-                Tile(idx, pixels.toList().reversed().map {
-                    it.toList().reversed()
-                }.toList())
-            }
-            270 -> {
-                Tile(idx, pixels[0].indices.map {
-                    pixels.map { l -> l[pixels[0].size - 1 - it] }.toList()
-                }.toList())
-            }
-            else -> error("Wrong deg")
-        }
-
-    // Flip horizontally or vertically and return the corresponding tile
-    private fun flip(direction: Char): Tile =
-        when (direction) {
-            'V' -> Tile(idx, pixels.map { it.reversed().toList() }.toList())
-            'H' -> Tile(idx, pixels.reversed().map { it.toList() }.toList())
-            else -> error("Wrong direction")
-        }
-
-    private fun getCommonBorder(other: Tile): Char? =
-        when {
-            pixels.last() == other.pixels.first() -> 'D'
-            pixels.first() == other.pixels.last() -> 'U'
-            pixels.map { it.first() } == other.pixels.map { it.last() } -> 'L'
-            pixels.map { it.last() } == other.pixels.map { it.first() } -> 'R'
-            else -> null
-        }
-}
-
-class Day20 : Day<List<Tile>, Long> {
     override fun runPartOne(): Long {
         val tiles = getInput()
         val allPossibilities = tiles.map {
@@ -253,6 +247,15 @@ class Day20 : Day<List<Tile>, Long> {
         }
         tiles.add(Tile(currentTile, pixels))
         return tiles
+    }
+
+    companion object {
+        val PATTERN = listOf(
+            "                  # ".toList(),
+            "#    ##    ##    ###".toList(),
+            " #  #  #  #  #  #   ".toList()
+        )
+        val FLATTEN_PATTERN = PATTERN.flatten()
     }
 }
 

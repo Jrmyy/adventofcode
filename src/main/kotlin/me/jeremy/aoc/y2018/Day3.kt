@@ -3,15 +3,16 @@ package me.jeremy.aoc.y2018
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-data class Claim(
-    val id: Int,
-    val x: Int,
-    val y: Int,
-    val w: Int,
-    val h: Int
-)
+class Day3 : Day<List<Day3.Claim>, Int> {
 
-class Day3 : Day<List<Claim>, Int> {
+    data class Claim(
+        val id: Int,
+        val x: Int,
+        val y: Int,
+        val w: Int,
+        val h: Int
+    )
+
     override fun runPartOne(): Int =
         computeFabric().flatten().count { it.size >= 2 }
 

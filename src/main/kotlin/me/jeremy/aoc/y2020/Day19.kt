@@ -3,25 +3,25 @@ package me.jeremy.aoc.y2020
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
+class Day19 : Day<Pair<List<Day19.Rule>, List<String>>, Int> {
 
-data class Rule(
-    val idx: Int,
-    val alternatives: Pair<String?, List<List<Int>>?>
-) {
+    data class Rule(
+        val idx: Int,
+        val alternatives: Pair<String?, List<List<Int>>?>
+    ) {
 
-    fun generateRegex(reference: Map<Int, String>): String =
-        "(${
-            alternatives.second!!.joinToString("|") {
-                "(${
-                    it.joinToString("") { i ->
-                        reference[i] ?: error("Missing regex $i")
-                    }
-                })"
-            }
-        })"
-}
+        fun generateRegex(reference: Map<Int, String>): String =
+            "(${
+                alternatives.second!!.joinToString("|") {
+                    "(${
+                        it.joinToString("") { i ->
+                            reference[i] ?: error("Missing regex $i")
+                        }
+                    })"
+                }
+            })"
+    }
 
-class Day19 : Day<Pair<List<Rule>, List<String>>, Int> {
     override fun runPartOne(): Int {
         val (rules, expressions) = getInput()
         val acceptedExpressions = computeAcceptedExpressions(rules)
