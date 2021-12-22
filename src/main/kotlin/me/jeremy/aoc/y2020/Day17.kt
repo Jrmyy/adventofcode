@@ -7,7 +7,12 @@ class Day17 : Day<MutableList<MutableList<MutableList<Char>>>, Int> {
 
     class Infinite3DMap(private val coordinates: MutableList<MutableList<MutableList<Char>>>) {
 
-        private fun getAdjacentCubesCount(x: Int, y: Int, z: Int, state: MutableList<MutableList<MutableList<Char>>>): Int =
+        private fun getAdjacentCubesCount(
+            x: Int,
+            y: Int,
+            z: Int,
+            state: MutableList<MutableList<MutableList<Char>>>
+        ): Int =
             listOf(
                 listOf(z - 1, z, z + 1).flatMap {
                     listOf(

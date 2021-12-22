@@ -19,25 +19,25 @@ class Day17 : Day<Pair<Pair<Int, Int>, Pair<Int, Int>>, Int> {
                 Pair(pParts.first(), pParts.last())
             }
 
-    private fun reachTargetArea(position: Pair<Int, Int>, area: Pair<Pair<Int,Int>, Pair<Int, Int>>): Boolean =
-        position.first in (area.first.first .. area.first.second) &&
-            position.second in (area.second.first .. area.second.second)
+    private fun reachTargetArea(position: Pair<Int, Int>, area: Pair<Pair<Int, Int>, Pair<Int, Int>>): Boolean =
+        position.first in (area.first.first..area.first.second) &&
+            position.second in (area.second.first..area.second.second)
 
-    private fun canReachTargetArea(position: Pair<Int, Int>, area: Pair<Pair<Int,Int>, Pair<Int, Int>>): Boolean =
+    private fun canReachTargetArea(position: Pair<Int, Int>, area: Pair<Pair<Int, Int>, Pair<Int, Int>>): Boolean =
         position.first <= maxOf(area.first.first, area.first.second) &&
             position.second >= minOf(area.second.first, area.second.second)
 
     private fun launchProbe(): List<Int> = getInput().let { targetArea ->
         val minY = minOf(targetArea.second.first, targetArea.second.second)
-        (0 .. maxOf(targetArea.first.first, targetArea.first.second)).flatMap { vx ->
-            (minY .. abs(minY)).mapNotNull { vy ->
+        (0..maxOf(targetArea.first.first, targetArea.first.second)).flatMap { vx ->
+            (minY..abs(minY)).mapNotNull { vy ->
                 var position = Pair(0, 0)
                 var velocity = Pair(vx, vy)
                 val vys = mutableListOf(0)
                 while (!reachTargetArea(position, targetArea) && canReachTargetArea(position, targetArea)) {
                     position = Pair(position.first + velocity.first, position.second + velocity.second)
                     velocity = Pair(
-                        velocity.first.let { if (it == 0) it else if (it > 0) it - 1 else it + 1},
+                        velocity.first.let { if (it == 0) it else if (it > 0) it - 1 else it + 1 },
                         velocity.second - 1
                     )
                     vys.add(position.second)
