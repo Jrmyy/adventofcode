@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day12: Day<String, Int> {
+class Day12 : Day<String, Int> {
     override fun runPartOne(): Int {
         val json = getInput()
         val numbers = "((-|)\\d+)".toRegex().findAll(json)
@@ -27,7 +27,7 @@ class Day12: Day<String, Int> {
             when (v) {
                 is Number -> v.toInt()
                 is Map<*, *> -> computeSumWithoutRed(Pair(v, null))
-                is List<*> -> computeSumWithoutRed(Pair(null , v))
+                is List<*> -> computeSumWithoutRed(Pair(null, v))
                 else -> 0
             }
         }

@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2015
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day10: Day<String, Int> {
+class Day10 : Day<String, Int> {
     override fun runPartOne(): Int {
         var lk = getInput()
         repeat(40) {

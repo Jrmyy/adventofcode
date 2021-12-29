@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2015
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day1: Day<String, Int> {
+class Day1 : Day<String, Int> {
     override fun runPartOne(): Int =
         getInput().let {
             it.count { c -> c == '(' } - it.count { c -> c == ')' }
@@ -18,6 +18,7 @@ class Day1: Day<String, Int> {
         }
         i
     }
+
     override fun getInput(): String = AOCUtils.getDayInput(2015, 1).first()
 }
 

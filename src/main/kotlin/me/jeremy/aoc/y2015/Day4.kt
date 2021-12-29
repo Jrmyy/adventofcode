@@ -5,7 +5,7 @@ import me.jeremy.aoc.Day
 import java.math.BigInteger
 import java.security.MessageDigest
 
-class Day4: Day<String, Int> {
+class Day4 : Day<String, Int> {
     override fun runPartOne(): Int = findNumber(5)
 
     override fun runPartTwo(): Int = findNumber(6)

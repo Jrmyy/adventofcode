@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2015
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day20: Day<Int, Int> {
+class Day20 : Day<Int, Int> {
 
     override fun runPartOne(): Int {
         val presents = getInput()

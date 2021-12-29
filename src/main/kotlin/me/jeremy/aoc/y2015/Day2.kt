@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2015
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day2: Day<List<Triple<Int, Int, Int>>, Int> {
+class Day2 : Day<List<Triple<Int, Int, Int>>, Int> {
     override fun runPartOne(): Int =
         getInput().sumOf {
             listOf(

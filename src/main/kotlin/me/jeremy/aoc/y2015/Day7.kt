@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2015
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day7: Day<List<String>, Int> {
+class Day7 : Day<List<String>, Int> {
     override fun runPartOne(): Int = runOps()["a"]!!
 
     override fun runPartTwo(): Int = runOps(mutableMapOf("b" to runOps()["a"]!!))["a"]!!
@@ -32,10 +32,10 @@ class Day7: Day<List<String>, Int> {
                         val ipt = parts.first().replace("NOT", "").trim().let { s ->
                             if (values.contains(s)) values[s].toString() else s
                         }
-                        if ( "\\d+".toRegex().matches(ipt)) {
+                        if ("\\d+".toRegex().matches(ipt)) {
                             val res = ipt.toInt().inv()
                             values[opt] = if (res >= 0) res else res + 65536
-                        }  else {
+                        } else {
                             newRemaining.add(it)
                         }
                     } else if (it.contains("OR")) {
@@ -69,9 +69,9 @@ class Day7: Day<List<String>, Int> {
                         val ipt = parts.first().trim().let { s ->
                             if (values.contains(s)) values[s].toString() else s
                         }
-                        if ( "\\d+".toRegex().matches(ipt)) {
+                        if ("\\d+".toRegex().matches(ipt)) {
                             values[opt] = ipt.toInt()
-                        }  else {
+                        } else {
                             newRemaining.add(it)
                         }
                     }

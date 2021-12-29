@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2015
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day8: Day<List<String>, Int> {
+class Day8 : Day<List<String>, Int> {
     override fun runPartOne(): Int =
         getInput().sumOf {
             it.length - it.substring(1, it.length - 1)

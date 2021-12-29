@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2015
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day14: Day<Map<String, Triple<Int, Int, Int>>, Int> {
+class Day14 : Day<Map<String, Triple<Int, Int, Int>>, Int> {
     override fun runPartOne(): Int = compete().first
 
     override fun runPartTwo(): Int = compete().second
@@ -40,7 +40,7 @@ class Day14: Day<Map<String, Triple<Int, Int, Int>>, Int> {
             }
             resting = resting.filter { e -> e.value != 0 }.toMutableMap()
             flying = flying.filter { e -> e.value != 0 }.toMutableMap()
-            val ahead = distance.maxByOrNull{ e -> e.value }!!.key
+            val ahead = distance.maxByOrNull { e -> e.value }!!.key
             scores[ahead] = scores[ahead]!!.plus(1)
         }
         return Pair(distance.maxOf { it.value }, scores.maxOf { it.value })

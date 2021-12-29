@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2015
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day17: Day<List<Int>, Int> {
+class Day17 : Day<List<Int>, Int> {
     override fun runPartOne(): Int = combinations(150).count()
 
     override fun runPartTwo(): Int {
@@ -12,7 +12,7 @@ class Day17: Day<List<Int>, Int> {
         return combinations.count { it.size == min }
     }
 
-    override fun getInput(): List<Int> = AOCUtils.getDayInput(2015,17).map { it.toInt() }
+    override fun getInput(): List<Int> = AOCUtils.getDayInput(2015, 17).map { it.toInt() }
 
     private fun combinations(
         n: Int,

@@ -4,7 +4,7 @@ import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 import kotlin.math.max
 
-class Day21: Day<Triple<Int, Int, Int>, Int> {
+class Day21 : Day<Triple<Int, Int, Int>, Int> {
 
     data class Item(
         val cost: Int,

@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2015
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day13: Day<Map<Pair<String, String>, Int>, Int> {
+class Day13 : Day<Map<Pair<String, String>, Int>, Int> {
     override fun runPartOne(): Int = findBestSeats()
 
     override fun runPartTwo(): Int = findBestSeats(
@@ -22,9 +22,10 @@ class Day13: Day<Map<Pair<String, String>, Int>, Int> {
         Pair(Pair(from, to), h)
     }.toMap()
 
-    private fun findBestSeats(conditions: Map<Pair<String,String>, Int> = getInput(),
-                              cache: MutableMap<List<String>, Int> = mutableMapOf(),
-                              placed: List<String> = mutableListOf()
+    private fun findBestSeats(
+        conditions: Map<Pair<String, String>, Int> = getInput(),
+        cache: MutableMap<List<String>, Int> = mutableMapOf(),
+        placed: List<String> = mutableListOf()
     ): Int {
         val persons = conditions.map { it.key.first }
         if (placed in cache) return cache.getValue(placed)

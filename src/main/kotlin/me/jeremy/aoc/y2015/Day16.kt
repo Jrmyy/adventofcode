@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2015
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day16: Day<List<List<Pair<String, Int>>>, Int> {
+class Day16 : Day<List<List<Pair<String, Int>>>, Int> {
     override fun runPartOne(): Int = getInput().indexOfFirst {
         it.intersect(CRITERIA) == it.toSet()
     } + 1

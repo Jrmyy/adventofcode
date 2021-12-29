@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2015
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day3: Day<List<Char>, Int> {
+class Day3 : Day<List<Char>, Int> {
     override fun runPartOne(): Int {
         val instructions = getInput()
         var position = Pair(0, 0)

@@ -14,22 +14,22 @@ class Day6 : Day<List<Triple<String, Pair<Int, Int>, Pair<Int, Int>>>, Int> {
             val (op, from, to) = it
             when (op) {
                 "turn on" -> {
-                    (from.first .. to.first).forEach { y ->
-                        (from.second .. to.second).forEach { x ->
+                    (from.first..to.first).forEach { y ->
+                        (from.second..to.second).forEach { x ->
                             lights[y][x] = true
                         }
                     }
                 }
                 "turn off" -> {
-                    (from.first .. to.first).forEach { y ->
-                        (from.second .. to.second).forEach { x ->
+                    (from.first..to.first).forEach { y ->
+                        (from.second..to.second).forEach { x ->
                             lights[y][x] = false
                         }
                     }
                 }
                 "toggle" -> {
-                    (from.first .. to.first).forEach { y ->
-                        (from.second .. to.second).forEach { x ->
+                    (from.first..to.first).forEach { y ->
+                        (from.second..to.second).forEach { x ->
                             lights[y][x] = !lights[y][x]
                         }
                     }
@@ -48,22 +48,22 @@ class Day6 : Day<List<Triple<String, Pair<Int, Int>, Pair<Int, Int>>>, Int> {
             val (op, from, to) = it
             when (op) {
                 "turn on" -> {
-                    (from.first .. to.first).forEach { y ->
-                        (from.second .. to.second).forEach { x ->
+                    (from.first..to.first).forEach { y ->
+                        (from.second..to.second).forEach { x ->
                             lights[y][x] += 1
                         }
                     }
                 }
                 "turn off" -> {
-                    (from.first .. to.first).forEach { y ->
-                        (from.second .. to.second).forEach { x ->
+                    (from.first..to.first).forEach { y ->
+                        (from.second..to.second).forEach { x ->
                             lights[y][x] = max(lights[y][x] - 1, 0)
                         }
                     }
                 }
                 "toggle" -> {
-                    (from.first .. to.first).forEach { y ->
-                        (from.second .. to.second).forEach { x ->
+                    (from.first..to.first).forEach { y ->
+                        (from.second..to.second).forEach { x ->
                             lights[y][x] += 2
                         }
                     }

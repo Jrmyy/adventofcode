@@ -3,7 +3,7 @@ package me.jeremy.aoc.y2015
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
-class Day9: Day<Map<Pair<String, String>, Int>, Int> {
+class Day9 : Day<Map<Pair<String, String>, Int>, Int> {
     override fun runPartOne(): Int = findShortestPath()
 
     override fun runPartTwo(): Int = findLongestPath()
@@ -17,8 +17,9 @@ class Day9: Day<Map<Pair<String, String>, Int>, Int> {
         )
     }.toMap()
 
-    private fun findLongestPath(cache: MutableMap<List<String>, Int> = mutableMapOf(),
-                                visited: List<String> = mutableListOf()
+    private fun findLongestPath(
+        cache: MutableMap<List<String>, Int> = mutableMapOf(),
+        visited: List<String> = mutableListOf()
     ): Int {
         val paths = getInput()
         val galaxies = paths.map { it.key.first }
