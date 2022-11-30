@@ -8,7 +8,7 @@ class Day12 : Day<String, Int> {
     override fun runPartOne(): Int {
         val json = getInput()
         val numbers = "((-|)\\d+)".toRegex().findAll(json)
-        return numbers.sumBy { it.value.toInt() }
+        return numbers.sumOf { it.value.toInt() }
     }
 
     override fun runPartTwo(): Int {

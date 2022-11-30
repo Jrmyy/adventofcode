@@ -9,7 +9,7 @@ class Day5 : Day<MutableList<Char>, Int> {
     override fun runPartTwo(): Int {
         val initialReaction = getInput()
         return initialReaction
-            .distinctBy { it.toLowerCase() }
+            .distinctBy { it.lowercaseChar() }
             .minOf {
                 getReducedReactionSize(
                     initialReaction.filter { c -> !c.equals(it, ignoreCase = true) }

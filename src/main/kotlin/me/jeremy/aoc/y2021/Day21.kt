@@ -21,7 +21,7 @@ class Day21 : Day<MutableList<Int>, Long> {
         var dl = 0
         var player = 0
         while (scores.all { it < 1000 }) {
-            val rolls = listOf(dice, dice + 1, dice + 2).sumBy { (it - 1) % 100 + 1 }
+            val rolls = listOf(dice, dice + 1, dice + 2).sumOf { (it - 1) % 100 + 1 }
             pos[player] = (pos[player] + rolls - 1) % 10 + 1
             scores[player] = scores[player] + pos[player].toLong()
             dice += 3

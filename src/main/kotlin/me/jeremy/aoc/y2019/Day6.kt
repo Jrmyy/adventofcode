@@ -4,7 +4,7 @@ import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
 class Day6 : Day<List<Pair<String, String>>, Int> {
-    override fun runPartOne(): Int = getAllPaths().sumBy { it.split("/").size - 1 }
+    override fun runPartOne(): Int = getAllPaths().sumOf { it.split("/").size - 1 }
 
     override fun runPartTwo(): Int {
         val allPaths = getAllPaths()

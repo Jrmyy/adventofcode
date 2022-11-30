@@ -10,13 +10,13 @@ class Day8 : Day<Day8.NavigationSystemNode, Int> {
         val children: List<NavigationSystemNode>
     ) {
         fun sumAllMetadata(): Int =
-            metadata.sum() + children.sumBy { it.sumAllMetadata() }
+            metadata.sum() + children.sumOf { it.sumAllMetadata() }
 
         fun sumIndexedMetadata(): Int =
             if (children.isEmpty()) {
                 metadata.sum()
             } else {
-                metadata.sumBy {
+                metadata.sumOf {
                     if (children.size >= it) {
                         children[it - 1].sumIndexedMetadata()
                     } else {

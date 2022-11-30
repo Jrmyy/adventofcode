@@ -17,7 +17,7 @@ class Day21 : Day<List<Day21.Food>, Int> {
             .flatMap { it.ingredients }
             .toSet()
             .subtract(allergenIngredientMapping.values)
-            .sumBy {
+            .sumOf {
                 foods.flatMap { it.ingredients }.count { ing -> ing == it }
             }
     }

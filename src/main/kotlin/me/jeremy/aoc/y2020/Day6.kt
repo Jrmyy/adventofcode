@@ -6,13 +6,13 @@ import me.jeremy.aoc.Day
 class Day6 : Day<List<List<List<Char>>>, Int> {
     override fun runPartOne(): Int =
         getInput()
-            .sumBy {
+            .sumOf {
                 it.flatten().distinct().size
             }
 
 
     override fun runPartTwo(): Int =
-        getInput().sumBy {
+        getInput().sumOf {
             it.flatten()
                 .groupingBy { that -> that }
                 .eachCount()

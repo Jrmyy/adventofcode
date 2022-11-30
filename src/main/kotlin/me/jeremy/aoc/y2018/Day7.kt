@@ -42,7 +42,7 @@ class Day7 : Day<Map<String, List<String>>, Int> {
             tasks.forEach {
                 val freeWorker = workers.indexOfFirst { w -> w.second == 0 }
                 if (freeWorker >= 0) {
-                    workers[freeWorker] = Pair(it, 60 + it.toCharArray()[0].toInt() - 64)
+                    workers[freeWorker] = Pair(it, 60 + it.toCharArray()[0].code - 64)
                 }
             }
             workers.forEachIndexed { idx, it ->

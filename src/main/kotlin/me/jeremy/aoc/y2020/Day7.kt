@@ -54,7 +54,7 @@ class Day7 : Day<List<Day7.BagRule>, Int> {
             contained.addAll(scaledRule)
             bagsAmount.addAll(scaledRule)
         }
-        return bagsAmount.sumBy { it.amount }
+        return bagsAmount.sumOf { it.amount }
     }
 
     override fun getInput(): List<BagRule> = AOCUtils.getDayInput(2020, 7).map {

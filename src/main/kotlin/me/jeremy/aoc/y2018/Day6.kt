@@ -86,7 +86,7 @@ class Day6 : Day<List<Pair<Int, Int>>, Int> {
         }
 
     private fun sumAllDistances(x: Int, y: Int, coordinates: List<Pair<Int, Int>>): Int =
-        coordinates.sumBy { abs(x - it.first) + abs(y - it.second) }
+        coordinates.sumOf { abs(x - it.first) + abs(y - it.second) }
 
     private fun getClosestCoordinates(x: Int, y: Int, coordinates: List<Pair<Int, Int>>): List<Int> {
         val distances = coordinates.mapIndexed { idx, it ->

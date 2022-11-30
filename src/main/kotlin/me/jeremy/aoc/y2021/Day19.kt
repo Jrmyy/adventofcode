@@ -1,8 +1,8 @@
 package me.jeremy.aoc.y2021
 
-import javafx.geometry.Point3D
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
+import me.jeremy.aoc.Point3D
 import kotlin.math.abs
 
 class Day19 : Day<MutableList<List<Point3D>>, Int> {

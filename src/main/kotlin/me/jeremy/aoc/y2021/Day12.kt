@@ -2,6 +2,7 @@ package me.jeremy.aoc.y2021
 
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
+import java.util.*
 
 class Day12 : Day<List<Pair<String, String>>, Int> {
     override fun runPartOne(): Int =
@@ -33,7 +34,7 @@ class Day12 : Day<List<Pair<String, String>>, Int> {
             }.sumOf {
                 val newBeginning = beginning + listOf(it)
                 val countPerSmallCaves = newBeginning.filter { s ->
-                    s.toLowerCase() == s && s != "end" && s != "start"
+                    s.lowercase(Locale.getDefault()) == s && s != "end" && s != "start"
                 }.groupingBy { s -> s }.eachCount()
                 val maxOfSmallCaves = countPerSmallCaves.maxOfOrNull { e -> e.value }
                 val numOfMax = if (maxOfSmallCaves == null) {

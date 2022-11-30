@@ -6,12 +6,12 @@ import kotlin.math.max
 
 class Day1 : Day<List<Int>, Int> {
     override fun runPartOne(): Int =
-        getInput().sumBy {
+        getInput().sumOf {
             Math.floorDiv(it, 3) - 2
         }
 
     override fun runPartTwo(): Int =
-        getInput().sumBy {
+        getInput().sumOf {
             var remaining = it
             val fuels = mutableListOf<Int>()
             while (remaining > 0) {

@@ -18,7 +18,7 @@ class Day12 : Day<List<Moon>, BigInteger> {
         for (i in 1..1000) {
             runStep(moons)
         }
-        return moons.sumBy { it.calculateEnergy() }.toBigInteger()
+        return moons.sumOf { it.calculateEnergy() }.toBigInteger()
     }
 
     override fun runPartTwo(): BigInteger {
