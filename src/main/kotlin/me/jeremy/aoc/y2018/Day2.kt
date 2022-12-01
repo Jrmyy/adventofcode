@@ -21,18 +21,20 @@ class Day2 : Day<List<String>, Int> {
 
     override fun runPartTwo(): Int {
         val ids = getInput()
-        println(ids
-            .flatMap { id ->
-                ids.map { other ->
-                    Pair(id, listDifferences(id, other))
+        println(
+            ids
+                .flatMap { id ->
+                    ids.map { other ->
+                        Pair(id, listDifferences(id, other))
+                    }
                 }
-            }
-            .first { it.second.size == 1 }
-            .let {
-                val chars = it.first.toList().toMutableList()
-                chars.removeAt(it.second.first())
-                chars.joinToString("")
-            })
+                .first { it.second.size == 1 }
+                .let {
+                    val chars = it.first.toList().toMutableList()
+                    chars.removeAt(it.second.first())
+                    chars.joinToString("")
+                }
+        )
         return 0
     }
 

@@ -4,7 +4,7 @@ import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 import kotlin.math.abs
 
-class Day1: Day<List<Pair<Char, Int>>, Int> {
+class Day1 : Day<List<Pair<Char, Int>>, Int> {
     override fun runPartOne(): Int {
         var current = Pair(0, 0)
         var orientation = 'N'
@@ -38,10 +38,10 @@ class Day1: Day<List<Pair<Char, Int>>, Int> {
                 (orientations.indexOf(orientation) + (if (direction == 'R') 1 else - 1)).mod(orientations.size)
             ]
             val path = when (orientation) {
-                'N' -> (1 .. distance).map { Pair(current.first + it, current.second) }
-                'E' -> (1 .. distance).map { Pair(current.first, current.second + it) }
-                'S' -> (1 .. distance).map { Pair(current.first - it, current.second) }
-                else -> (1 .. distance).map { Pair(current.first, current.second - it) }
+                'N' -> (1..distance).map { Pair(current.first + it, current.second) }
+                'E' -> (1..distance).map { Pair(current.first, current.second + it) }
+                'S' -> (1..distance).map { Pair(current.first - it, current.second) }
+                else -> (1..distance).map { Pair(current.first, current.second - it) }
             }
             i++
             for (position in path) {

@@ -111,7 +111,6 @@ class Day18 : Day<List<Day18.Operation>, Long> {
                             } else {
                                 operations.add(part)
                             }
-
                         }
                     }
                     else -> {

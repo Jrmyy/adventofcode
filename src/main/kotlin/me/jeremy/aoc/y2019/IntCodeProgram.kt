@@ -125,19 +125,20 @@ open class IntCodeProgram {
 
     private fun getElement(codes: MutableList<Long>, currentIdx: Int, relativeBase: Int, mode: Char): Long =
         try {
-            codes[when (mode) {
-                '0' -> {
-                    codes[currentIdx]
-                }
-                '1' -> {
-                    currentIdx
-                }
-                else -> {
-                    relativeBase + codes[currentIdx]
-                }
-            }.toInt()]
+            codes[
+                when (mode) {
+                    '0' -> {
+                        codes[currentIdx]
+                    }
+                    '1' -> {
+                        currentIdx
+                    }
+                    else -> {
+                        relativeBase + codes[currentIdx]
+                    }
+                }.toInt()
+            ]
         } catch (e: IndexOutOfBoundsException) {
             0L
         }
-
 }

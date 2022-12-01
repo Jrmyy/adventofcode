@@ -28,10 +28,10 @@ class Day17 : Day<MutableList<MutableList<MutableList<Char>>>, Int> {
                     )
                 }
             ).flatten().filter {
-                it.third in state.indices
-                    && it.second in state[0].indices
-                    && it.first in state[0][0].indices
-                    && it != Triple(x, y, z)
+                it.third in state.indices &&
+                    it.second in state[0].indices &&
+                    it.first in state[0][0].indices &&
+                    it != Triple(x, y, z)
             }.count {
                 state[it.third][it.second][it.first] == '#'
             }
@@ -48,7 +48,8 @@ class Day17 : Day<MutableList<MutableList<MutableList<Char>>>, Int> {
                 '.'
             }.toMutableList()
             coordinates.add(
-                0, coordinates[0].indices.map {
+                0,
+                coordinates[0].indices.map {
                     emptyCoordinates.toMutableList()
                 }.toMutableList()
             )

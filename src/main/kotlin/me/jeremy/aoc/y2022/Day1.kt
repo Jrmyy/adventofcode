@@ -20,7 +20,6 @@ class Day1 : Day<List<Int>, Int> {
             }
             acc
         }
-
 }
 
 fun main() {

@@ -15,7 +15,6 @@ class Day1 : Day<List<Int>, Int> {
         getInput()
             .windowed(windowSize, 1)
             .count { it.last() > it.first() }
-
 }
 
 fun main() {

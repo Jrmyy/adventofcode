@@ -38,7 +38,6 @@ class Day10 : Day<List<Int>, Long> {
     }
 
     override fun getInput(): List<Int> = AOCUtils.getDayInput(2020, 10).map { it.toInt() }
-
 }
 
 fun main() {

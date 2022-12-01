@@ -24,7 +24,6 @@ class Day2 : Day<List<Triple<Int, Int, Int>>, Int> {
             ).minOf { p -> 2 * p } + it.first * it.second * it.third
         }
 
-
     override fun getInput(): List<Triple<Int, Int, Int>> = AOCUtils.getDayInput(2015, 2).map {
         it.split("x").map { s -> s.toInt() }.let { p -> Triple(p[0], p[1], p[2]) }
     }

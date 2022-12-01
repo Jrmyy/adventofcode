@@ -2,7 +2,7 @@ package me.jeremy.aoc.y2021
 
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
-import java.util.*
+import java.util.PriorityQueue
 
 class Day15 : Day<List<List<Int>>, Int> {
 

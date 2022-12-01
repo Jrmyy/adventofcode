@@ -1,7 +1,7 @@
 package me.jeremy.aoc.y2020
 
 import me.jeremy.aoc.Day
-import java.util.*
+import java.util.TreeSet
 
 class Day23 : Day<List<Int>, String> {
 

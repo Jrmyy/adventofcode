@@ -79,7 +79,6 @@ class Day14 : Day<List<Day14.Reaction>, Long> {
             partsThatNeedOre.addAll(scaledReaction.filter { it.name != "ORE" })
             ore += scaledReaction.firstOrNull { it.name == "ORE" }?.amount ?: 0L
             tooMuch[currentStudied.name] = multiplier * reaction.output.amount - reallyNeeded
-
         }
         return ore
     }

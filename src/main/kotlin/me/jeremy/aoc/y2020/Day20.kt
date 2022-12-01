@@ -84,19 +84,28 @@ class Day20 : Day<List<Day20.Tile>, Long> {
         private fun rotate(deg: Int): Tile =
             when (deg) {
                 90 -> {
-                    Tile(idx, pixels.indices.map {
-                        pixels.map { l -> l[it] }.reversed().toList()
-                    }.toList())
+                    Tile(
+                        idx,
+                        pixels.indices.map {
+                            pixels.map { l -> l[it] }.reversed().toList()
+                        }.toList()
+                    )
                 }
                 180 -> {
-                    Tile(idx, pixels.toList().reversed().map {
-                        it.toList().reversed()
-                    }.toList())
+                    Tile(
+                        idx,
+                        pixels.toList().reversed().map {
+                            it.toList().reversed()
+                        }.toList()
+                    )
                 }
                 270 -> {
-                    Tile(idx, pixels[0].indices.map {
-                        pixels.map { l -> l[pixels[0].size - 1 - it] }.toList()
-                    }.toList())
+                    Tile(
+                        idx,
+                        pixels[0].indices.map {
+                            pixels.map { l -> l[pixels[0].size - 1 - it] }.toList()
+                        }.toList()
+                    )
                 }
                 else -> error("Wrong deg")
             }

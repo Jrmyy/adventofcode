@@ -25,7 +25,6 @@ class Day2 : IntCodeProgram(), Day<List<Long>, Int> {
         codes[2] = verb.toLong()
         return runIntCodeProgram(codes, hasOptMode = false).outputs[0].toInt()
     }
-
 }
 
 fun main() {

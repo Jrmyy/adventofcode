@@ -5,7 +5,6 @@ import me.jeremy.aoc.Day
 import kotlin.math.ceil
 import kotlin.math.floor
 
-
 class Day18 : Day<List<String>, Int> {
     override fun runPartOne(): Int {
         val numbers = getInput()

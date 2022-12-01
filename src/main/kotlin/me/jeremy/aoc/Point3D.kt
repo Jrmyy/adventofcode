@@ -7,5 +7,5 @@ data class Point3D(
 ) {
     fun add(point: Point3D): Point3D = Point3D(x + point.x, y + point.y, z + point.z)
 
-    fun subtract(point: Point3D): Point3D = Point3D(x - point.x,y - point.y, z - point.z)
+    fun subtract(point: Point3D): Point3D = Point3D(x - point.x, y - point.y, z - point.z)
 }

@@ -10,7 +10,6 @@ class Day6 : Day<List<List<List<Char>>>, Int> {
                 it.flatten().distinct().size
             }
 
-
     override fun runPartTwo(): Int =
         getInput().sumOf {
             it.flatten()
@@ -26,18 +25,22 @@ class Day6 : Day<List<List<List<Char>>>, Int> {
         val groups = mutableListOf<List<List<Char>>>()
         for (line in lines) {
             if (line == "") {
-                groups.add(currentGroup.map {
-                    it.toList()
-                })
+                groups.add(
+                    currentGroup.map {
+                        it.toList()
+                    }
+                )
                 currentGroup.clear()
             } else {
                 currentGroup.add(line)
             }
         }
         if (currentGroup.size > 0) {
-            groups.add(currentGroup.map {
-                it.toList()
-            })
+            groups.add(
+                currentGroup.map {
+                    it.toList()
+                }
+            )
         }
         return groups
     }

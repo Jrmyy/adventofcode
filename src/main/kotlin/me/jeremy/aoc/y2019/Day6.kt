@@ -35,7 +35,7 @@ class Day6 : Day<List<Pair<String, String>>, Int> {
             val pathToExplore = pathsToExplore.removeAt(0)
             val parent = pathToExplore.split("/").last()
             pathsToExplore.addAll(
-                associations.filter { it.first == parent }.map { "${pathToExplore}/${it.second}" }
+                associations.filter { it.first == parent }.map { "$pathToExplore/${it.second}" }
             )
             paths.add(pathToExplore)
         }

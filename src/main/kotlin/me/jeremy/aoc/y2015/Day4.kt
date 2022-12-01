@@ -25,7 +25,6 @@ class Day4 : Day<String, Int> {
         }
         return n
     }
-
 }
 
 fun main() {

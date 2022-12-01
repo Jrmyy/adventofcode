@@ -47,7 +47,6 @@ class Day11 : Day<String, String> {
             List(l.subList(0, l.size - 2).size) { i -> "${l[i]}${l[i + 1]}${l[i + 2]}" }
         }
     }
-
 }
 
 fun main() {

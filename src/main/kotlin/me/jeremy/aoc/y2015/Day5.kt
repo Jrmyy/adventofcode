@@ -6,9 +6,9 @@ import me.jeremy.aoc.Day
 class Day5 : Day<List<String>, Int> {
     override fun runPartOne(): Int =
         getInput().count {
-            !it.contains("(ab|cd|pq|xy)".toRegex())
-                && it.count { c -> listOf('a', 'e', 'i', 'o', 'u').contains(c) } >= 3
-                && it.windowed(2, 1).any { s -> s.first() == s.last() }
+            !it.contains("(ab|cd|pq|xy)".toRegex()) &&
+                it.count { c -> listOf('a', 'e', 'i', 'o', 'u').contains(c) } >= 3 &&
+                it.windowed(2, 1).any { s -> s.first() == s.last() }
         }
 
     override fun runPartTwo(): Int =

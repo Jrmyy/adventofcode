@@ -30,7 +30,6 @@ class Day4 : Day<List<Day4.RawPassport>, Int> {
                 (!isIn && height in 150 until 194)
         }
 
-
         fun isValidAtFirst(): Boolean =
             byr != null && iyr != null && eyr != null && hgt != null && hcl != null && ecl != null && pid != null
 

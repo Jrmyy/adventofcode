@@ -10,9 +10,9 @@ class Day10 : Day<List<Triple<Int, Int, Char>>, Int> {
     override fun runPartOne(): Int {
         val space = getInput()
         val asteroids = space.filter { it.third == '#' }
-        return asteroids.map {
+        return asteroids.associate {
             Pair(Pair(it.first, it.second), getVisible(it, space).size)
-        }.toMap().maxByOrNull { it.value }?.value ?: throw RuntimeException(":(")
+        }.maxByOrNull { it.value }?.value ?: throw RuntimeException(":(")
     }
 
     override fun runPartTwo(): Int {
@@ -80,15 +80,19 @@ class Day10 : Day<List<Triple<Int, Int, Char>>, Int> {
                             space.first { coord ->
                                 if (from.first > it.first) {
                                     if (from.second > it.second) {
-                                        coord.first == from.first - that * xDiff / gcd && coord.second == from.second - that * yDiff / gcd
+                                        coord.first == from.first - that * xDiff / gcd &&
+                                            coord.second == from.second - that * yDiff / gcd
                                     } else {
-                                        coord.first == from.first - that * xDiff / gcd && coord.second == from.second + that * yDiff / gcd
+                                        coord.first == from.first - that * xDiff / gcd &&
+                                            coord.second == from.second + that * yDiff / gcd
                                     }
                                 } else {
                                     if (from.second > it.second) {
-                                        coord.first == from.first + that * xDiff / gcd && coord.second == from.second - that * yDiff / gcd
+                                        coord.first == from.first + that * xDiff / gcd &&
+                                            coord.second == from.second - that * yDiff / gcd
                                     } else {
-                                        coord.first == from.first + that * xDiff / gcd && coord.second == from.second + that * yDiff / gcd
+                                        coord.first == from.first + that * xDiff / gcd &&
+                                            coord.second == from.second + that * yDiff / gcd
                                     }
                                 }
                             }

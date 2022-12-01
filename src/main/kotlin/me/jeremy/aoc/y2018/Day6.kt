@@ -61,10 +61,10 @@ class Day6 : Day<List<Pair<Int, Int>>, Int> {
         val map: MutableList<MutableList<Int>> = (
             minY - epicenterDistance / 10 - 1..maxY + epicenterDistance / 10 + 1
             ).map {
-                (minX - epicenterDistance / 10 - 1..maxX + epicenterDistance / 10 + 1).map {
-                    -1
-                }.toMutableList()
+            (minX - epicenterDistance / 10 - 1..maxX + epicenterDistance / 10 + 1).map {
+                -1
             }.toMutableList()
+        }.toMutableList()
         coordinates.forEachIndexed { idx, it ->
             map[it.second - minY + 1][it.first - minX + 1] = idx
         }

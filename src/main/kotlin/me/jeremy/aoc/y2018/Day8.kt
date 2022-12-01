@@ -26,7 +26,6 @@ class Day8 : Day<Day8.NavigationSystemNode, Int> {
             }
     }
 
-
     override fun runPartOne(): Int = getInput().sumAllMetadata()
 
     override fun runPartTwo(): Int = getInput().sumIndexedMetadata()
@@ -38,7 +37,6 @@ class Day8 : Day<Day8.NavigationSystemNode, Int> {
             .toMutableList()
         return buildNode(figures)
     }
-
 
     private fun buildNode(figures: MutableList<Int>): NavigationSystemNode {
         val childrenCount = figures.removeAt(0)

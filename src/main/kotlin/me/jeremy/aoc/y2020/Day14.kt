@@ -130,9 +130,7 @@ class Day14 : Day<List<Pair<List<Char>, List<Pair<Long, Long>>>>, Long> {
             }
         }.reversed()
     }
-
 }
-
 
 fun main() {
     val day = Day14()

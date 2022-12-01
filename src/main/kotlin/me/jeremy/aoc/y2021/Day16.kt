@@ -110,7 +110,6 @@ class Day16 : Day<List<Int>, Long> {
     }
 
     private fun hexToInt(hex: List<Int>): Long = hex.joinToString("").toLong(2)
-
 }
 
 fun main() {

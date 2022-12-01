@@ -32,13 +32,15 @@ class Day8 : Day<List<List<Int>>, Int> {
 
     private fun display(l: List<Int>) {
         l.chunked(25).forEach {
-            println(it.joinToString("") { that ->
-                if (that == 0) {
-                    " "
-                } else {
-                    "."
+            println(
+                it.joinToString("") { that ->
+                    if (that == 0) {
+                        " "
+                    } else {
+                        "."
+                    }
                 }
-            })
+            )
         }
     }
 
@@ -47,7 +49,6 @@ class Day8 : Day<List<List<Int>>, Int> {
         .map { it.toString().toInt() }
         .chunked(25 * 6)
 }
-
 
 fun main() {
     val day = Day8()

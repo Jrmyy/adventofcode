@@ -50,7 +50,6 @@ class Day17 : Day<Pair<Pair<Int, Int>, Pair<Int, Int>>, Int> {
             }
         }
     }
-
 }
 
 fun main() {

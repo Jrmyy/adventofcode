@@ -45,12 +45,16 @@ class Day11 : Day<Int, String> {
 
     private fun getFuelGrid(): ArrayDeque<ArrayDeque<Int>> {
         val serialNumber = getInput()
-        return ArrayDeque((0 until 300).map { y ->
-            ArrayDeque((0 until 300).map { x ->
-                val rackId = (x + 1 + 10)
-                (((rackId * (y + 1) + serialNumber) * rackId) / 100).toString().last().toString().toInt() - 5
-            })
-        })
+        return ArrayDeque(
+            (0 until 300).map { y ->
+                ArrayDeque(
+                    (0 until 300).map { x ->
+                        val rackId = (x + 1 + 10)
+                        (((rackId * (y + 1) + serialNumber) * rackId) / 100).toString().last().toString().toInt() - 5
+                    }
+                )
+            }
+        )
     }
 }
 

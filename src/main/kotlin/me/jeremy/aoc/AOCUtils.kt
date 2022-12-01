@@ -3,7 +3,7 @@ package me.jeremy.aoc
 object AOCUtils {
 
     fun getDayInput(year: Int, day: Int): List<String> =
-        javaClass.classLoader.getResourceAsStream("${year}/day${day}.txt")
+        javaClass.classLoader.getResourceAsStream("$year/day$day.txt")!!
             .bufferedReader()
             .readLines()
 
@@ -23,5 +23,4 @@ object AOCUtils {
         }.filter {
             it.second in l.indices && it.first in l.first().indices
         }
-
 }

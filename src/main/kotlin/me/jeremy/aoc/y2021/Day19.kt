@@ -50,9 +50,11 @@ class Day19 : Day<MutableList<List<Point3D>>, Int> {
                 if (line.contains("scanner")) {
                     scanners.add(mutableListOf())
                 } else if (line != "") {
-                    scanners.last().add(line.split(",").let {
-                        Point3D(it.first().toDouble(), it[1].toDouble(), it.last().toDouble())
-                    })
+                    scanners.last().add(
+                        line.split(",").let {
+                            Point3D(it.first().toDouble(), it[1].toDouble(), it.last().toDouble())
+                        }
+                    )
                 }
             }
             scanners.map { it.toList() }.toMutableList()

@@ -7,5 +7,4 @@ interface Day<IptT, ResT> {
     fun runPartTwo(): ResT
 
     fun getInput(): IptT
-
 }

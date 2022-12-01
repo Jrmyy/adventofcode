@@ -134,9 +134,11 @@ class Day23 : Day<Day23.Maze, Long> {
                     'C' to listOf('B', 'A'),
                     'D' to listOf('A', 'C'),
                 )
-                return maze.copy(rooms = maze.rooms.mapValues { e ->
-                    listOf(e.value.first()) + toAdd[e.key]!! + listOf(e.value.last())
-                })
+                return maze.copy(
+                    rooms = maze.rooms.mapValues { e ->
+                        listOf(e.value.first()) + toAdd[e.key]!! + listOf(e.value.last())
+                    }
+                )
             }
 
             fun from(lines: List<String>): Maze =

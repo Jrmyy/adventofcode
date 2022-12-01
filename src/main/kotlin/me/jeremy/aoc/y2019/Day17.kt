@@ -75,9 +75,9 @@ class Day17 : IntCodeProgram(), Day<List<Long>, Int> {
                 currentRobotPosition.first + direction.first, currentRobotPosition.second + direction.second
             )
             if (
-                nxy.first in filteredScaffolds.indices
-                && nxy.second in scaffolds.first().indices
-                && scaffolds[nxy.first][nxy.second] == "#"
+                nxy.first in filteredScaffolds.indices &&
+                nxy.second in scaffolds.first().indices &&
+                scaffolds[nxy.first][nxy.second] == "#"
             ) {
                 currentRobotPosition = nxy
                 path[path.lastIndex] = Pair(path.last().first, path.last().second + 1)
@@ -87,9 +87,9 @@ class Day17 : IntCodeProgram(), Day<List<Long>, Int> {
                     currentRobotPosition.first + tryR.first, currentRobotPosition.second + tryR.second
                 )
                 if (
-                    nxy.first in filteredScaffolds.indices
-                    && nxy.second in scaffolds.first().indices
-                    && scaffolds[nxy.first][nxy.second] == "#"
+                    nxy.first in filteredScaffolds.indices &&
+                    nxy.second in scaffolds.first().indices &&
+                    scaffolds[nxy.first][nxy.second] == "#"
                 ) {
                     currentRobotPosition = nxy
                     direction = tryR
@@ -100,9 +100,9 @@ class Day17 : IntCodeProgram(), Day<List<Long>, Int> {
                         currentRobotPosition.first + tryL.first, currentRobotPosition.second + tryL.second
                     )
                     if (
-                        nxy.first in filteredScaffolds.indices
-                        && nxy.second in scaffolds.first().indices
-                        && scaffolds[nxy.first][nxy.second] == "#"
+                        nxy.first in filteredScaffolds.indices &&
+                        nxy.second in scaffolds.first().indices &&
+                        scaffolds[nxy.first][nxy.second] == "#"
                     ) {
                         currentRobotPosition = nxy
                         direction = tryL
@@ -149,7 +149,6 @@ class Day17 : IntCodeProgram(), Day<List<Long>, Int> {
     override fun getInput(): List<Long> = AOCUtils.getDayInput(2019, 17)[0]
         .split(",")
         .map { it.toLong() }
-
 }
 
 fun main() {

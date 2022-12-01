@@ -50,7 +50,9 @@ class Day11 : IntCodeProgram(), Day<List<Long>, Int> {
     }
 
     private fun getDirectionAndPos(
-        currentDirection: Char, currentPos: Pair<Int, Int>, turn: Int
+        currentDirection: Char,
+        currentPos: Pair<Int, Int>,
+        turn: Int
     ): Pair<Pair<Int, Int>, Char> =
         when (currentDirection) {
             'U' -> if (turn == 0) {
@@ -105,7 +107,6 @@ class Day11 : IntCodeProgram(), Day<List<Long>, Int> {
     }
 
     override fun getInput(): List<Long> = AOCUtils.getDayInput(2019, 11)[0].split(",").map { it.toLong() }
-
 }
 
 fun main() {
@@ -113,4 +114,3 @@ fun main() {
     println(day.runPartOne())
     println(day.runPartTwo())
 }
-

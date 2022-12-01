@@ -48,8 +48,8 @@ class Day21 : Day<List<Day21.Food>, Int> {
         val allergenIngredientMapping = mutableMapOf<String, MutableList<String>>()
         val allergensSize = foods.flatMap { it.allergens }.distinct().size
         while (
-            allergenIngredientMapping.size != allergensSize
-            || allergenIngredientMapping.values.any { it.size > 1 }
+            allergenIngredientMapping.size != allergensSize ||
+            allergenIngredientMapping.values.any { it.size > 1 }
         ) {
             foods.forEach { food ->
                 if (food.allergens.isNotEmpty()) {

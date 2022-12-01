@@ -73,7 +73,6 @@ class Day13 : IntCodeProgram(), Day<List<Long>, Int> {
             else -> Pair(position, paddleX)
         }
     }
-
 }
 
 fun main() {

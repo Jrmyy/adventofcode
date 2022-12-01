@@ -39,14 +39,17 @@ class Day16 : Day<Day16.TicketsSystem, Long> {
             validTickets.map { it[idx] }
         }
         val rulesPossibleIdx = system.rules.map { rule ->
-            Pair(rule.field, validTicketsSeparatedByIndex.mapIndexedNotNull { idx, it ->
-                val res = it.all { i -> rule.ranges.any { r -> i >= r.first && i <= r.second } }
-                if (res) {
-                    idx
-                } else {
-                    null
+            Pair(
+                rule.field,
+                validTicketsSeparatedByIndex.mapIndexedNotNull { idx, it ->
+                    val res = it.all { i -> rule.ranges.any { r -> i >= r.first && i <= r.second } }
+                    if (res) {
+                        idx
+                    } else {
+                        null
+                    }
                 }
-            })
+            )
         }.sortedBy { it.second.size }
         val foundIdx = mutableMapOf<String, Int>()
         // This works because when watching the data, one field had 1 alternative, an other one had 2 alternatives, etc...
@@ -66,10 +69,13 @@ class Day16 : Day<Day16.TicketsSystem, Long> {
         val ruleRegex = Regex("([a-z ]+): (\\d+-\\d+) or (\\d+-\\d+)")
         val rules = lines.subList(0, emptyLines[0]).map {
             val groups = ruleRegex.find(it)!!.groups
-            TicketRule(groups[1]!!.value, listOf(groups[2]!!.value, groups[3]!!.value).map { that ->
-                val split = that.split("-")
-                Pair(split[0].toInt(), split[1].toInt())
-            })
+            TicketRule(
+                groups[1]!!.value,
+                listOf(groups[2]!!.value, groups[3]!!.value).map { that ->
+                    val split = that.split("-")
+                    Pair(split[0].toInt(), split[1].toInt())
+                }
+            )
         }
         val userTicket = lines[emptyLines[1] - 1].split(",").map { it.toInt() }
         val otherTickets = lines.subList(emptyLines[1] + 2, lines.size).map {
@@ -77,7 +83,6 @@ class Day16 : Day<Day16.TicketsSystem, Long> {
         }
         return TicketsSystem(rules, userTicket, otherTickets)
     }
-
 }
 
 fun main() {

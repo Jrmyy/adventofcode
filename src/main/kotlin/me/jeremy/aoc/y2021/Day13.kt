@@ -91,7 +91,6 @@ class Day13 : Day<Day13.TransparentPaper, Int> {
             }
         )
     }
-
 }
 
 fun main() {

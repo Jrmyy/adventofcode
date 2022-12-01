@@ -12,13 +12,13 @@ class Day19 : Day<Pair<List<Day19.Rule>, List<String>>, Int> {
 
         fun generateRegex(reference: Map<Int, String>): String =
             "(${
-                alternatives.second!!.joinToString("|") {
-                    "(${
-                        it.joinToString("") { i ->
-                            reference[i] ?: error("Missing regex $i")
-                        }
-                    })"
+            alternatives.second!!.joinToString("|") {
+                "(${
+                it.joinToString("") { i ->
+                    reference[i] ?: error("Missing regex $i")
                 }
+                })"
+            }
             })"
     }
 
@@ -37,10 +37,10 @@ class Day19 : Day<Pair<List<Day19.Rule>, List<String>>, Int> {
         val regex31 = acceptedExpressions[31] ?: error("No 31")
         val regex42 = acceptedExpressions[42] ?: error("No 42")
         repeat(12) {
-            regex11 += "(${regex42}{${it + 1}}${regex31}{${it + 1}})|"
+            regex11 += "($regex42{${it + 1}}$regex31{${it + 1}})|"
         }
         regex11 = "(${regex11.dropLast(1)})"
-        acceptedExpressions[0] = "(${regex42}+)${regex11}"
+        acceptedExpressions[0] = "($regex42+)$regex11"
         return expressions.count {
             Regex("^${acceptedExpressions[0]}$").matches(it)
         }
@@ -95,9 +95,9 @@ class Day19 : Day<Pair<List<Day19.Rule>, List<String>>, Int> {
         while (acceptedExpressions.size != rules.size - containsLoop.size) {
             val evaluableRules = rules.filter {
                 it.alternatives.second != null &&
-                    it.alternatives.second!!.flatten().toSet().subtract(acceptedExpressions.keys).isEmpty()
-                    && it.idx !in acceptedExpressions.keys
-                    && !it.alternatives.second!!.flatten().contains(it.idx)
+                    it.alternatives.second!!.flatten().toSet().subtract(acceptedExpressions.keys).isEmpty() &&
+                    it.idx !in acceptedExpressions.keys &&
+                    !it.alternatives.second!!.flatten().contains(it.idx)
             }
             if (evaluableRules.isEmpty()) {
                 break

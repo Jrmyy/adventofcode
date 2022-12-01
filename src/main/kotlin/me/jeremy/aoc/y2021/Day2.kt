@@ -25,7 +25,6 @@ class Day2 : Day<List<Pair<String, Int>>, Int> {
     override fun getInput(): List<Pair<String, Int>> = AOCUtils.getDayInput(2021, 2).map {
         it.split(" ").let { p -> Pair(p.first(), p.last().toInt()) }
     }
-
 }
 
 fun main() {

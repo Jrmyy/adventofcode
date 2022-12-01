@@ -2,7 +2,7 @@ package me.jeremy.aoc.y2021
 
 import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
-import java.util.*
+import java.util.Locale
 
 class Day12 : Day<List<Pair<String, String>>, Int> {
     override fun runPartOne(): Int =
@@ -52,9 +52,7 @@ class Day12 : Day<List<Pair<String, String>>, Int> {
                 }
             }
         }
-
 }
-
 
 fun main() {
     val day = Day12()

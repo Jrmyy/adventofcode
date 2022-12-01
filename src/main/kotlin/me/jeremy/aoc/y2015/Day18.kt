@@ -13,7 +13,8 @@ class Day18 : Day<List<MutableList<Char>>, Int> {
         grid[0][grid.first().size - 1] = '#'
         grid[grid.size - 1][grid.first().size - 1] = '#'
         return simulate(
-            grid, listOf(
+            grid,
+            listOf(
                 Pair(0, 0),
                 Pair(0, grid.first().size - 1),
                 Pair(grid.size - 1, 0),

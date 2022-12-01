@@ -21,17 +21,21 @@ class Day4 : Day<List<Day4.GuardEvent>, Int> {
 
     override fun runPartOne(): Int {
         val minutesAsleepPerGuard = computeMinutesAsleepPerGuard()
-        return (minutesAsleepPerGuard.maxByOrNull {
-            it.value.size
-        } ?: error("No minute asleep for any guard"))
+        return (
+            minutesAsleepPerGuard.maxByOrNull {
+                it.value.size
+            } ?: error("No minute asleep for any guard")
+            )
             .toPair()
             .let {
                 Pair(
                     it.first,
-                    (it.second
-                        .groupingBy { m -> m }
-                        .eachCount()
-                        .maxByOrNull { m -> m.value } ?: error("No max minute"))
+                    (
+                        it.second
+                            .groupingBy { m -> m }
+                            .eachCount()
+                            .maxByOrNull { m -> m.value } ?: error("No max minute")
+                        )
                         .key
                 )
             }
@@ -41,16 +45,18 @@ class Day4 : Day<List<Day4.GuardEvent>, Int> {
 
     override fun runPartTwo(): Int {
         val minutesAsleepPerGuard = computeMinutesAsleepPerGuard()
-        return ((0 until 60).map { minute ->
-            Pair(
-                minute,
-                minutesAsleepPerGuard.map {
-                    Pair(it.key, it.value.count { asleepMinute -> asleepMinute == minute })
-                }.maxByOrNull { it.second } ?: error("No guard asleep for this minute")
+        return (
+            (0 until 60).map { minute ->
+                Pair(
+                    minute,
+                    minutesAsleepPerGuard.map {
+                        Pair(it.key, it.value.count { asleepMinute -> asleepMinute == minute })
+                    }.maxByOrNull { it.second } ?: error("No guard asleep for this minute")
+                )
+            }.maxByOrNull {
+                it.second.second
+            } ?: error("No max minute asleep for any guard")
             )
-        }.maxByOrNull {
-            it.second.second
-        } ?: error("No max minute asleep for any guard"))
             .let {
                 Pair(it.first, it.second.first)
             }
@@ -92,9 +98,11 @@ class Day4 : Day<List<Day4.GuardEvent>, Int> {
             if (it.eventType == GuardEventType.FALL_ASLEEP) {
                 asleepTimestamp = it.timestamp
             } else if (it.eventType == GuardEventType.WAKE_UP) {
-                minutesAsleepPerGuard[it.id] = (minutesAsleepPerGuard.getOrDefault(it.id, mutableListOf()) + (
-                    asleepTimestamp!!.minute until it.timestamp.minute
-                    )).toMutableList()
+                minutesAsleepPerGuard[it.id] = (
+                    minutesAsleepPerGuard.getOrDefault(it.id, mutableListOf()) + (
+                        asleepTimestamp!!.minute until it.timestamp.minute
+                        )
+                    ).toMutableList()
             }
         }
         return minutesAsleepPerGuard

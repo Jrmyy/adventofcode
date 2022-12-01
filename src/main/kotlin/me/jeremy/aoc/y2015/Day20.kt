@@ -36,7 +36,6 @@ class Day20 : Day<Int, Int> {
     }
 
     override fun getInput(): Int = AOCUtils.getDayInput(2015, 20).first().toInt()
-
 }
 
 fun main() {

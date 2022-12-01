@@ -16,7 +16,8 @@ class Day13 : Day<Pair<Int, List<String>>, Long> {
             val busesRound = departTimestamp / it
             val res = busesRound * it - departTimestamp
             Pair(
-                it, if (res < 0) {
+                it,
+                if (res < 0) {
                     res + it
                 } else {
                     res
