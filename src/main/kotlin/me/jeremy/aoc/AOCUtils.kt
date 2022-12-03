@@ -1,11 +1,19 @@
 package me.jeremy.aoc
 
+import java.math.BigInteger
+import java.security.MessageDigest
+
 object AOCUtils {
 
     fun getDayInput(year: Int, day: Int): List<String> =
         javaClass.classLoader.getResourceAsStream("$year/day$day.txt")!!
             .bufferedReader()
             .readLines()
+
+    fun md5(s: String): String =
+        BigInteger(1, MessageDigest.getInstance("MD5").digest(s.toByteArray()))
+            .toString(16)
+            .padStart(32, '0')
 
     fun getAdjacentPositions(l: List<List<Any>>, y: Int, x: Int, diagCount: Boolean = false): List<Pair<Int, Int>> =
         listOf(
