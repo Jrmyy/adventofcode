@@ -9,9 +9,12 @@ class AssembunnyInterpreter {
 
         fun compute(
             instructions: MutableList<String>,
-            registers: MutableMap<String, Int> = mutableMapOf()
+            registers: MutableMap<String, Int> = mutableMapOf(),
+            afterOptsToStop: Int = 10,
         ): Int {
             var i = 0
+            var prevOpt: Int? = null
+            var optsCount = 0
             while (i < instructions.size) {
                 val instruction = instructions[i]
                 if (instruction.startsWith("cpy")) {
@@ -65,8 +68,20 @@ class AssembunnyInterpreter {
                             instructions[i + x] = toReplace.replace(taType, "jnz")
                         }
                     }
-                    println(x)
-                    println(instructions.subList(16, instructions.size))
+                    i++
+                } else if (instruction.startsWith("out")) {
+                    val x = instruction.replace("out ", "").let { xi ->
+                        if ("-?\\d+".toRegex().matches(xi)) xi.toInt() else (registers[xi] ?: 0)
+                    }
+                    if (x in 0..1 && prevOpt != x) {
+                        prevOpt = x
+                        optsCount++
+                        if (optsCount >= afterOptsToStop) {
+                            break
+                        }
+                    } else {
+                        error("This opt is not compliant, opt is $x and prev opt was $prevOpt")
+                    }
                     i++
                 }
             }
