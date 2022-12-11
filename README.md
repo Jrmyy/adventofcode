@@ -8,7 +8,7 @@ Ambition is to fulfill all days of all events ... 😬
 | Year | Completion                         |
 |------|------------------------------------|
 | 2015 | ![](https://progress-bar.dev/100/) |
-| 2016 | ![](https://progress-bar.dev/76/)  |
+| 2016 | ![](https://progress-bar.dev/84/)  |
 | 2017 | ![](https://progress-bar.dev/0/)   |
 | 2018 | ![](https://progress-bar.dev/48/)  |
 | 2019 | ![](https://progress-bar.dev/78/)  |
