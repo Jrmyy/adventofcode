@@ -5,13 +5,11 @@
 Advent of code submissions in Kotlin.
 Ambition is to fulfill all days of all events ... 😬
 
-| Year | Completion                         |
-|------|------------------------------------|
-| 2015 | ![](https://progress-bar.dev/100/) |
-| 2016 | ![](https://progress-bar.dev/84/)  |
-| 2017 | ![](https://progress-bar.dev/0/)   |
-| 2018 | ![](https://progress-bar.dev/48/)  |
-| 2019 | ![](https://progress-bar.dev/78/)  |
-| 2020 | ![](https://progress-bar.dev/100/) |                                   |
-| 2021 | ![](https://progress-bar.dev/100/) |                                   |
-| 2022 | ![](https://progress-bar.dev/100/) |                                  |
+[![](https://img.shields.io/badge/2022-34%20stars-239323)](./src/main/kotlin/me/jeremy/aoc/y2022)
+[![](https://img.shields.io/badge/2021-50%20stars-239323)](./src/main/kotlin/me/jeremy/aoc/y2021)
+[![](https://img.shields.io/badge/2020-50%20stars-239323)](./src/main/kotlin/me/jeremy/aoc/y2020)
+[![](https://img.shields.io/badge/2019-39%20stars-239323)](./src/main/kotlin/me/jeremy/aoc/y2019)
+[![](https://img.shields.io/badge/2018-24%20stars-239323)](./src/main/kotlin/me/jeremy/aoc/y2018)
+[![](https://img.shields.io/badge/2017-0%20stars-239323)](./src/main/kotlin/me/jeremy/aoc/y2017)
+[![](https://img.shields.io/badge/2016-44%20stars-239323)](./src/main/kotlin/me/jeremy/aoc/y2016)
+[![](https://img.shields.io/badge/2015-50%20stars-239323)](./src/main/kotlin/me/jeremy/aoc/y2015)
