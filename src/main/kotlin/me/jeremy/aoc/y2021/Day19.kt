@@ -69,10 +69,10 @@ class Day19 : Day<MutableList<List<Point3D>>, Int> {
                 // For instance, in the example in 2D, (0, 2) - (-5, 0) gives (5,2), and so we check the number
                 // of shared positions between first scanner (in absolute, because of the algorithm) and second scanner
                 // in absolute by adding to all permuted positions the scanner position
-                val scanner = fsc[i].subtract(pssc[j])
+                val scanner = fsc[i] - pssc[j]
                 val uniques = mutableSetOf<Point3D>()
                 uniques.addAll(fsc)
-                uniques.addAll(pssc.map { it.add(scanner) })
+                uniques.addAll(pssc.map { it + scanner })
                 // If there is 12 or more share positions, we found our scanner
                 if (fsc.size + pssc.size - uniques.size >= 12) {
                     return scanner
@@ -100,7 +100,7 @@ class Day19 : Day<MutableList<List<Point3D>>, Int> {
                 // We return the absolute coordinates, meaning the permuted coordinates with the scanner position added
                 // (It is absolute coordinates because we start with first scanner position at (0,0,0)
                 // like in the example
-                return Pair(permute.map { it.add(scanner) }, scanner)
+                return Pair(permute.map { it + scanner }, scanner)
             }
         }
         return null
