@@ -1,5 +1,6 @@
 package me.jeremy.aoc.y2018
 
+import me.jeremy.aoc.AOCUtils
 import me.jeremy.aoc.Day
 
 class Day11 : Day<Int, String> {
@@ -41,7 +42,7 @@ class Day11 : Day<Int, String> {
         return dimensions.maxByOrNull { it.value }!!.key.joinToString(",")
     }
 
-    override fun getInput(): Int = 9995
+    override fun getInput(): Int = AOCUtils.getDayInput(2018, 11).first().toInt()
 
     private fun getFuelGrid(): ArrayDeque<ArrayDeque<Int>> {
         val serialNumber = getInput()
