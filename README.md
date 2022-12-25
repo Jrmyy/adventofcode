@@ -5,7 +5,7 @@
 Advent of code submissions in Kotlin.
 Ambition is to fulfill all days of all events ... 😬
 
-[![](https://img.shields.io/badge/2022-48%20stars-239323)](./src/main/kotlin/me/jeremy/aoc/y2022)
+[![](https://img.shields.io/badge/2022-50%20stars-239323)](./src/main/kotlin/me/jeremy/aoc/y2022)
 [![](https://img.shields.io/badge/2021-50%20stars-239323)](./src/main/kotlin/me/jeremy/aoc/y2021)
 [![](https://img.shields.io/badge/2020-50%20stars-239323)](./src/main/kotlin/me/jeremy/aoc/y2020)
 [![](https://img.shields.io/badge/2019-39%20stars-239323)](./src/main/kotlin/me/jeremy/aoc/y2019)
