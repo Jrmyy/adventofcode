@@ -157,7 +157,7 @@ $RECYCLE.BIN/
 
 # Package Files #
 *.jar
-!gradle/wrapper/gradle-wrapper.jar
+aoc-kotlin/gradle/wrapper/gradle-wrapper.jar
 *.war
 *.nar
 *.ear
@@ -165,7 +165,7 @@ $RECYCLE.BIN/
 *.tar.gz
 *.rar
 
-out/
+aoc-kotlin/out/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
