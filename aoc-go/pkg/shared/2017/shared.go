@@ -37,7 +37,7 @@ func KnotHash(original string) string {
 		for _, el := range lb {
 			xorOpt = xorOpt ^ el
 		}
-		blocks[b] = fmt.Sprintf("%x", xorOpt)
+		blocks[b] = fmt.Sprintf("%02x", xorOpt)
 	}
 	return strings.Join(blocks, "")
 }
