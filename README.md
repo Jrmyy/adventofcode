@@ -5,7 +5,7 @@
 Advent of code submissions in Kotlin & Go.
 Ambition is to fulfill all days of all events ... 😬
 
-[![](https://img.shields.io/badge/2023-14%20stars-239323)]()
+[![](https://img.shields.io/badge/2023-16%20stars-239323)]()
 [![](https://img.shields.io/badge/2022-50%20stars-239323)]()
 [![](https://img.shields.io/badge/2021-50%20stars-239323)]()
 [![](https://img.shields.io/badge/2020-50%20stars-239323)]()
