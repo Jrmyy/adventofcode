@@ -8,7 +8,7 @@
 Advent of code submissions in Kotlin & Go.
 Ambition is to fulfill all days of all events ... 😬
 
-![2023](https://img.shields.io/badge/2023-20%20stars-239323)
+![2023](https://img.shields.io/badge/2023-22%20stars-239323)
 ![2022](https://img.shields.io/badge/2022-50%20stars-239323)
 ![2021](https://img.shields.io/badge/2021-50%20stars-239323)
 ![2020](https://img.shields.io/badge/2020-50%20stars-239323)
