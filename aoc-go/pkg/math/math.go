@@ -24,7 +24,7 @@ func Lcm(a, b int) int {
 }
 
 func LcmList(l []int) int {
-	lcm := l[1]
+	lcm := l[0]
 	for _, i := range l[1:] {
 		lcm = Lcm(lcm, i)
 	}
