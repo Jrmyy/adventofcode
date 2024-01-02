@@ -214,3 +214,7 @@ GitHub.sublime-settings
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
+
+# AOC days input files
+aoc-go/**/input.txt
+aoc-kotlin/src/main/resources/**/day*.txt
