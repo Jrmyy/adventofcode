@@ -1,19 +1,19 @@
-![Go](https://img.shields.io/badge/Go%20🤍-%2300ADD8.svg)
-![Kotlin](https://img.shields.io/badge/Kotlin%20🤍-7f52ff.svg) 
-[![ktlint](https://img.shields.io/badge/ktlint%20code--style-%E2%9D%A4-FF4081)](https://pinterest.github.io/ktlint/)
-
-
 # 🎄 AdventOfCode 🎄
 
-Advent of code submissions in Kotlin & Go (and some Python along the way).
-Ambition is to fulfill all days of all events ... 😬
+![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
+![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
-![2023](https://img.shields.io/badge/2023-50%20stars-239323)
-![2022](https://img.shields.io/badge/2022-50%20stars-239323)
-![2021](https://img.shields.io/badge/2021-50%20stars-239323)
-![2020](https://img.shields.io/badge/2020-50%20stars-239323)
-![2019](https://img.shields.io/badge/2019-39%20stars-239323)
-![2018](https://img.shields.io/badge/2018-28%20stars-239323)
-![2017](https://img.shields.io/badge/2017-40%20stars-239323)
-![2016](https://img.shields.io/badge/2016-50%20stars-239323)
-![2015](https://img.shields.io/badge/2015-50%20stars-239323)
+Advent of code submissions in Go, Kotlin & Python. Ambition is to fulfill all days of all events ... 😬
+
+[![AoC 2015](https://img.shields.io/badge/2015-★_50-44cc11)](https://adventofcode.com/2015)
+[![AoC 2016](https://img.shields.io/badge/2016-★_50-44cc11)](https://adventofcode.com/2016)
+[![AoC 2017](https://img.shields.io/badge/2017-★_40-c5d208)](https://adventofcode.com/2017)
+[![AoC 2018](https://img.shields.io/badge/2018-★_28-bcb01b)](https://adventofcode.com/2018)
+[![AoC 2019](https://img.shields.io/badge/2019-★_39-c5d208)](https://adventofcode.com/2019)
+
+[![AoC 2020](https://img.shields.io/badge/2020-★_50-44cc11)](https://adventofcode.com/2020)
+[![AoC 2021](https://img.shields.io/badge/2021-★_50-44cc11)](https://adventofcode.com/2021)
+[![AoC 2022](https://img.shields.io/badge/2022-★_50-44cc11)](https://adventofcode.com/2022)
+[![AoC 2023](https://img.shields.io/badge/2023-★_50-44cc11)](https://adventofcode.com/2023)
+[![AoC 2024](https://img.shields.io/badge/2024-★_00-9f9f9f)](https://adventofcode.com/2024)
