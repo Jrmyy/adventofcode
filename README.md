@@ -14,6 +14,6 @@ Ambition is to fulfill all days of all events ... 😬
 ![2020](https://img.shields.io/badge/2020-50%20stars-239323)
 ![2019](https://img.shields.io/badge/2019-39%20stars-239323)
 ![2018](https://img.shields.io/badge/2018-28%20stars-239323)
-![2017](https://img.shields.io/badge/2017-38%20stars-239323)
+![2017](https://img.shields.io/badge/2017-40%20stars-239323)
 ![2016](https://img.shields.io/badge/2016-50%20stars-239323)
 ![2015](https://img.shields.io/badge/2015-50%20stars-239323)
