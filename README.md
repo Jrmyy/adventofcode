@@ -8,7 +8,7 @@ Advent of code submissions in Go, Kotlin & Python. Ambition is to fulfill all da
 
 [![AoC 2015](https://img.shields.io/badge/2015-★_50-44cc11)](https://adventofcode.com/2015)
 [![AoC 2016](https://img.shields.io/badge/2016-★_50-44cc11)](https://adventofcode.com/2016)
-[![AoC 2017](https://img.shields.io/badge/2017-★_40-c5d208)](https://adventofcode.com/2017)
+[![AoC 2017](https://img.shields.io/badge/2017-★_42-c5d208)](https://adventofcode.com/2017)
 [![AoC 2018](https://img.shields.io/badge/2018-★_28-bcb01b)](https://adventofcode.com/2018)
 [![AoC 2019](https://img.shields.io/badge/2019-★_39-c5d208)](https://adventofcode.com/2019)
 
