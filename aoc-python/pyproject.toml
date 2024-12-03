@@ -3,7 +3,10 @@ name = "aoc-python"
 version = "0.1.0"
 description = "AOC submissions in Python"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "networkx>=3.4.2",
+    "sympy>=1.13.3",
+]
 
 
 [tool.ruff]
