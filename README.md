@@ -1,4 +1,4 @@
-# 🎄 AdventOfCode 🎄
+# 🎄 Advent of Code 🎄
 
 ![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
 ![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)
@@ -16,4 +16,4 @@ Advent of code submissions in Go, Kotlin & Python. Ambition is to fulfill all da
 [![AoC 2021](https://img.shields.io/badge/2021-★_50-44cc11)](https://adventofcode.com/2021)
 [![AoC 2022](https://img.shields.io/badge/2022-★_50-44cc11)](https://adventofcode.com/2022)
 [![AoC 2023](https://img.shields.io/badge/2023-★_50-44cc11)](https://adventofcode.com/2023)
-[![AoC 2024](https://img.shields.io/badge/2024-★_08-cd5c5c)](https://adventofcode.com/2024)
+[![AoC 2024](https://img.shields.io/badge/2024-★_10-e7801a)](https://adventofcode.com/2024)
