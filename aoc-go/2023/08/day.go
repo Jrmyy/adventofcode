@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/math"
 )
 
 //go:embed input.txt
@@ -52,7 +51,7 @@ func runPartTwo(instructions []string, network map[string][]string) int {
 		minToReach[cIdx] = cnt
 	}
 
-	return math.LcmList(minToReach)
+	return aocutils.LcmList(minToReach)
 }
 
 func parseInput() ([]string, map[string][]string) {

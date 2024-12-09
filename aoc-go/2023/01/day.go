@@ -6,7 +6,6 @@ import (
 	"regexp"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -51,7 +50,7 @@ func findCalibrationValues(lines []string, allowStringDigits bool) int {
 				}
 			}
 		}
-		s += cast.MustStringToInt(miV + maV)
+		s += aocutils.MustStringToInt(miV + maV)
 	}
 	return s
 }

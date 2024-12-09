@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 	shared_2017 "adventofcode-go/pkg/shared/2017"
 )
 
@@ -33,7 +32,7 @@ func parseInputP1(line string) []int {
 	figures := strings.Split(line, ",")
 	ipt := make([]int, len(figures))
 	for idx, fig := range figures {
-		ipt[idx] = cast.MustStringToInt(fig)
+		ipt[idx] = aocutils.MustStringToInt(fig)
 	}
 	return ipt
 }

@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -72,7 +71,7 @@ func parseInput() [][]int {
 		parts := strings.Split(line, " ")
 		l := make([]int, len(parts))
 		for i, j := range parts {
-			l[i] = cast.MustStringToInt(j)
+			l[i] = aocutils.MustStringToInt(j)
 		}
 		sensor[idx] = l
 	}

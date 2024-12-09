@@ -8,7 +8,6 @@ import (
 	"slices"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -132,12 +131,12 @@ func parseInput() map[string]brick {
 		n := fmt.Sprintf("%v", idx)
 		ipt[n] = brick{
 			Name: n,
-			Fx:   cast.MustStringToInt(m[0]),
-			Fy:   cast.MustStringToInt(m[1]),
-			Fz:   cast.MustStringToInt(m[2]),
-			Tx:   cast.MustStringToInt(m[3]),
-			Ty:   cast.MustStringToInt(m[4]),
-			Tz:   cast.MustStringToInt(m[5]),
+			Fx:   aocutils.MustStringToInt(m[0]),
+			Fy:   aocutils.MustStringToInt(m[1]),
+			Fz:   aocutils.MustStringToInt(m[2]),
+			Tx:   aocutils.MustStringToInt(m[3]),
+			Ty:   aocutils.MustStringToInt(m[4]),
+			Tz:   aocutils.MustStringToInt(m[5]),
 		}
 	}
 	return ipt

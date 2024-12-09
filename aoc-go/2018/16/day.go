@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"reflect"
 	"regexp"
-	"strconv"
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
@@ -118,7 +117,7 @@ var re = regexp.MustCompile(`(?m)(\d+)`)
 func parseRegisters(rawRegisters string) []int {
 	var registers []int
 	for _, match := range re.FindAllString(rawRegisters, -1) {
-		i, _ := strconv.Atoi(match)
+		i := aocutils.MustStringToInt(match)
 		registers = append(registers, i)
 	}
 	return registers
@@ -128,7 +127,7 @@ func parseOp(rawOp string) []int {
 	parts := strings.Split(rawOp, " ")
 	op := make([]int, len(parts))
 	for idx, value := range parts {
-		i, _ := strconv.Atoi(value)
+		i := aocutils.MustStringToInt(value)
 		op[idx] = i
 	}
 	return op

@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -50,7 +49,7 @@ func parseInput() map[int]int {
 	layers := map[int]int{}
 	for _, line := range lines {
 		parts := strings.Split(line, ": ")
-		layerIdx, layerLen := cast.MustStringToInt(parts[0]), cast.MustStringToInt(parts[1])
+		layerIdx, layerLen := aocutils.MustStringToInt(parts[0]), aocutils.MustStringToInt(parts[1])
 		layers[layerIdx] = layerLen
 	}
 	return layers

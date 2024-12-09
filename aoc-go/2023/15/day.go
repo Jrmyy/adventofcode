@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -46,7 +45,7 @@ func runPartTwo(ipt []string) int {
 				boxes[idx] = slices.Delete(boxes[idx], indexOf, indexOf+1)
 			}
 		} else {
-			num := cast.MustStringToInt(string(p[len(p)-1]))
+			num := aocutils.MustStringToInt(string(p[len(p)-1]))
 			lens := p[:len(p)-2]
 			idx := hash(lens)
 			r := fmt.Sprintf("%v %v", lens, num)
@@ -65,7 +64,7 @@ func runPartTwo(ipt []string) int {
 	s := 0
 	for bi, b := range boxes {
 		for li, l := range b {
-			s += (bi + 1) * (li + 1) * cast.MustStringToInt(strings.Split(l, " ")[1])
+			s += (bi + 1) * (li + 1) * aocutils.MustStringToInt(strings.Split(l, " ")[1])
 		}
 	}
 	return s

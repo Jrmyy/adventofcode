@@ -7,7 +7,6 @@ import (
 	"regexp"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 type hailstone struct {
@@ -88,12 +87,12 @@ func parseInput() []hailstone {
 	for idx, line := range lines {
 		m := re.FindAllString(line, -1)
 		ipt[idx] = hailstone{
-			X:  cast.MustStringToFloat64(m[0]),
-			Y:  cast.MustStringToFloat64(m[1]),
-			Z:  cast.MustStringToFloat64(m[2]),
-			Vx: cast.MustStringToFloat64(m[3]),
-			Vy: cast.MustStringToFloat64(m[4]),
-			Vz: cast.MustStringToFloat64(m[5]),
+			X:  aocutils.MustStringToFloat64(m[0]),
+			Y:  aocutils.MustStringToFloat64(m[1]),
+			Z:  aocutils.MustStringToFloat64(m[2]),
+			Vx: aocutils.MustStringToFloat64(m[3]),
+			Vy: aocutils.MustStringToFloat64(m[4]),
+			Vz: aocutils.MustStringToFloat64(m[5]),
 		}
 	}
 	return ipt

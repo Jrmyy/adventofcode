@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	aocmath "adventofcode-go/pkg/math"
 )
 
 //go:embed input.txt
@@ -90,7 +89,7 @@ func getPulses(modules map[string]*module, presses int) int {
 			for _, v := range cycles {
 				lcms = append(lcms, v)
 			}
-			return aocmath.LcmList(lcms)
+			return aocutils.LcmList(lcms)
 		}
 	}
 	return res[1] * res[-1]

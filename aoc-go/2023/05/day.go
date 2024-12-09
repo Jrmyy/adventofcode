@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -81,7 +80,7 @@ func parseInput() garden {
 	seedsStr := strings.TrimPrefix(lines[0], "seeds: ")
 	var seeds []int
 	for _, s := range strings.Split(seedsStr, " ") {
-		seeds = append(seeds, cast.MustStringToInt(s))
+		seeds = append(seeds, aocutils.MustStringToInt(s))
 	}
 	var phases []phase
 	var currPhase phase
@@ -95,9 +94,9 @@ func parseInput() garden {
 		} else if regexp.MustCompile("\\d").MatchString(line) {
 			parts := strings.Split(line, " ")
 			pr := phaseRange{
-				destStart:   cast.MustStringToInt(parts[0]),
-				sourceStart: cast.MustStringToInt(parts[1]),
-				length:      cast.MustStringToInt(parts[2]),
+				destStart:   aocutils.MustStringToInt(parts[0]),
+				sourceStart: aocutils.MustStringToInt(parts[1]),
+				length:      aocutils.MustStringToInt(parts[2]),
 			}
 			currPhase.ranges = append(currPhase.ranges, pr)
 		}

@@ -6,7 +6,6 @@ import (
 	"regexp"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -37,8 +36,8 @@ func runPartTwo(ipt []race) int {
 		timeStr += fmt.Sprintf("%v", r.Time)
 		distStr += fmt.Sprintf("%v", r.Distance)
 	}
-	time := cast.MustStringToInt(timeStr)
-	distance := cast.MustStringToInt(distStr)
+	time := aocutils.MustStringToInt(timeStr)
+	distance := aocutils.MustStringToInt(distStr)
 	wins := 0
 	for w := 0; w <= time; w++ {
 		if w*(time-w) > distance {
@@ -54,7 +53,7 @@ func parseInput() []race {
 	distances := regexp.MustCompile("(\\d+)").FindAllString(lines[1], -1)
 	races := make([]race, len(times))
 	for idx, time := range times {
-		races[idx] = race{Time: cast.MustStringToInt(time), Distance: cast.MustStringToInt(distances[idx])}
+		races[idx] = race{Time: aocutils.MustStringToInt(time), Distance: aocutils.MustStringToInt(distances[idx])}
 	}
 	return races
 }

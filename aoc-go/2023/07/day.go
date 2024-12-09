@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -193,7 +192,7 @@ func parseInput() []hand {
 	for idx, line := range lines {
 		parts := strings.Split(line, " ")
 		ipt[idx] = hand{
-			Bid:           cast.MustStringToInt(parts[1]),
+			Bid:           aocutils.MustStringToInt(parts[1]),
 			Cards:         parts[0],
 			OriginalCards: parts[0],
 		}

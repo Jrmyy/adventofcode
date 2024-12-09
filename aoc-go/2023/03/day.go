@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -23,7 +22,7 @@ func innerP1(ipt [][]string, x int, y int, ds string) int {
 		}
 	}
 	if isAdjacentToSymbol {
-		return cast.MustStringToInt(ds)
+		return aocutils.MustStringToInt(ds)
 	}
 	return 0
 }
@@ -65,7 +64,7 @@ func innerP2(ipt [][]string, x, y int, ds string, gears map[string][]int) {
 				if !ok {
 					gears[key] = make([]int, 0, 2)
 				}
-				gears[key] = append(gears[key], cast.MustStringToInt(ds))
+				gears[key] = append(gears[key], aocutils.MustStringToInt(ds))
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-package math
+package aocutils
 
 func GcdList(l []int) int {
 	g := l[1]

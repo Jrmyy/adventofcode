@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -50,39 +49,39 @@ func (g graph) GetAllConditionsFromInToA() []map[string]*condition {
 			if !ok {
 				c := &condition{Gte: -1, Lte: -1, Gt: -1, Lt: -1}
 				if strings.Contains(cs, "<=") {
-					c.Lte = cast.MustStringToInt(cs[3:])
+					c.Lte = aocutils.MustStringToInt(cs[3:])
 				} else if strings.Contains(cs, ">=") {
-					c.Gte = cast.MustStringToInt(cs[3:])
+					c.Gte = aocutils.MustStringToInt(cs[3:])
 				} else if strings.Contains(cs, ">") {
-					c.Gt = cast.MustStringToInt(cs[2:])
+					c.Gt = aocutils.MustStringToInt(cs[2:])
 				} else {
-					c.Lt = cast.MustStringToInt(cs[2:])
+					c.Lt = aocutils.MustStringToInt(cs[2:])
 				}
 				cm[variable] = c
 			} else {
 				if strings.Contains(cs, "<=") {
-					lte := cast.MustStringToInt(cs[3:])
+					lte := aocutils.MustStringToInt(cs[3:])
 					if v.Lte != -1 {
 						v.Lte = min(v.Lte, lte)
 					} else {
 						v.Lte = lte
 					}
 				} else if strings.Contains(cs, ">=") {
-					gte := cast.MustStringToInt(cs[3:])
+					gte := aocutils.MustStringToInt(cs[3:])
 					if v.Gte != -1 {
 						v.Gte = max(v.Gte, gte)
 					} else {
 						v.Gte = gte
 					}
 				} else if strings.Contains(cs, ">") {
-					gt := cast.MustStringToInt(cs[2:])
+					gt := aocutils.MustStringToInt(cs[2:])
 					if v.Gt != -1 {
 						v.Gt = max(v.Gt, gt)
 					} else {
 						v.Gt = gt
 					}
 				} else {
-					lt := cast.MustStringToInt(cs[2:])
+					lt := aocutils.MustStringToInt(cs[2:])
 					if v.Lt != -1 {
 						v.Lt = min(v.Lt, lt)
 					} else {
@@ -271,7 +270,7 @@ func parseInput() (graph, []map[string]int) {
 		line := strings.TrimPrefix(strings.TrimSuffix(lines[j], "}"), "{")
 		for _, p := range strings.Split(line, ",") {
 			vp := strings.Split(p, "=")
-			c[vp[0]] = cast.MustStringToInt(vp[1])
+			c[vp[0]] = aocutils.MustStringToInt(vp[1])
 		}
 		cases = append(cases, c)
 	}

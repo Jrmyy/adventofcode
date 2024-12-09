@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -89,9 +88,9 @@ func parseInput() nodes {
 		rawTo := strings.Split(parts[1], ", ")
 		to := make([]int, len(rawTo))
 		for rIdx, r := range rawTo {
-			to[rIdx] = cast.MustStringToInt(r)
+			to[rIdx] = aocutils.MustStringToInt(r)
 		}
-		ipt[cast.MustStringToInt(parts[0])] = to
+		ipt[aocutils.MustStringToInt(parts[0])] = to
 	}
 	return ipt
 }

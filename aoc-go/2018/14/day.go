@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"adventofcode-go/pkg/cast"
+	"adventofcode-go/pkg/aocutils"
 )
 
 func runPartOne(ipt int) string {
@@ -16,7 +16,7 @@ func runPartOne(ipt int) string {
 		s := recipes[fi] + recipes[si]
 		parts := strings.Split(fmt.Sprintf("%v", s), "")
 		for _, p := range parts {
-			recipes = append(recipes, cast.MustStringToInt(p))
+			recipes = append(recipes, aocutils.MustStringToInt(p))
 		}
 		fi = (1 + fi + recipes[fi]) % len(recipes)
 		si = (1 + si + recipes[si]) % len(recipes)

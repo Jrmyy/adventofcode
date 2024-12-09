@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -72,7 +71,7 @@ func parseInput() [][][]int {
 			numbers := make([]int, 0, len(numbersStr))
 			for _, ns := range numbersStr {
 				if ns != "" {
-					numbers = append(numbers, cast.MustStringToInt(ns))
+					numbers = append(numbers, aocutils.MustStringToInt(ns))
 				}
 			}
 			l[pp] = numbers

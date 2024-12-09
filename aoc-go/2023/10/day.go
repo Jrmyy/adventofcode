@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -175,8 +174,8 @@ func runPartTwo(ipt [][]string) int {
 	boundaries := map[int][]int{}
 	for _, l := range loop {
 		parts := strings.Split(l, ",")
-		x := cast.MustStringToInt(parts[0])
-		y := cast.MustStringToInt(parts[1])
+		x := aocutils.MustStringToInt(parts[0])
+		y := aocutils.MustStringToInt(parts[1])
 		_, ok := boundaries[y]
 		if !ok {
 			boundaries[y] = []int{len(ipt[y]), 0}

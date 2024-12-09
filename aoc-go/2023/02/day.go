@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -69,7 +68,7 @@ func parseInput() []game {
 			parsedSubset := cubeSubset{}
 			for _, cube := range cubes {
 				colorAndCount := strings.Split(cube, " ")
-				parsedSubset[colorAndCount[1]] = cast.MustStringToInt(colorAndCount[0])
+				parsedSubset[colorAndCount[1]] = aocutils.MustStringToInt(colorAndCount[0])
 			}
 			g[sIdx] = parsedSubset
 		}

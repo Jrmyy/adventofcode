@@ -7,7 +7,6 @@ import (
 	"strconv"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -65,7 +64,7 @@ func runPartTwo(ipt []digPlan) int {
 			panic(err)
 		}
 		ipt[i].Length = int(l)
-		ipt[i].Direction = directions[cast.MustStringToInt(ipt[i].Color[6:])]
+		ipt[i].Direction = directions[aocutils.MustStringToInt(ipt[i].Color[6:])]
 	}
 	return getCubicMeters(ipt)
 }
@@ -76,7 +75,7 @@ func parseInput() []digPlan {
 	regex := regexp.MustCompile("([RDLU]) (\\d+) \\((.+)\\)")
 	for idx, line := range lines {
 		matches := regex.FindStringSubmatch(line)
-		ipt[idx] = digPlan{Direction: matches[1], Length: cast.MustStringToInt(matches[2]), Color: matches[3]}
+		ipt[idx] = digPlan{Direction: matches[1], Length: aocutils.MustStringToInt(matches[2]), Color: matches[3]}
 	}
 	return ipt
 }

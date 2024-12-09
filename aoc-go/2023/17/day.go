@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -90,7 +89,7 @@ func parseInput() [][]int {
 		parts := strings.Split(line, "")
 		blocks := make([]int, len(parts))
 		for pi, p := range parts {
-			blocks[pi] = cast.MustStringToInt(p)
+			blocks[pi] = aocutils.MustStringToInt(p)
 		}
 		ipt[li] = blocks
 	}

@@ -22,14 +22,6 @@ func MustGetDayInput(embedInput embed.FS) []string {
 	return lines
 }
 
-func GenerateSequence(x, y int) []int {
-	l := make([]int, y-x+1)
-	for i := x; i <= y; i++ {
-		l[i-x] = i
-	}
-	return l
-}
-
 func closeFile(f fs.File) {
 	err := f.Close()
 	if err != nil {

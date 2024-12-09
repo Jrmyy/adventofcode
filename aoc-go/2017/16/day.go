@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -18,14 +17,14 @@ func runDance(programs []string, instructions []string) []string {
 		switch instruction[0] {
 		case 'x':
 			parts := strings.Split(instruction[1:], "/")
-			a, b := cast.MustStringToInt(parts[0]), cast.MustStringToInt(parts[1])
+			a, b := aocutils.MustStringToInt(parts[0]), aocutils.MustStringToInt(parts[1])
 			programs[a], programs[b] = programs[b], programs[a]
 		case 'p':
 			parts := strings.Split(instruction[1:], "/")
 			a, b := slices.Index(programs, parts[0]), slices.Index(programs, parts[1])
 			programs[a], programs[b] = programs[b], programs[a]
 		case 's':
-			spinSize := cast.MustStringToInt(instruction[1:])
+			spinSize := aocutils.MustStringToInt(instruction[1:])
 			newPrograms := make([]string, 16)
 			for idx, p := range programs {
 				newPrograms[(idx+spinSize)%len(programs)] = p

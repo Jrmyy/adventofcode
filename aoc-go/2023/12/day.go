@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	"adventofcode-go/pkg/cast"
 )
 
 //go:embed input.txt
@@ -79,7 +78,7 @@ func parseInput() []conditionRecord {
 		var arrangement []int
 		sum := 0
 		for _, i := range strings.Split(parts[1], ",") {
-			j := cast.MustStringToInt(i)
+			j := aocutils.MustStringToInt(i)
 			arrangement = append(arrangement, j)
 			sum += j
 		}
