@@ -8,110 +8,12 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
+	"adventofcode-go/pkg/shared/2018"
 )
-
-var bools = map[bool]int{
-	true:  1,
-	false: 0,
-}
 
 //go:embed input.txt
 var inputFile embed.FS
 
-func addr(op, registers []int) {
-	registers[op[3]] = registers[op[1]] + registers[op[2]]
-}
-
-func addi(op, registers []int) {
-	registers[op[3]] = registers[op[1]] + op[2]
-}
-
-func mulr(op, registers []int) {
-	registers[op[3]] = registers[op[1]] * registers[op[2]]
-}
-
-func muli(op, registers []int) {
-	registers[op[3]] = registers[op[1]] * op[2]
-}
-
-func banr(op, registers []int) {
-	registers[op[3]] = registers[op[1]] & registers[op[2]]
-}
-
-func bani(op, registers []int) {
-	registers[op[3]] = registers[op[1]] & op[2]
-}
-
-func borr(op, registers []int) {
-	registers[op[3]] = registers[op[1]] | registers[op[2]]
-}
-
-func bori(op, registers []int) {
-	registers[op[3]] = registers[op[1]] | op[2]
-}
-
-func setr(op, registers []int) {
-	registers[op[3]] = registers[op[1]]
-}
-
-func seti(op, registers []int) {
-	registers[op[3]] = op[1]
-}
-
-func gtir(op, registers []int) {
-	a := op[1]
-	b := registers[op[2]]
-	registers[op[3]] = bools[a > b]
-}
-
-func gtri(op, registers []int) {
-	a := registers[op[1]]
-	b := op[2]
-	registers[op[3]] = bools[a > b]
-}
-
-func gtrr(op, registers []int) {
-	a := registers[op[1]]
-	b := registers[op[2]]
-	registers[op[3]] = bools[a > b]
-}
-
-func eqir(op, registers []int) {
-	a := op[1]
-	b := registers[op[2]]
-	registers[op[3]] = bools[a == b]
-}
-
-func eqri(op, registers []int) {
-	a := registers[op[1]]
-	b := op[2]
-	registers[op[3]] = bools[a == b]
-}
-
-func eqrr(op, registers []int) {
-	a := registers[op[1]]
-	b := registers[op[2]]
-	registers[op[3]] = bools[a == b]
-}
-
-var operators = map[string]func([]int, []int){
-	"addr": addr,
-	"addi": addi,
-	"mulr": mulr,
-	"muli": muli,
-	"banr": banr,
-	"bani": bani,
-	"borr": borr,
-	"bori": bori,
-	"setr": setr,
-	"seti": seti,
-	"gtir": gtir,
-	"gtri": gtri,
-	"gtrr": gtrr,
-	"eqir": eqir,
-	"eqri": eqri,
-	"eqrr": eqrr,
-}
 var re = regexp.MustCompile(`(?m)(\d+)`)
 
 func parseRegisters(rawRegisters string) []int {
@@ -146,10 +48,10 @@ func runPartOne(lines []string) int {
 		op := parseOp(rawOp)
 
 		opMatch := 0
-		for _, opFn := range operators {
+		for _, opFn := range shared2018.Operators {
 			opBefore := make([]int, len(before))
 			copy(opBefore, before)
-			opFn(op, opBefore)
+			opFn(op[1:], opBefore)
 			if reflect.DeepEqual(opBefore, after) {
 				opMatch++
 			}
@@ -175,10 +77,10 @@ func runPartTwo(lines []string) int {
 		after := parseRegisters(rawAfter)
 		op := parseOp(rawOp)
 
-		for opName, opFn := range operators {
+		for opName, opFn := range shared2018.Operators {
 			opBefore := make([]int, len(before))
 			copy(opBefore, before)
-			opFn(op, opBefore)
+			opFn(op[1:], opBefore)
 			if reflect.DeepEqual(opBefore, after) {
 				if matches, ok := possibleMatches[op[0]]; !ok {
 					possibleMatches[op[0]] = map[string]bool{
@@ -219,8 +121,8 @@ func runPartTwo(lines []string) int {
 		}
 
 		op := parseOp(line)
-		opFn := operators[realMatches[op[0]]]
-		opFn(op, registers)
+		opFn := shared2018.Operators[realMatches[op[0]]]
+		opFn(op[1:], registers)
 	}
 
 	return registers[0]

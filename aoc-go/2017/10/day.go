@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"adventofcode-go/pkg/aocutils"
-	shared_2017 "adventofcode-go/pkg/shared/2017"
+	"adventofcode-go/pkg/shared/2017"
 )
 
 //go:embed input.txt
@@ -21,11 +21,11 @@ func generateSequence(x, y int) []int {
 }
 
 func runPartOne(instructions []int) int {
-	return shared_2017.RunKnotHashRounds(instructions, 1)
+	return shared2017.RunKnotHashRounds(instructions, 1)
 }
 
 func runPartTwo(instructions string) string {
-	return shared_2017.KnotHash(instructions)
+	return shared2017.KnotHash(instructions)
 }
 
 func parseInputP1(line string) []int {

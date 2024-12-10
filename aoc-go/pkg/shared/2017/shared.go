@@ -1,4 +1,4 @@
-package shared_2017
+package shared2017
 
 import (
 	"fmt"
