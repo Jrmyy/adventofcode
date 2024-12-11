@@ -33,3 +33,8 @@ with b the number of elements on the border and i the number of elements in the 
 
 ### Day 25
 The [minimum cut algorithm](https://en.wikipedia.org/wiki/Minimum_cut) is an algorithm made to split a graph into 2 subsets.
+
+## 2024
+
+### Day 11
+In problem becoming exponential in terms of space, use a map and keep a count for each value. It works great if each item are idenpendent.
