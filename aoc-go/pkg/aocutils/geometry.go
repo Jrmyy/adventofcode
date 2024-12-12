@@ -1,5 +1,10 @@
 package aocutils
 
+import (
+	"math"
+	"os"
+)
+
 type Point struct {
 	X int
 	Y int
@@ -29,4 +34,40 @@ func (p Point) Add(o Point) Point {
 
 func (p Point) Sub(o Point) Point {
 	return Point{X: p.X - o.X, Y: p.Y - o.Y}
+}
+
+type Edges[T comparable] map[T]int
+
+// Graph structure represents a weighted graph, with a mapping between the vertices and their edges to the
+// other vertices. The only condition is that T must be comparable to be a map key.
+type Graph[T comparable] map[T]Edges[T]
+
+func (g Graph[T]) Dijkstra(start T) map[T]int {
+	dist := map[T]int{}
+	seen := map[T]bool{}
+	for s, ds := range g {
+		dist[s] = math.MaxInt
+		for d := range ds {
+			dist[d] = math.MaxInt
+		}
+	}
+	dist[start] = 0
+	for len(seen) < len(dist) {
+		var closestNotSeen T
+		m := math.MaxInt
+		for p, dp := range dist {
+			if _, ok := seen[p]; !ok && dp < m {
+				m = dp
+				closestNotSeen = p
+			}
+		}
+		if m == math.MaxInt {
+			os.Exit(1)
+		}
+		for neighbor, weight := range g[closestNotSeen] {
+			dist[neighbor] = min(dist[neighbor], dist[closestNotSeen]+weight)
+		}
+		seen[closestNotSeen] = true
+	}
+	return dist
 }
