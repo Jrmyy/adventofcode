@@ -3,7 +3,6 @@ package main
 import (
 	"embed"
 	"fmt"
-	"strings"
 
 	"adventofcode-go/pkg/aocutils"
 	shared2018 "adventofcode-go/pkg/shared/2018"
@@ -12,27 +11,8 @@ import (
 //go:embed input.txt
 var inputFile embed.FS
 
-func runBackgroundProcess(ipt []string, registers []int) int {
-	instructionPointer := aocutils.MustStringToInt(strings.TrimPrefix(ipt[0], "#ip "))
-	instructions := ipt[1:]
-	for registers[instructionPointer] < len(instructions) {
-		pos := registers[instructionPointer]
-		instruction := instructions[pos]
-		parts := strings.Split(instruction, " ")
-		opName := parts[0]
-		opArgs := make([]int, len(parts)-1)
-		for idx, i := range parts[1:] {
-			opArgs[idx] = aocutils.MustStringToInt(i)
-		}
-		opFn := shared2018.Operators[opName]
-		opFn(opArgs, registers)
-		registers[instructionPointer]++
-	}
-	return registers[0]
-}
-
 func runPartOne(ipt []string) int {
-	return runBackgroundProcess(ipt, []int{0, 0, 0, 0, 0, 0})
+	return shared2018.RunProcess(ipt, []int{0, 0, 0, 0, 0, 0})
 }
 
 func runPartTwo(_ []string) int {

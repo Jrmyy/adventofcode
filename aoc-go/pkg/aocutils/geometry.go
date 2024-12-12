@@ -22,3 +22,11 @@ func (p Point) Neighbours(includeDiag bool) []Point {
 	}
 	return neighbours
 }
+
+func (p Point) Add(o Point) Point {
+	return Point{X: p.X + o.X, Y: p.Y + o.Y}
+}
+
+func (p Point) Sub(o Point) Point {
+	return Point{X: p.X - o.X, Y: p.Y - o.Y}
+}

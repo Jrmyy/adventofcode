@@ -1,5 +1,11 @@
 package shared2018
 
+import (
+	"strings"
+
+	"adventofcode-go/pkg/aocutils"
+)
+
 var bools = map[bool]int{
 	true:  1,
 	false: 0,
@@ -98,4 +104,23 @@ var Operators = map[string]func([]int, []int){
 	"eqir": eqir,
 	"eqri": eqri,
 	"eqrr": eqrr,
+}
+
+func RunProcess(ipt []string, registers []int) int {
+	instructionPointer := aocutils.MustStringToInt(strings.TrimPrefix(ipt[0], "#ip "))
+	instructions := ipt[1:]
+	for registers[instructionPointer] < len(instructions) {
+		pos := registers[instructionPointer]
+		instruction := instructions[pos]
+		parts := strings.Split(instruction, " ")
+		opName := parts[0]
+		opArgs := make([]int, len(parts)-1)
+		for idx, i := range parts[1:] {
+			opArgs[idx] = aocutils.MustStringToInt(i)
+		}
+		opFn := Operators[opName]
+		opFn(opArgs, registers)
+		registers[instructionPointer]++
+	}
+	return registers[0]
 }
