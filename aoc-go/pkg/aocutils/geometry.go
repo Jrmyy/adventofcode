@@ -61,9 +61,10 @@ func (g Graph[T]) Dijkstra(start T) map[T]int {
 				closestNotSeen = p
 			}
 		}
-		if m == math.MaxInt {
+		if _, ok := g[closestNotSeen]; m == math.MaxInt || !ok {
 			os.Exit(1)
 		}
+
 		for neighbor, weight := range g[closestNotSeen] {
 			dist[neighbor] = min(dist[neighbor], dist[closestNotSeen]+weight)
 		}
