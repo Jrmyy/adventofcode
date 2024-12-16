@@ -101,7 +101,7 @@ func runPartTwo(ipt []string) int {
 		}
 	}
 
-	distances := g.Dijkstra(Node{Position: aocutils.Point{X: 0, Y: 0}, Tool: "torch"})
+	distances, _ := g.Dijkstra(Node{Position: aocutils.Point{X: 0, Y: 0}, Tool: "torch"})
 	return distances[Node{Position: target, Tool: "torch"}]
 }
 

@@ -29,7 +29,7 @@ func runPartOne(r string) int {
 		}
 	}
 	pathSize := 0
-	dist := graph.Dijkstra(start)
+	dist, _ := graph.Dijkstra(start)
 	for _, n := range dist {
 		if n > pathSize {
 			pathSize = n
@@ -50,7 +50,7 @@ func runPartTwo(r string) int {
 		}
 	}
 	numRooms := 0
-	dist := graph.Dijkstra(start)
+	dist, _ := graph.Dijkstra(start)
 	for _, n := range dist {
 		if n >= 1000 {
 			numRooms++

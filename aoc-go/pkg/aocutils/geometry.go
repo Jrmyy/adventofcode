@@ -42,9 +42,10 @@ type Edges[T comparable] map[T]int
 // other vertices. The only condition is that T must be comparable to be a map key.
 type Graph[T comparable] map[T]Edges[T]
 
-func (g Graph[T]) Dijkstra(start T) map[T]int {
+func (g Graph[T]) Dijkstra(start T) (map[T]int, map[T][]T) {
 	dist := map[T]int{}
 	seen := map[T]bool{}
+	prev := map[T][]T{}
 	for s, ds := range g {
 		dist[s] = math.MaxInt
 		for d := range ds {
@@ -66,9 +67,15 @@ func (g Graph[T]) Dijkstra(start T) map[T]int {
 		}
 
 		for neighbor, weight := range g[closestNotSeen] {
-			dist[neighbor] = min(dist[neighbor], dist[closestNotSeen]+weight)
+			alt := dist[closestNotSeen] + weight
+			if alt < dist[neighbor] {
+				dist[neighbor] = alt
+				prev[neighbor] = []T{closestNotSeen}
+			} else if alt == dist[neighbor] {
+				prev[neighbor] = append(prev[neighbor], closestNotSeen)
+			}
 		}
 		seen[closestNotSeen] = true
 	}
-	return dist
+	return dist, prev
 }
