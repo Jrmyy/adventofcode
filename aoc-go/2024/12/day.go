@@ -36,7 +36,7 @@ func getZones(ipt []string) [][]aocutils.Point {
 		if r == '.' {
 			r = garden[p]
 		}
-		neighbours := p.Neighbours(false)
+		neighbours := p.Neighbours2D(false)
 		for _, n := range neighbours {
 			if _, ok := seen[n]; garden[n] == r && !slices.Contains(toCheck, n) && !ok {
 				zone = append(zone, n)
@@ -67,7 +67,7 @@ func runPartOne(ipt []string) int {
 	for _, z := range zones {
 		perimeter := 0
 		for _, p := range z {
-			for _, n := range p.Neighbours(false) {
+			for _, n := range p.Neighbours2D(false) {
 				if !slices.Contains(z, n) {
 					perimeter++
 				}

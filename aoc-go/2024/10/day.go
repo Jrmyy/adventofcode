@@ -71,7 +71,7 @@ func countPathsRecursive(
 	}
 
 	i := mountain[s]
-	for _, n := range s.Neighbours(false) {
+	for _, n := range s.Neighbours2D(false) {
 		if j, ok := mountain[n]; ok && j-i == 1 {
 			if v, ok := visited[n]; !ok || (allowMultipleTrails && !v) {
 				countPathsRecursive(mountain, n, d, allowMultipleTrails, visited, currentCount)

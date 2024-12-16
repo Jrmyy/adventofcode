@@ -90,7 +90,7 @@ func runPartTwo(ipt []string) int {
 			g[ns] = aocutils.Edges[Node]{
 				Node{Position: p, Tool: nodeTools[(idx+1)%2]}: 7,
 			}
-			for _, np := range ns.Position.Neighbours(false) {
+			for _, np := range ns.Position.Neighbours2D(false) {
 				if nt, ok := cave[np]; ok {
 					neighbourRegionType := types[nt]
 					if slices.Contains(tools[neighbourRegionType], srcTool) {

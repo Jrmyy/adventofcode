@@ -33,7 +33,7 @@ func simulate(ipt []string, steps int) int {
 	for i := 0; i < steps; i++ {
 		newForest := map[aocutils.Point]rune{}
 		for p, c := range forest {
-			possibleNeighbours := p.Neighbours(true)
+			possibleNeighbours := p.Neighbours2D(true)
 			neighbours := make([]aocutils.Point, 0, len(possibleNeighbours))
 			for _, n := range possibleNeighbours {
 				if _, ok := forest[n]; ok {

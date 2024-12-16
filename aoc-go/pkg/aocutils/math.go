@@ -30,3 +30,10 @@ func LcmList(l []int) int {
 	}
 	return lcm
 }
+
+func Abs(i int) int {
+	if i < 0 {
+		return -i
+	}
+	return i
+}
