@@ -8,18 +8,6 @@ type queueItem[T comparable] struct {
 	index    int
 }
 
-type PriorityQueue[T comparable] struct {
-	inner *innerPriorityQueue[T]
-}
-
-func NewPriorityQueue[T comparable]() PriorityQueue[T] {
-	pq := PriorityQueue[T]{
-		inner: &innerPriorityQueue[T]{},
-	}
-	heap.Init(pq.inner)
-	return pq
-}
-
 type innerPriorityQueue[T comparable] []*queueItem[T]
 
 func (pq innerPriorityQueue[T]) Len() int { return len(pq) }
@@ -51,17 +39,21 @@ func (pq *innerPriorityQueue[T]) Pop() any {
 	return item
 }
 
+type PriorityQueue[T comparable] struct {
+	inner *innerPriorityQueue[T]
+}
+
 func (pq PriorityQueue[T]) AddWithPriority(value T, priority int) {
 	item := &queueItem[T]{value: value, priority: priority}
 	heap.Push(pq.inner, item)
 }
 
 func (pq PriorityQueue[T]) ExtractMin() T {
-	return heap.Pop(pq.inner).(*queueItem[T]).value
+	return pq.extract().value
 }
 
 func (pq PriorityQueue[T]) ExtractMinWithPriority() (T, int) {
-	item := heap.Pop(pq.inner).(*queueItem[T])
+	item := pq.extract()
 	return item.value, item.priority
 }
 
@@ -71,4 +63,16 @@ func (pq PriorityQueue[T]) IsEmpty() bool {
 
 func (pq PriorityQueue[T]) IsNotEmpty() bool {
 	return pq.inner.Len() > 0
+}
+
+func (pq PriorityQueue[T]) extract() *queueItem[T] {
+	return heap.Pop(pq.inner).(*queueItem[T])
+}
+
+func NewPriorityQueue[T comparable]() PriorityQueue[T] {
+	pq := PriorityQueue[T]{
+		inner: &innerPriorityQueue[T]{},
+	}
+	heap.Init(pq.inner)
+	return pq
 }
