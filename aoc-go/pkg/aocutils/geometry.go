@@ -1,6 +1,7 @@
 package aocutils
 
 import (
+	"fmt"
 	"math"
 	"os"
 )
@@ -79,6 +80,7 @@ func (g Graph[T]) Dijkstra(start T) (map[T]int, map[T][]T) {
 		u := queue.ExtractMin()
 
 		if _, ok := g[u]; !ok {
+			fmt.Println(fmt.Sprintf("%v not found", u))
 			os.Exit(1)
 		}
 
