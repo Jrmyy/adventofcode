@@ -19,16 +19,17 @@ func getPrice(i int) int {
 	return price
 }
 
+var operations = []func(i int) int{
+	func(i int) int { return i * 64 },
+	func(i int) int { return int(math.Floor(float64(i) / 32.0)) },
+	func(i int) int { return i * 2048 },
+}
+
 func getSecretNumber(secretNumber int) int {
-	multipliedSecretNumber := secretNumber * 64
-	secretNumber = (multipliedSecretNumber ^ secretNumber) % 16777216
-
-	dividedSecretNumber := int(math.Floor(float64(secretNumber) / 32.0))
-	secretNumber = (dividedSecretNumber ^ secretNumber) % 16777216
-
-	multipliedSecretNumber = secretNumber * 2048
-	secretNumber = (multipliedSecretNumber ^ secretNumber) % 16777216
-
+	for _, op := range operations {
+		operated := op(secretNumber)
+		secretNumber = (operated ^ secretNumber) % 16777216
+	}
 	return secretNumber
 }
 
